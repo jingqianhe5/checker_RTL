@@ -1,0 +1,11 @@
+/资料/
+__pycache__/
+*.pyc
+
+*.vcd
+/build/*
+!/build/system/
+/build/system/*
+!/build/system/system_8_evidence.vcd
+!/build/system/system_8_evidence.wdb
+!/build/system/system_8_evidence.wcfg

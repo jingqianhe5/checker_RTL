@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="system_8_evidence.wdb" id="1">
+         <top_modules>
+            <top_module name="\tb_sys_top(FIFO_DEPTH=8) " />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+   </zoom_setting>
+   <column_width_setting>
+   </column_width_setting>
+   <WVObjectSize size="134" />
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /rst_n" type="logic">
+      <obj_property name="ElementShortName">rst_n</obj_property>
+      <obj_property name="ObjectShortName">rst_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /block_id" type="array">
+      <obj_property name="ElementShortName">block_id[7:0]</obj_property>
+      <obj_property name="ObjectShortName">block_id[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /mode_tree" type="logic">
+      <obj_property name="ElementShortName">mode_tree</obj_property>
+      <obj_property name="ObjectShortName">mode_tree</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /start_valid" type="logic">
+      <obj_property name="ElementShortName">start_valid</obj_property>
+      <obj_property name="ObjectShortName">start_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /start_ready" type="logic">
+      <obj_property name="ElementShortName">start_ready</obj_property>
+      <obj_property name="ObjectShortName">start_ready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /result_valid" type="logic">
+      <obj_property name="ElementShortName">result_valid</obj_property>
+      <obj_property name="ObjectShortName">result_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /result_ready" type="logic">
+      <obj_property name="ElementShortName">result_ready</obj_property>
+      <obj_property name="ObjectShortName">result_ready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /corrected" type="array">
+      <obj_property name="ElementShortName">corrected[3:0]</obj_property>
+      <obj_property name="ObjectShortName">corrected[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /recovered" type="array">
+      <obj_property name="ElementShortName">recovered[3:0]</obj_property>
+      <obj_property name="ObjectShortName">recovered[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /due_mask" type="array">
+      <obj_property name="ElementShortName">due_mask[3:0]</obj_property>
+      <obj_property name="ObjectShortName">due_mask[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_k_row3" type="array">
+      <obj_property name="ElementShortName">ev_k_row3[255:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_k_row3[255:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_q_bank0" type="array">
+      <obj_property name="ElementShortName">ev_q_bank0[255:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_q_bank0[255:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_q3" type="array">
+      <obj_property name="ElementShortName">ev_q3[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_q3[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_inject_pulse" type="logic">
+      <obj_property name="ElementShortName">ev_inject_pulse</obj_property>
+      <obj_property name="ObjectShortName">ev_inject_pulse</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_clean_y3" type="array">
+      <obj_property name="ElementShortName">ev_clean_y3[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_clean_y3[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_forced_y3" type="array">
+      <obj_property name="ElementShortName">ev_forced_y3[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_forced_y3[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_captured_y3" type="array">
+      <obj_property name="ElementShortName">ev_captured_y3[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_captured_y3[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_buffer_y3" type="array">
+      <obj_property name="ElementShortName">ev_buffer_y3[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_buffer_y3[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_fault" type="logic">
+      <obj_property name="ElementShortName">ev_fault</obj_property>
+      <obj_property name="ObjectShortName">ev_fault</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_delta1" type="array">
+      <obj_property name="ElementShortName">ev_delta1[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_delta1[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_delta2" type="array">
+      <obj_property name="ElementShortName">ev_delta2[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_delta2[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_candidate_valid" type="logic">
+      <obj_property name="ElementShortName">ev_candidate_valid</obj_property>
+      <obj_property name="ObjectShortName">ev_candidate_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_candidate_ready" type="logic">
+      <obj_property name="ElementShortName">ev_candidate_ready</obj_property>
+      <obj_property name="ObjectShortName">ev_candidate_ready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_candidate_pos" type="array">
+      <obj_property name="ElementShortName">ev_candidate_pos[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_candidate_pos[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_candidate_value" type="array">
+      <obj_property name="ElementShortName">ev_candidate_value[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_candidate_value[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_patch_applied" type="logic">
+      <obj_property name="ElementShortName">ev_patch_applied</obj_property>
+      <obj_property name="ObjectShortName">ev_patch_applied</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_final_y3" type="array">
+      <obj_property name="ElementShortName">ev_final_y3[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_final_y3[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_expected_y3" type="array">
+      <obj_property name="ElementShortName">ev_expected_y3[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_expected_y3[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_result_match" type="logic">
+      <obj_property name="ElementShortName">ev_result_match</obj_property>
+      <obj_property name="ObjectShortName">ev_result_match</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_actual_y" type="array">
+      <obj_property name="ElementShortName">ev_actual_y[1023:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_actual_y[1023:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_reference_y" type="array">
+      <obj_property name="ElementShortName">ev_reference_y[1023:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_reference_y[1023:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_bank0_r1" type="array">
+      <obj_property name="ElementShortName">ev_bank0_r1[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_bank0_r1[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_bank0_r2" type="array">
+      <obj_property name="ElementShortName">ev_bank0_r2[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_bank0_r2[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_bank0_h1" type="array">
+      <obj_property name="ElementShortName">ev_bank0_h1[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_bank0_h1[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_bank0_h2" type="array">
+      <obj_property name="ElementShortName">ev_bank0_h2[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_bank0_h2[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /due_valid" type="logic">
+      <obj_property name="ElementShortName">due_valid</obj_property>
+      <obj_property name="ObjectShortName">due_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /due_ready" type="logic">
+      <obj_property name="ElementShortName">due_ready</obj_property>
+      <obj_property name="ObjectShortName">due_ready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /due_src" type="array">
+      <obj_property name="ElementShortName">due_src[15:0]</obj_property>
+      <obj_property name="ObjectShortName">due_src[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /due_reason" type="array">
+      <obj_property name="ElementShortName">due_reason[7:0]</obj_property>
+      <obj_property name="ObjectShortName">due_reason[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_fault_mask" type="array">
+      <obj_property name="ElementShortName">ev_fault_mask[3:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_fault_mask[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_fault_ready" type="array">
+      <obj_property name="ElementShortName">ev_fault_ready[3:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_fault_ready[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_candidate_src" type="array">
+      <obj_property name="ElementShortName">ev_candidate_src[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_candidate_src[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_candidate_located" type="logic">
+      <obj_property name="ElementShortName">ev_candidate_located</obj_property>
+      <obj_property name="ObjectShortName">ev_candidate_located</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_fault_type" type="array">
+      <obj_property name="ElementShortName">ev_fault_type[11:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_fault_type[11:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_candidate_type" type="array">
+      <obj_property name="ElementShortName">ev_candidate_type[2:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_candidate_type[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_recovery_request" type="logic">
+      <obj_property name="ElementShortName">ev_recovery_request</obj_property>
+      <obj_property name="ObjectShortName">ev_recovery_request</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_recovery_src" type="array">
+      <obj_property name="ElementShortName">ev_recovery_src[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_recovery_src[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_recovery_done" type="logic">
+      <obj_property name="ElementShortName">ev_recovery_done</obj_property>
+      <obj_property name="ObjectShortName">ev_recovery_done</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_recovery_good" type="logic">
+      <obj_property name="ElementShortName">ev_recovery_good</obj_property>
+      <obj_property name="ObjectShortName">ev_recovery_good</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_recovery_y3" type="array">
+      <obj_property name="ElementShortName">ev_recovery_y3[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_recovery_y3[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_patch_bank" type="array">
+      <obj_property name="ElementShortName">ev_patch_bank[1:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_patch_bank[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_patch_full" type="logic">
+      <obj_property name="ElementShortName">ev_patch_full</obj_property>
+      <obj_property name="ObjectShortName">ev_patch_full</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_input_vector" type="array">
+      <obj_property name="ElementShortName">ev_input_vector[1023:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_input_vector[1023:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_actual_r" type="array">
+      <obj_property name="ElementShortName">ev_actual_r[191:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_actual_r[191:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_reference_r" type="array">
+      <obj_property name="ElementShortName">ev_reference_r[191:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_reference_r[191:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_result_block" type="array">
+      <obj_property name="ElementShortName">ev_result_block[7:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_result_block[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_inject_mask" type="array">
+      <obj_property name="ElementShortName">ev_inject_mask[3:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_inject_mask[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_injection_kind" type="array">
+      <obj_property name="ElementShortName">ev_injection_kind[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_injection_kind[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /load_valid" type="logic">
+      <obj_property name="ElementShortName">load_valid</obj_property>
+      <obj_property name="ObjectShortName">load_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /load_ready" type="logic">
+      <obj_property name="ElementShortName">load_ready</obj_property>
+      <obj_property name="ObjectShortName">load_ready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /load_bank" type="array">
+      <obj_property name="ElementShortName">load_bank[1:0]</obj_property>
+      <obj_property name="ObjectShortName">load_bank[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /load_row" type="array">
+      <obj_property name="ElementShortName">load_row[4:0]</obj_property>
+      <obj_property name="ObjectShortName">load_row[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /load_data" type="array">
+      <obj_property name="ElementShortName">load_data[255:0]</obj_property>
+      <obj_property name="ObjectShortName">load_data[255:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /checksum_valid" type="logic">
+      <obj_property name="ElementShortName">checksum_valid</obj_property>
+      <obj_property name="ObjectShortName">checksum_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /checksum_ready" type="logic">
+      <obj_property name="ElementShortName">checksum_ready</obj_property>
+      <obj_property name="ObjectShortName">checksum_ready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /checksum_bank" type="array">
+      <obj_property name="ElementShortName">checksum_bank[1:0]</obj_property>
+      <obj_property name="ObjectShortName">checksum_bank[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ce" type="array">
+      <obj_property name="ElementShortName">ce[255:0]</obj_property>
+      <obj_property name="ObjectShortName">ce[255:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /cw" type="array">
+      <obj_property name="ElementShortName">cw[255:0]</obj_property>
+      <obj_property name="ObjectShortName">cw[255:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ci" type="array">
+      <obj_property name="ElementShortName">ci[255:0]</obj_property>
+      <obj_property name="ObjectShortName">ci[255:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_phase" type="array">
+      <obj_property name="ElementShortName">ev_b0_phase[2:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_phase[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_service" type="logic">
+      <obj_property name="ElementShortName">ev_b0_service</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_service</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_packet_valid" type="logic">
+      <obj_property name="ElementShortName">ev_b0_packet_valid</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_packet_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_packet_ready" type="logic">
+      <obj_property name="ElementShortName">ev_b0_packet_ready</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_packet_ready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_zb_raw" type="array">
+      <obj_property name="ElementShortName">ev_b0_zb_raw[255:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_zb_raw[255:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_zb_clean" type="array">
+      <obj_property name="ElementShortName">ev_b0_zb_clean[255:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_zb_clean[255:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_zb_mask" type="array">
+      <obj_property name="ElementShortName">ev_b0_zb_mask[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_zb_mask[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_zb_capture" type="logic">
+      <obj_property name="ElementShortName">ev_b0_zb_capture</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_zb_capture</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_buf_clear" type="logic">
+      <obj_property name="ElementShortName">ev_b0_buf_clear</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_buf_clear</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_buf_write_y" type="logic">
+      <obj_property name="ElementShortName">ev_b0_buf_write_y</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_buf_write_y</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_buf_write_vector" type="logic">
+      <obj_property name="ElementShortName">ev_b0_buf_write_vector</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_buf_write_vector</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_buf_index" type="array">
+      <obj_property name="ElementShortName">ev_b0_buf_index[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_buf_index[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_buf_write_r1" type="logic">
+      <obj_property name="ElementShortName">ev_b0_buf_write_r1</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_buf_write_r1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_buf_write_r2" type="logic">
+      <obj_property name="ElementShortName">ev_b0_buf_write_r2</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_buf_write_r2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_buf_write_r3" type="logic">
+      <obj_property name="ElementShortName">ev_b0_buf_write_r3</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_buf_write_r3</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_buf_seal" type="logic">
+      <obj_property name="ElementShortName">ev_b0_buf_seal</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_buf_seal</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_buf_consume" type="logic">
+      <obj_property name="ElementShortName">ev_b0_buf_consume</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_buf_consume</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_buf_valid" type="logic">
+      <obj_property name="ElementShortName">ev_b0_buf_valid</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_buf_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_buf_y" type="array">
+      <obj_property name="ElementShortName">ev_b0_buf_y[255:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_buf_y[255:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_buf_r1" type="array">
+      <obj_property name="ElementShortName">ev_b0_buf_r1[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_buf_r1[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_buf_r2" type="array">
+      <obj_property name="ElementShortName">ev_b0_buf_r2[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_buf_r2[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_buf_r3" type="array">
+      <obj_property name="ElementShortName">ev_b0_buf_r3[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_buf_r3[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_buf_y_mask" type="array">
+      <obj_property name="ElementShortName">ev_b0_buf_y_mask[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_buf_y_mask[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_buf_r_mask" type="array">
+      <obj_property name="ElementShortName">ev_b0_buf_r_mask[2:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_buf_r_mask[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_h_state" type="array">
+      <obj_property name="ElementShortName">ev_b0_h_state[1:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_h_state[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_h_start_valid" type="logic">
+      <obj_property name="ElementShortName">ev_b0_h_start_valid</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_h_start_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_h_start_ready" type="logic">
+      <obj_property name="ElementShortName">ev_b0_h_start_ready</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_h_start_ready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_h_request_valid" type="logic">
+      <obj_property name="ElementShortName">ev_b0_h_request_valid</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_h_request_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_h_request_ready" type="logic">
+      <obj_property name="ElementShortName">ev_b0_h_request_ready</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_h_request_ready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_h_capture_h1" type="logic">
+      <obj_property name="ElementShortName">ev_b0_h_capture_h1</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_h_capture_h1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_h_capture_h2" type="logic">
+      <obj_property name="ElementShortName">ev_b0_h_capture_h2</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_h_capture_h2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_h_capture_h3" type="logic">
+      <obj_property name="ElementShortName">ev_b0_h_capture_h3</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_h_capture_h3</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_h_candidate1" type="array">
+      <obj_property name="ElementShortName">ev_b0_h_candidate1[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_h_candidate1[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_h_candidate2" type="array">
+      <obj_property name="ElementShortName">ev_b0_h_candidate2[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_h_candidate2[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_h_candidate3" type="array">
+      <obj_property name="ElementShortName">ev_b0_h_candidate3[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_h_candidate3[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_h_sample_valid" type="logic">
+      <obj_property name="ElementShortName">ev_b0_h_sample_valid</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_h_sample_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_h_sample_ready" type="logic">
+      <obj_property name="ElementShortName">ev_b0_h_sample_ready</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_h_sample_ready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_h_skip_round" type="logic">
+      <obj_property name="ElementShortName">ev_b0_h_skip_round</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_h_skip_round</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_h_previous1" type="array">
+      <obj_property name="ElementShortName">ev_b0_h_previous1[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_h_previous1[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_h_previous2" type="array">
+      <obj_property name="ElementShortName">ev_b0_h_previous2[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_h_previous2[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_h_previous3" type="array">
+      <obj_property name="ElementShortName">ev_b0_h_previous3[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_h_previous3[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_h_previous_finite" type="logic">
+      <obj_property name="ElementShortName">ev_b0_h_previous_finite</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_h_previous_finite</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_h_sample_finite" type="logic">
+      <obj_property name="ElementShortName">ev_b0_h_sample_finite</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_h_sample_finite</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_h_first1" type="array">
+      <obj_property name="ElementShortName">ev_b0_h_first1[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_h_first1[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_h_first2" type="array">
+      <obj_property name="ElementShortName">ev_b0_h_first2[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_h_first2[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_h_first3" type="array">
+      <obj_property name="ElementShortName">ev_b0_h_first3[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_h_first3[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_h_first_finite" type="logic">
+      <obj_property name="ElementShortName">ev_b0_h_first_finite</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_h_first_finite</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_h_match_first" type="logic">
+      <obj_property name="ElementShortName">ev_b0_h_match_first</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_h_match_first</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_h_match_previous" type="logic">
+      <obj_property name="ElementShortName">ev_b0_h_match_previous</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_h_match_previous</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_h_match" type="logic">
+      <obj_property name="ElementShortName">ev_b0_h_match</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_h_match</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_h_attempts" type="array">
+      <obj_property name="ElementShortName">ev_b0_h_attempts[1:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_h_attempts[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_h_commit" type="logic">
+      <obj_property name="ElementShortName">ev_b0_h_commit</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_h_commit</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_h_fail" type="logic">
+      <obj_property name="ElementShortName">ev_b0_h_fail</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_h_fail</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_h_done_valid" type="logic">
+      <obj_property name="ElementShortName">ev_b0_h_done_valid</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_h_done_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_h_done_ready" type="logic">
+      <obj_property name="ElementShortName">ev_b0_h_done_ready</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_h_done_ready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_h1" type="array">
+      <obj_property name="ElementShortName">ev_b0_h1[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_h1[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_h2" type="array">
+      <obj_property name="ElementShortName">ev_b0_h2[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_h2[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_h3" type="array">
+      <obj_property name="ElementShortName">ev_b0_h3[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_h3[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_h_valid" type="logic">
+      <obj_property name="ElementShortName">ev_b0_h_valid</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_h_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_delta1" type="array">
+      <obj_property name="ElementShortName">ev_b0_delta1[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_delta1[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_delta2" type="array">
+      <obj_property name="ElementShortName">ev_b0_delta2[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_delta2[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_delta3" type="array">
+      <obj_property name="ElementShortName">ev_b0_delta3[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_delta3[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_delta_valid" type="logic">
+      <obj_property name="ElementShortName">ev_b0_delta_valid</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_delta_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/\tb_sys_top(FIFO_DEPTH=8) /ev_b0_delta_nonfinite" type="array">
+      <obj_property name="ElementShortName">ev_b0_delta_nonfinite[2:0]</obj_property>
+      <obj_property name="ObjectShortName">ev_b0_delta_nonfinite[2:0]</obj_property>
+   </wvobject>
+</wave_config>
