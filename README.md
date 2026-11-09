@@ -39,6 +39,10 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\run_bg_simulat
 
 仓库里最新的一组是 `system_8_evidence`，对应 `FIFO_DEPTH=8` 的系统仿真，包含正常运行、故障修复、Recovery、DUE 和复位重载场景。
 
+最新波形按**三个校验值、四个 Bank 共享一个 BG**组织，保留 119 个关键信号，分成 10 组。详细内部过程展示 Bank0，共享 BG、Recovery 和 DUE 通过来源编号区分四个 Bank。全系统测试包含 66 个事务和复位重载后的一个完成包。
+
+优先结合 `b0_delta_valid` 读取 `b0_delta1_fp16`、`b0_delta2_fp16`、`b0_delta3_fp16`，并在 `b0_packet_accepted` 时查看 `b0_fault_type`。逐步流程、全部信号含义、有效时机、三取二规则、阈值公式与案例时间见 [`WAVE_SIGNALS.md`](WAVE_SIGNALS.md)。仿真还生成 `build/system/system_8_evidence_syndromes.csv`，按包列出四 Bank 的三路 R/H/delta 及 FP16 解码值。
+
 | 文件 | 如何使用 |
 | --- | --- |
 | [`system_8_evidence.vcd`](build/system/system_8_evidence.vcd) | 通用波形文件，用支持 VCD 的波形查看器打开。 |

@@ -41,16 +41,35 @@ CASES=[(1,[0,0,0,0],0,0),(0,[0,0,0,0],0,0),
        (1,[14,0,0,0],0,0),(0,[0,0,0,0],0,0),
        (1,[15,0,0,0],0,0),(1,[11,0,0,0],0,0),(0,[0,0,0,0],0,0),
        (1,[10,0,0,0],0,0),(1,[5,0,0,0],0,0),(1,[15,0,0,0],0,0),
-       (0,[0,0,0,0],0,0)]
+       (0,[0,0,0,0],0,0),
+       # Endpoint positions, negative corrections, and both GEMV modes.
+       (1,[1,0,0,0],0,0),(1,[1,0,0,0],0,0),
+       (0,[1,0,0,0],0,0),(0,[1,0,0,0],0,0),
+       (1,[2,0,0,0],0,0),(0,[3,0,0,0],0,0),
+       # R3 specials and H voting with invalid or repeated wrong samples.
+       (1,[5,0,0,0],0,0),(0,[5,0,0,0],0,0),(1,[5,0,0,0],0,0),
+       (1,[12,0,0,0],0,0),(1,[15,0,0,0],0,0),
+       # Negative, zero, tolerance boundaries and a Locator rejection.
+       (1,[0,0,0,0],0,0),(0,[0,0,0,0],0,0),
+       (1,[9,0,0,0],0,0),(1,[9,0,0,0],0,0),(1,[9,0,0,0],0,0),
+       (1,[1,0,0,0],0,0),(1,[0,0,0,0],0,0),(0,[0,0,0,0],0,0)]
 
 # Keys are zero-based case indices. Values are raw binary16 encodings.
 SPECIAL_Y={24:0x7e00,25:0x7c00,26:0xfc00,27:0x7bff,28:0xfbff,38:0x7c00}
-SPECIAL_R={30:0x7e00,31:0x7c00,32:0xfc00,33:0x7bff,34:0x7bfe}
+SPECIAL_R={30:0x7e00,31:0x7c00,32:0xfc00,33:0x7bff,34:0x7bfe,53:0x7e00,54:0x7c00,55:0x7bff}
 
 with (OUT/'system_vectors.txt').open('w') as f:
     f.write(str(len(CASES))+'\n')
     for case,(mode,inject,storage,checksum) in enumerate(CASES):
         vectors=[[enc((i+1)*(b+1 if case==19 else 1)/8) for i in range(N)] for b in range(4)]
+        if case==58:
+            vectors=[[enc(-(i+1)/8) for i in range(N)] for _ in range(4)]
+        if case==59:
+            vectors=[[0]*N for _ in range(4)]
+        if case in (60,61,62):
+            vectors=[[enc(1)]*N for _ in range(4)]
+        if case==64:
+            vectors=[[1]+[0]*(N-1) for _ in range(4)]
         if case==22:
             # Left-to-right FP16 reduction gives -1; a balanced sum gives 0.
             vectors=[[enc(v)]+[0]*(N-1) for v in (2048,1,-2048,-1)]
@@ -61,6 +80,9 @@ with (OUT/'system_vectors.txt').open('w') as f:
         corrected=sum((m not in (0,12,15))<<b for b,m in enumerate(inject)) & ~due
         recovered=sum(((m in (2,3,4,7,8,9,10,11) and case not in (34,43)) or (case == 16 and m == 1))<<b
                       for b,m in enumerate(inject)) & ~due
+        if case in (53,54,55,57,63): corrected=1;recovered=1
+        if case in (60,61): corrected=0;recovered=0
+        if case==62: corrected=1;recovered=0
         for b in range(4):
             vector=vectors[b]
             matrix=[[enc(b+1 if i==j else 0) for j in range(N)] for i in range(N)]
@@ -89,13 +111,25 @@ with (OUT/'system_vectors.txt').open('w') as f:
             if inject[b]==2:
                 bad_y[0]=enc(dec(y[0])+4);bad_y[1]=enc(dec(y[1])-4)
             else:bad_y[3]=enc(dec(y[3])+4)
+            if case in (47,48,49,50):
+                pos=0 if case in (47,50) else 15
+                bad_y=y.copy()
+                bad_y[pos]=enc(dec(y[pos])+(4 if case in (47,48) else -4))
+            if case==63:
+                bad_y=y.copy()
+                for pos,error in ((0,5),(1,15),(3,-2)):
+                    bad_y[pos]=enc(dec(y[pos])+error)
             if inject[b] in (3,6):bad_y[0]=enc(dec(y[0])+4)
             if inject[b] in (7,14):bad_y[3]=SPECIAL_Y[case]
             if inject[b]==8:
                 bad_y[:9]=[0x7e00,0x7c00,0xfc00,0x7bff,0xfbff,0x7bfe,0xfbfe,0x8000,0xc000]
             bad.extend(bad_y)
-            injected_r = r2 if case==43 else r3 if case==44 else r1
-            bad_rs.append(SPECIAL_R.get(case,enc(dec(injected_r)+4)))
+            injected_r = r2 if case==43 else r3 if case in (44,53,54,55) else r1
+            if case in (60,61,62) and b==0:
+                bad_rs.append(enc((15.9453125,15.9375,15.9296875)[case-60]))
+                if case in (60,61): r1=bad_rs[-1]
+            else:
+                bad_rs.append(SPECIAL_R.get(case,enc(dec(injected_r)+4)))
             if storage>>b&1:
                 matrix[2][2]=enc(b+1+8)
                 matrix[6][6]=enc(b+1+8)

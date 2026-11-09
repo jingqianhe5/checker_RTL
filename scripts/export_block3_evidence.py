@@ -193,7 +193,7 @@ RTL 用二分比较搜索位置，不用浮点除法器。
 | {event_ns['start_q3']:g} | 启动握手，ev_q3 | 3800 = 0.5；K[3,3]=3c00 = 1 |
 | {event_ns['force_value']:g} | ev_clean_y3 / ev_forced_y3，ev_inject_pulse | 3800 / 4480，即 0.5 / 4.5 |
 | {event_ns['DUT_captured_faulty_Y3']:g} | ev_captured_y3，随后 ev_buffer_y3 | 4480，证明错误值确实进入 DUT |
-| {event_ns['Delta1']:g} | 候选握手，ev_delta1 / ev_delta2 | c400 / cc00，即 −4 / −16 |
+| {event_ns['Delta1']:g} | 候选握手，ev_delta1 / ev_delta2 / ev_delta3 | c400 / cc00 / bc00，即 −4 / −16 / −1 |
 | {event_ns['candidate_pos']:g} | ev_candidate_pos / ev_candidate_value | 0003 / 3800，即下标 3 / 0.5 |
 | {event_ns['patch_applied']:g} | 采样 ev_patch_applied | 沿前为 1，事件 CSV 中该行的 0 是 Bank 编号 |
 | {completed_ps / 1000:g} | result_valid，ev_final_y3，ev_result_match | 1，3800，1 |

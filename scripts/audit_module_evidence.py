@@ -7,13 +7,14 @@ import re
 SPECIALS = {
     25:{0x7e00},26:{0x7c00},27:{0xfc00},28:{0x7bff},29:{0xfbff},
     30:{0x7e00,0x7c00,0xfc00,0x7bff,0xfbff,0x7bfe,0xfbfe,0x8000,0xc000},
-    31:{0x7e00},32:{0x7c00},33:{0xfc00},34:{0x7bff},35:{0x7bfe},39:{0x7c00},
+    31:{0x7e00},32:{0x7c00},33:{0xfc00},34:{0x7bff},35:{0x7bfe},39:{0x7c00},54:{0x7e00},55:{0x7c00},56:{0x7bff},
 }
 REJECTED = {0x7e00,0x7c00,0xfc00,0x7bff,0xfbff}
 
 
 class ModuleAudit:
-    def __init__(self):
+    def __init__(self, bank=0):
+        self.bank = bank
         self.sessions = {}
         self.h_start_times = {}
         self.h_captures = []
@@ -35,12 +36,12 @@ class ModuleAudit:
             self.sessions.clear()
             return
         for suffix in ('match','match_first','match_previous'):
-            if current.get('ev_b0_h_'+suffix) == '1':
-                assert current.get('ev_b0_h_sample_valid') == current.get('ev_b0_h_sample_ready') == '1', (time_ps, suffix, 'outside sample window')
+            if current.get(f'ev_b{self.bank}_h_'+suffix) == '1':
+                assert current.get(f'ev_b{self.bank}_h_sample_valid') == current.get(f'ev_b{self.bank}_h_sample_ready') == '1', (time_ps, suffix, 'outside sample window')
         rising = current.get('clk') == '1' and previous.get('clk') == '0'
         if not rising or previous.get('rst_n') != '1':
             return
-        for bank in (0,):
+        for bank in (self.bank,):
             prefix = f'ev_b{bank}_'
             old = lambda suffix: self.number(previous, prefix + suffix)
             new = lambda suffix: self.number(current, prefix + suffix)
@@ -51,7 +52,7 @@ class ModuleAudit:
                 self.events.append([time_ps / 1000, block, bank, service, kind, details])
                 self.counts[kind] += 1
 
-            if old('zb_capture') and block in SPECIALS:
+            if bank == 0 and old('zb_capture') and block in SPECIALS:
                 raw, clean, mask = old('zb_raw'), old('zb_clean'), old('zb_mask')
                 for lane in range(16):
                     value = raw >> (16*lane) & 65535
@@ -64,9 +65,9 @@ class ModuleAudit:
                         self.special_rows.append([time_ps/1000,block,service,old('phase'),lane,
                                                   f'{value:04x}',int(rejected),f'{observed:04x}'])
             if old('buf_seal'):
-                if not service:
+                if bank == 0 and not service:
                     expected_y_mask = 0x1f if block == 30 else 8 if block in (25,26,27,28,29,39) else 0
-                    expected_r_mask = 1 if block in (31,32) else 2 if block in (33,34) else 0
+                    expected_r_mask = 1 if block in (31,32) else 2 if block in (33,34) else 4 if block in (54,55,56) else 0
                     assert old('buf_y_mask') == expected_y_mask, (time_ps, block, 'saved Y mask')
                     assert old('buf_r_mask') == expected_r_mask, (time_ps, block, 'saved R mask')
                     if block in (25,26,27,28,29,39):
@@ -136,12 +137,14 @@ class ModuleAudit:
                 assert new('h_commit') and not new('h_fail') and new('packet_valid')
                 assert new('delta_valid')
 
-    def finish(self, root, names):
-        source = (root / 'scripts/waves_evidence.tcl').read_text()
+    def finish(self, root, names, other_banks=()):
+        source = (root / 'scripts/waves_evidence.tcl').read_text(encoding='utf-8')
         suffixes = re.search(r'set module_signals \{([^}]+)\}', source).group(1).split()
-        required = {f'ev_b0_{suffix}' for suffix in suffixes}
+        required = {f'ev_b{bank}_{suffix}' for bank in range(4) for suffix in suffixes}
         assert required <= set(names.values()), required - set(names.values())
-        assert not any(name.startswith(('ev_b1_', 'ev_b2_', 'ev_b3_')) for name in names.values())
+        for audit in other_banks:
+            assert audit.counts['H_commit'] > 0 and audit.counts['buffer_seal'] > 0, audit.bank
+        all_events = sorted(self.events + [row for audit in other_banks for row in audit.events], key=lambda row: (row[0], row[2]))
         assert self.counts['H_commit'] > 0
         assert self.counts['H_skip'] > 0
         assert any(row[1:5] == [3, 0, 0, 'H_commit'] for row in self.events)
@@ -162,6 +165,9 @@ class ModuleAudit:
         assert self.mismatches[42,0] == 2
         assert self.outcomes[46,0] == ('commit', [normal, ((0x4c40,0x59d8,0x4200),True), normal])
         assert self.mismatches[46,0] == 1
+        assert self.outcomes[57,0] == ('commit', [((0x4c40,0x59d8,0x7e00),False), normal, normal])
+        assert self.outcomes[58,0] == ('commit', [different[0],different[0]])
+        assert self.counts['H_skip'] > 0
         with (root/'build/system/system_8_evidence_special_values.csv').open('w',newline='',encoding='utf-8-sig') as stream:
             writer=csv.writer(stream)
             writer.writerow(['time_ns','block_id_decimal','service','phase_0R1_1R2_2Y','raw_lane','raw_fp16_hex','mask','clean_fp16_hex'])
@@ -169,7 +175,7 @@ class ModuleAudit:
         special_table = ['| blockID 十进制（十六进制） | 时间 ns | service | 阶段 | 原始项 hex | mask | 清理后 hex |',
                          '|---|---:|---:|---|---|---:|---|']
         for time,block,service,phase,lane,raw,mask,clean in self.special_rows:
-            special_table.append(f'| {block}（{block:02x}） | {time:g} | {service} | {("R1","R2","Y")[phase]} | {raw} | {mask} | {clean} |')
+            special_table.append(f'| {block}（{block:02x}） | {time:g} | {service} | { {0:"R1",1:"R2",2:"Y",5:"R3"}[phase]} | {raw} | {mask} | {clean} |')
         h_table = ['| blockID 十进制（十六进制） | 时间 ns | service | 事件 | 实际记录 |',
                    '|---|---:|---:|---|---|']
         for time,block,bank,service,kind,details in self.events:
@@ -177,7 +183,7 @@ class ModuleAudit:
                 h_table.append(f'| {block}（{block:02x}） | {time:g} | {service} | {kind} | {details} |')
         report = '''# Bank0 特殊值与 H 连续出错的波形证据
 
-仍打开同一个 build/system/system_8_evidence.vcd，四 Bank 系统仍完整仿真，详细模块信号只导出 Bank0。
+仍打开同一个 build/system/system_8_evidence.vcd，四 Bank 系统仍完整仿真，详细模块信号仅展示 Bank0，四个 Bank 的结果均参与自动审计。
 以下时间全部从这次 VCD 的真实采样值提取，未强制设置 mask、h_match、h_fail、h_commit 或最终修复状态。
 service=0 是主计算，1 是 Recovery；各案例时间范围与最终状态见 SYSTEM_WAVE_GUIDE.md。
 
@@ -225,7 +231,7 @@ case46 只扰动第二轮 H3，第一轮和第三轮整组匹配，验证第三�
         with path.open('w', newline='', encoding='utf-8-sig') as stream:
             writer = csv.writer(stream)
             writer.writerow(['time_ns', 'block_id_decimal', 'bank', 'service_0main_1recompute', 'event', 'details'])
-            writer.writerows(self.events)
+            writer.writerows(all_events)
         print(f'PASS: {len(required)} module observer signals, '
               f'{self.counts["H_sample"]} H samples, {self.counts["H_skip"]} idle rounds, {self.counts["H_commit"]} commits, '
-              f'{self.counts["H_fail"]} failures; Bank 0 detail only')
+              f'{self.counts["H_fail"]} failures in Bank 0; all four banks audited')

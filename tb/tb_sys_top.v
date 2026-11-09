@@ -29,6 +29,7 @@ module tb_sys_top;
     reg [V-1:0] ces[0:3],cws[0:3],cis[0:3];
     integer fd,fields,cases,c,index,b,k,errors=0;
     integer recovery_count=0,patch_count=0,due_count=0;
+    integer fifo_full_cycles=0;
     integer cycle_count=0,start_cycle,summary_fd;
     reg [1023:0] summary_path;
     always @(posedge clk) cycle_count=cycle_count+1;
@@ -45,7 +46,15 @@ module tb_sys_top;
     reg [15:0] ev_clean_y3=0,ev_forced_y3=0,ev_captured_y3=0;
     wire [15:0] ev_buffer_y3=dut.banks[0].engine_u.checker_u.result_y_o[48+:16];
     wire ev_fault=dut.fault_valid[0];
-    wire [15:0] ev_delta1=dut.candidate_record[0+:16],ev_delta2=dut.candidate_record[16+:16];
+    // Candidate payload is NOT always a syndrome: SINGLE_R carries replacement H.
+    wire [31:0] ev_candidate_payload=dut.candidate_record[31:0];
+    reg [191:0] ev_fault_delta_snapshot=0;
+    reg [3:0] ev_fault_delta_trusted=0;
+    wire [47:0] ev_candidate_deltas=ev_fault_delta_snapshot[dut.candidate_src[1:0]*48+:48];
+    wire [15:0] ev_delta1=ev_candidate_deltas[15:0];
+    wire [15:0] ev_delta2=ev_candidate_deltas[31:16];
+    wire [15:0] ev_delta3=ev_candidate_deltas[47:32];
+    wire ev_delta_valid=dut.candidate_valid&&ev_fault_delta_trusted[dut.candidate_src[1:0]];
     wire ev_candidate_valid=dut.candidate_valid, ev_candidate_ready=dut.candidate_ready;
     wire signed [15:0] ev_candidate_pos=dut.candidate_pos;
     wire [15:0] ev_candidate_value=dut.candidate_value;
@@ -58,6 +67,8 @@ module tb_sys_top;
     wire [15:0] ev_bank0_r2=dut.banks[0].engine_u.r_o[31:16];
     wire [15:0] ev_bank0_h1=dut.banks[0].engine_u.h_o[15:0];
     wire [15:0] ev_bank0_h2=dut.banks[0].engine_u.h_o[31:16];
+    wire [15:0] ev_bank0_r3=dut.banks[0].engine_u.r_o[47:32];
+    wire [15:0] ev_bank0_h3=dut.banks[0].engine_u.h_o[47:32];
     // Shared-path identifiers are essential when faults involve other banks.
     wire [3:0] ev_fault_mask=dut.fault_valid, ev_fault_ready=dut.fault_ready;
     wire [15:0] ev_candidate_src=dut.candidate_src;
@@ -77,76 +88,185 @@ module tb_sys_top;
     wire [15:0] ev_injection_kind=injection;
     wire [3:0] ev_inject_mask;
 
-    // Read-only per-bank module observers. They do not add any RTL ports.
-    // Bank 0: Zero-bound, Result Buffer and H Calculator/Control.
-    wire [2:0] ev_b0_phase=dut.banks[0].engine_u.checker_u.phase;
-    wire ev_b0_service=dut.engine_service[0];
-    wire ev_b0_packet_valid=dut.banks[0].engine_u.checker_u.result_valid_o;
-    wire ev_b0_packet_ready=dut.banks[0].engine_u.checker_u.result_ready_i;
-    wire [V-1:0] ev_b0_zb_raw=dut.banks[0].engine_u.checker_u.core_result;
-    wire [V-1:0] ev_b0_zb_clean=dut.banks[0].engine_u.checker_u.clean_result;
-    wire [N-1:0] ev_b0_zb_mask=dut.banks[0].engine_u.checker_u.clean_mask;
-    wire ev_b0_buf_write_r3=dut.banks[0].engine_u.checker_u.capture_r3;
-    wire ev_b0_zb_capture=dut.banks[0].engine_u.checker_u.capture_y || dut.banks[0].engine_u.checker_u.capture_r1 || dut.banks[0].engine_u.checker_u.capture_r2 || ev_b0_buf_write_r3;
-    wire ev_b0_buf_clear=dut.banks[0].engine_u.checker_u.command_accept;
-    wire ev_b0_buf_write_y=dut.banks[0].engine_u.checker_u.capture_y;
-    wire ev_b0_buf_write_vector=dut.banks[0].engine_u.checker_u.capture_y_vector;
-    wire [31:0] ev_b0_buf_index=dut.banks[0].engine_u.checker_u.beat_index;
-    wire ev_b0_buf_write_r1=dut.banks[0].engine_u.checker_u.capture_r1;
-    wire ev_b0_buf_write_r2=dut.banks[0].engine_u.checker_u.capture_r2;
-    wire ev_b0_buf_seal=dut.banks[0].engine_u.checker_u.buffer_seal;
-    wire ev_b0_buf_consume=dut.banks[0].engine_u.checker_u.buffer_consume;
-    wire ev_b0_buf_valid=dut.banks[0].engine_u.checker_u.buffer_valid;
-    wire [V-1:0] ev_b0_buf_y=dut.banks[0].engine_u.checker_u.result_y_o;
-    wire [15:0] ev_b0_buf_r1=dut.banks[0].engine_u.checker_u.result_r1_o;
-    wire [15:0] ev_b0_buf_r2=dut.banks[0].engine_u.checker_u.result_r2_o;
-    wire [N-1:0] ev_b0_buf_y_mask=dut.banks[0].engine_u.checker_u.result_y_mask_o;
-    wire [15:0] ev_b0_buf_r3=dut.banks[0].engine_u.r_o[47:32];
-    wire [2:0] ev_b0_buf_r_mask=dut.banks[0].engine_u.checker_u.result_r_mask_o;
-    wire [1:0] ev_b0_h_state=dut.banks[0].engine_u.checker_u.h_control_u.state;
-    wire ev_b0_h_start_valid=dut.banks[0].engine_u.checker_u.h_start_valid;
-    wire ev_b0_h_start_ready=dut.banks[0].engine_u.checker_u.h_start_ready;
-    wire ev_b0_h_request_valid=dut.banks[0].engine_u.checker_u.h_request_valid;
-    wire ev_b0_h_request_ready=dut.banks[0].engine_u.checker_u.h_request_ready;
-    wire ev_b0_h_capture_h1=dut.banks[0].engine_u.checker_u.capture_h1;
-    wire ev_b0_h_capture_h2=dut.banks[0].engine_u.checker_u.capture_h2;
-    wire ev_b0_h_capture_h3=dut.banks[0].engine_u.checker_u.capture_h3;
-    wire [15:0] ev_b0_h_candidate3=dut.banks[0].engine_u.checker_u.candidate_h3;
-    wire [15:0] ev_b0_h_candidate1=dut.banks[0].engine_u.checker_u.candidate_h1;
-    wire [15:0] ev_b0_h_candidate2=dut.banks[0].engine_u.checker_u.candidate_h2;
-    wire ev_b0_h_sample_valid=dut.banks[0].engine_u.checker_u.h_sample_valid;
-    wire ev_b0_h_sample_ready=dut.banks[0].engine_u.checker_u.h_sample_ready;
-    wire ev_b0_h_skip_round=dut.banks[0].engine_u.checker_u.h_skip_round;
-    wire [15:0] ev_b0_h_previous1=dut.banks[0].engine_u.checker_u.h_control_u.previous_h1;
-    wire [15:0] ev_b0_h_previous3=dut.banks[0].engine_u.checker_u.h_control_u.previous_h3;
-    wire [15:0] ev_b0_h_previous2=dut.banks[0].engine_u.checker_u.h_control_u.previous_h2;
-    wire ev_b0_h_previous_finite=dut.banks[0].engine_u.checker_u.h_control_u.previous_finite;
-    wire ev_b0_h_sample_finite=dut.banks[0].engine_u.checker_u.h_control_u.sample_finite;
-    // Show comparison decisions only when a complete pair is being sampled.
-    // The controller's raw combinational matches can self-match after its
-    // previous registers update; those values are not new votes.
-    wire h_observe_sample=ev_b0_h_sample_valid&&ev_b0_h_sample_ready;
-    wire ev_b0_h_match=h_observe_sample&&dut.banks[0].engine_u.checker_u.h_control_u.vote_match;
-    wire [15:0] ev_b0_h_first1=dut.banks[0].engine_u.checker_u.h_control_u.first_h1;
-    wire [15:0] ev_b0_h_first3=dut.banks[0].engine_u.checker_u.h_control_u.first_h3;
-    wire [15:0] ev_b0_h_first2=dut.banks[0].engine_u.checker_u.h_control_u.first_h2;
-    wire ev_b0_h_first_finite=dut.banks[0].engine_u.checker_u.h_control_u.first_finite;
-    wire ev_b0_h_match_first=h_observe_sample&&dut.banks[0].engine_u.checker_u.h_control_u.match_first;
-    wire ev_b0_h_match_previous=h_observe_sample&&dut.banks[0].engine_u.checker_u.h_control_u.match_previous;
-    wire [1:0] ev_b0_h_attempts=dut.banks[0].engine_u.checker_u.result_h_attempts_o;
-    wire ev_b0_h_commit=dut.banks[0].engine_u.checker_u.h_commit;
-    wire ev_b0_h_fail=dut.banks[0].engine_u.checker_u.h_fail;
-    wire ev_b0_h_done_valid=dut.banks[0].engine_u.checker_u.h_done_valid;
-    wire ev_b0_h_done_ready=dut.banks[0].engine_u.checker_u.h_done_ready;
-    wire [15:0] ev_b0_h1=dut.banks[0].engine_u.checker_u.result_h1_o;
-    wire [15:0] ev_b0_h2=dut.banks[0].engine_u.checker_u.result_h2_o;
-    wire ev_b0_h_valid=dut.banks[0].engine_u.checker_u.result_h_valid_o;
-    wire [15:0] ev_b0_h3=dut.banks[0].engine_u.h_o[47:32];
-    wire [15:0] ev_b0_delta3=dut.banks[0].engine_u.delta_o[47:32];
-    wire [15:0] ev_b0_delta1=dut.banks[0].engine_u.checker_u.result_delta1_o;
-    wire [15:0] ev_b0_delta2=dut.banks[0].engine_u.checker_u.result_delta2_o;
-    wire ev_b0_delta_valid=dut.banks[0].engine_u.checker_u.result_delta_valid_o;
-    wire [2:0] ev_b0_delta_nonfinite=dut.banks[0].engine_u.checker_u.result_delta_nonfinite_o;
+    // Identical read-only observers for all four banks; flat names work in VCD tools.
+    // Vote matches are gated to the complete H1/H2/H3 sampling handshake.
+`define BANK_OBSERVERS(B) \
+    wire [2:0] ev_b``B``_phase=dut.banks[B].engine_u.checker_u.phase; \
+    wire ev_b``B``_service=dut.engine_service[B]; \
+    wire ev_b``B``_packet_valid=dut.banks[B].engine_u.checker_u.result_valid_o; \
+    wire ev_b``B``_packet_ready=dut.banks[B].engine_u.checker_u.result_ready_i; \
+    wire [V-1:0] ev_b``B``_zb_raw=dut.banks[B].engine_u.checker_u.core_result; \
+    wire [V-1:0] ev_b``B``_zb_clean=dut.banks[B].engine_u.checker_u.clean_result; \
+    wire [N-1:0] ev_b``B``_zb_mask=dut.banks[B].engine_u.checker_u.clean_mask; \
+    wire ev_b``B``_buf_write_r3=dut.banks[B].engine_u.checker_u.capture_r3; \
+    wire ev_b``B``_zb_capture=dut.banks[B].engine_u.checker_u.capture_y || dut.banks[B].engine_u.checker_u.capture_r1 || dut.banks[B].engine_u.checker_u.capture_r2 || ev_b``B``_buf_write_r3; \
+    wire ev_b``B``_buf_clear=dut.banks[B].engine_u.checker_u.command_accept; \
+    wire ev_b``B``_buf_write_y=dut.banks[B].engine_u.checker_u.capture_y; \
+    wire ev_b``B``_buf_write_vector=dut.banks[B].engine_u.checker_u.capture_y_vector; \
+    wire [31:0] ev_b``B``_buf_index=dut.banks[B].engine_u.checker_u.beat_index; \
+    wire ev_b``B``_buf_write_r1=dut.banks[B].engine_u.checker_u.capture_r1; \
+    wire ev_b``B``_buf_write_r2=dut.banks[B].engine_u.checker_u.capture_r2; \
+    wire ev_b``B``_buf_seal=dut.banks[B].engine_u.checker_u.buffer_seal; \
+    wire ev_b``B``_buf_consume=dut.banks[B].engine_u.checker_u.buffer_consume; \
+    wire ev_b``B``_buf_valid=dut.banks[B].engine_u.checker_u.buffer_valid; \
+    wire [V-1:0] ev_b``B``_buf_y=dut.banks[B].engine_u.checker_u.result_y_o; \
+    wire [15:0] ev_b``B``_buf_r1=dut.banks[B].engine_u.checker_u.result_r1_o; \
+    wire [15:0] ev_b``B``_buf_r2=dut.banks[B].engine_u.checker_u.result_r2_o; \
+    wire [N-1:0] ev_b``B``_buf_y_mask=dut.banks[B].engine_u.checker_u.result_y_mask_o; \
+    wire [15:0] ev_b``B``_buf_r3=dut.banks[B].engine_u.r_o[47:32]; \
+    wire [2:0] ev_b``B``_buf_r_mask=dut.banks[B].engine_u.checker_u.result_r_mask_o; \
+    wire [1:0] ev_b``B``_h_state=dut.banks[B].engine_u.checker_u.h_control_u.state; \
+    wire ev_b``B``_h_start_valid=dut.banks[B].engine_u.checker_u.h_start_valid; \
+    wire ev_b``B``_h_start_ready=dut.banks[B].engine_u.checker_u.h_start_ready; \
+    wire ev_b``B``_h_request_valid=dut.banks[B].engine_u.checker_u.h_request_valid; \
+    wire ev_b``B``_h_request_ready=dut.banks[B].engine_u.checker_u.h_request_ready; \
+    wire ev_b``B``_h_capture_h1=dut.banks[B].engine_u.checker_u.capture_h1; \
+    wire ev_b``B``_h_capture_h2=dut.banks[B].engine_u.checker_u.capture_h2; \
+    wire ev_b``B``_h_capture_h3=dut.banks[B].engine_u.checker_u.capture_h3; \
+    wire [15:0] ev_b``B``_h_candidate3=dut.banks[B].engine_u.checker_u.candidate_h3; \
+    wire [15:0] ev_b``B``_h_candidate1=dut.banks[B].engine_u.checker_u.candidate_h1; \
+    wire [15:0] ev_b``B``_h_candidate2=dut.banks[B].engine_u.checker_u.candidate_h2; \
+    wire ev_b``B``_h_sample_valid=dut.banks[B].engine_u.checker_u.h_sample_valid; \
+    wire ev_b``B``_h_sample_ready=dut.banks[B].engine_u.checker_u.h_sample_ready; \
+    wire ev_b``B``_h_skip_round=dut.banks[B].engine_u.checker_u.h_skip_round; \
+    wire [15:0] ev_b``B``_h_previous1=dut.banks[B].engine_u.checker_u.h_control_u.previous_h1; \
+    wire [15:0] ev_b``B``_h_previous3=dut.banks[B].engine_u.checker_u.h_control_u.previous_h3; \
+    wire [15:0] ev_b``B``_h_previous2=dut.banks[B].engine_u.checker_u.h_control_u.previous_h2; \
+    wire ev_b``B``_h_previous_finite=dut.banks[B].engine_u.checker_u.h_control_u.previous_finite; \
+    wire ev_b``B``_h_sample_finite=dut.banks[B].engine_u.checker_u.h_control_u.sample_finite; \
+    wire ev_b``B``_observe_sample=ev_b``B``_h_sample_valid&&ev_b``B``_h_sample_ready; \
+    wire ev_b``B``_h_match=ev_b``B``_observe_sample&&dut.banks[B].engine_u.checker_u.h_control_u.vote_match; \
+    wire [15:0] ev_b``B``_h_first1=dut.banks[B].engine_u.checker_u.h_control_u.first_h1; \
+    wire [15:0] ev_b``B``_h_first3=dut.banks[B].engine_u.checker_u.h_control_u.first_h3; \
+    wire [15:0] ev_b``B``_h_first2=dut.banks[B].engine_u.checker_u.h_control_u.first_h2; \
+    wire ev_b``B``_h_first_finite=dut.banks[B].engine_u.checker_u.h_control_u.first_finite; \
+    wire ev_b``B``_h_match_first=ev_b``B``_observe_sample&&dut.banks[B].engine_u.checker_u.h_control_u.match_first; \
+    wire ev_b``B``_h_match_previous=ev_b``B``_observe_sample&&dut.banks[B].engine_u.checker_u.h_control_u.match_previous; \
+    wire [1:0] ev_b``B``_h_attempts=dut.banks[B].engine_u.checker_u.result_h_attempts_o; \
+    wire ev_b``B``_h_commit=dut.banks[B].engine_u.checker_u.h_commit; \
+    wire ev_b``B``_h_fail=dut.banks[B].engine_u.checker_u.h_fail; \
+    wire ev_b``B``_h_done_valid=dut.banks[B].engine_u.checker_u.h_done_valid; \
+    wire ev_b``B``_h_done_ready=dut.banks[B].engine_u.checker_u.h_done_ready; \
+    wire [15:0] ev_b``B``_h1=dut.banks[B].engine_u.checker_u.result_h1_o; \
+    wire [15:0] ev_b``B``_h2=dut.banks[B].engine_u.checker_u.result_h2_o; \
+    wire ev_b``B``_h_valid=dut.banks[B].engine_u.checker_u.result_h_valid_o; \
+    wire [15:0] ev_b``B``_h3=dut.banks[B].engine_u.h_o[47:32]; \
+    wire [15:0] ev_b``B``_delta3=dut.banks[B].engine_u.delta_o[47:32]; \
+    wire [15:0] ev_b``B``_delta1=dut.banks[B].engine_u.checker_u.result_delta1_o; \
+    wire [15:0] ev_b``B``_delta2=dut.banks[B].engine_u.checker_u.result_delta2_o; \
+    wire ev_b``B``_delta_valid=dut.banks[B].engine_u.checker_u.result_delta_valid_o; \
+    wire [2:0] ev_b``B``_delta_nonfinite=dut.banks[B].engine_u.checker_u.result_delta_nonfinite_o; \
+    wire [5-1:0] ev_b``B``_fsm_state=dut.banks[B].engine_u.checker_u.fsm_u.state; \
+    wire ev_b``B``_configured=dut.banks[B].engine_u.configured_o; \
+    wire ev_b``B``_start=dut.banks[B].engine_u.start_i; \
+    wire ev_b``B``_ready=dut.banks[B].engine_u.ready_o; \
+    wire [5-1:0] ev_b``B``_read_row=dut.banks[B].engine_u.read_row; \
+    wire ev_b``B``_feeding=dut.banks[B].engine_u.feeding; \
+    wire ev_b``B``_row_ready=dut.banks[B].engine_u.row_ready; \
+    wire [V-1:0] ev_b``B``_ce=dut.banks[B].engine_u.ce; \
+    wire [V-1:0] ev_b``B``_cw=dut.banks[B].engine_u.cw; \
+    wire [V-1:0] ev_b``B``_ci=dut.banks[B].engine_u.c_inv_w; \
+    wire [V-1:0] ev_b``B``_weights=dut.banks[B].engine_u.checker_u.weight; \
+    wire [V-1:0] ev_b``B``_inverse_weights=dut.banks[B].engine_u.checker_u.inv_weight; \
+    wire ev_b``B``_issue=dut.banks[B].engine_u.checker_u.issue; \
+    wire ev_b``B``_core_mode_tree=dut.banks[B].engine_u.checker_u.core_mode_tree; \
+    wire [V-1:0] ev_b``B``_core_data=dut.banks[B].engine_u.checker_u.core_data; \
+    wire [V-1:0] ev_b``B``_core_vector=dut.banks[B].engine_u.checker_u.core_vector; \
+    wire ev_b``B``_core_valid=dut.banks[B].engine_u.checker_u.core_valid; \
+    wire ev_b``B``_core_ready=dut.banks[B].engine_u.checker_u.core_ready; \
+    wire ev_b``B``_core_result_valid=dut.banks[B].engine_u.checker_u.core_result_valid; \
+    wire ev_b``B``_core_result_ready=dut.banks[B].engine_u.checker_u.core_result_ready; \
+    wire [3-1:0] ev_b``B``_mismatch=dut.banks[B].engine_u.check_u.mismatch_o; \
+    wire ev_b``B``_good=dut.banks[B].engine_u.good_o; \
+    wire [3-1:0] ev_b``B``_fault_type=dut.banks[B].engine_u.fault_type_o; \
+    wire [32-1:0] ev_b``B``_fault_payload=dut.banks[B].engine_u.fault_payload_o; \
+    wire ev_b``B``_clean_inputs=dut.banks[B].engine_u.check_u.clean_inputs; \
+    wire ev_b``B``_same_sign=dut.banks[B].engine_u.check_u.same_sign; \
+    wire ev_b``B``_product_match=dut.banks[B].engine_u.check_u.product_match; \
+    wire [22-1:0] ev_b``B``_square=dut.banks[B].engine_u.check_u.square; \
+    wire [22-1:0] ev_b``B``_product=dut.banks[B].engine_u.check_u.product; \
+    wire [6-1:0] ev_b``B``_square_exp=dut.banks[B].engine_u.check_u.square_exp; \
+    wire [6-1:0] ev_b``B``_product_exp=dut.banks[B].engine_u.check_u.product_exp; \
+    wire [6-1:0] ev_b``B``_product_gap=dut.banks[B].engine_u.check_u.gap; \
+    wire [44-1:0] ev_b``B``_product_error=dut.banks[B].engine_u.check_u.product_error; \
+    wire [44-1:0] ev_b``B``_product_scale=dut.banks[B].engine_u.check_u.product_scale; \
+    wire [V-1:0] ev_b``B``_final_y=dut.final_bank_y[B*V+:V]; \
+    wire [16-1:0] ev_b``B``_final_r1=dut.final_bank_r[B*48+:16]; \
+    wire [16-1:0] ev_b``B``_final_r2=dut.final_bank_r[B*48+16+:16]; \
+    wire [16-1:0] ev_b``B``_final_r3=dut.final_bank_r[B*48+32+:16];
+    `BANK_OBSERVERS(0)
+    `BANK_OBSERVERS(1)
+    `BANK_OBSERVERS(2)
+    `BANK_OBSERVERS(3)
+`undef BANK_OBSERVERS
+
+    // Shared scheduler, queues, Locator, Recovery and writeback.
+    wire [3-1:0] ev_system_state=dut.state;
+    wire [4-1:0] ev_configured=dut.configured;
+    wire [4-1:0] ev_launched=dut.launched;
+    wire [4-1:0] ev_seen=dut.seen;
+    wire [4-1:0] ev_resolved=dut.resolved;
+    wire [4-1:0] ev_reduce_skip=dut.reduce_block_skip;
+    wire [32-1:0] ev_fault_count=dut.bg_u.fault_count_o;
+    wire [63:0] ev_fault_src=dut.fault_src;
+    wire [127:0] ev_fault_payload=dut.fault_payload;
+    wire [50:0] ev_fifo_push_record=dut.bg_u.fault_fifo_u.selected_record;
+    wire ev_fifo_push_valid=dut.bg_u.fault_fifo_u.found;
+    wire ev_fifo_push_ready=dut.bg_u.fault_fifo_u.fifo_ready;
+    wire [51-1:0] ev_fifo_record=dut.bg_u.record;
+    wire ev_fifo_valid=dut.bg_u.valid;
+    wire ev_fifo_ready=dut.bg_u.ready;
+    wire [2-1:0] ev_arbiter_bank=dut.bg_u.fault_fifo_u.selected_bank;
+    wire [2-1:0] ev_arbiter_next=dut.bg_u.fault_fifo_u.next_bank;
+    wire [2-1:0] ev_locator_state=dut.bg_u.locator_u.state;
+    wire [5-1:0] ev_locator_low=dut.bg_u.locator_u.low_weight;
+    wire [5-1:0] ev_locator_high=dut.bg_u.locator_u.high_weight;
+    wire [5-1:0] ev_locator_middle=dut.bg_u.locator_u.middle;
+    wire [46-1:0] ev_locator_target=dut.bg_u.locator_u.doubled_target;
+    wire [46-1:0] ev_locator_boundary=dut.bg_u.locator_u.boundary;
+    wire [46-1:0] ev_locator_error=dut.bg_u.locator_u.weight_error;
+    wire [3-1:0] ev_candidate_reason=dut.candidate_reason;
+    wire [4-1:0] ev_candidate_steps=dut.bg_u.candidate_search_steps_o;
+    wire [2-1:0] ev_lookup_bank=dut.lookup_bank;
+    wire [4-1:0] ev_lookup_pos=dut.lookup_pos;
+    wire [16-1:0] ev_lookup_y=dut.lookup_y;
+    wire [32-1:0] ev_scrub_count=dut.scrub_fifo_u.count_o;
+    wire [16-1:0] ev_scrub_src=dut.scrub_src;
+    wire ev_scrub_valid=dut.scrub_valid;
+    wire ev_scrub_ready=dut.scrub_ready;
+    wire [2-1:0] ev_service_state=dut.service_state;
+    wire ev_recovery_request_valid=dut.recovery_request;
+    wire ev_recovery_request_ready=dut.recovery_request_ready;
+    wire ev_recovery_response_valid=dut.recovery_response_valid;
+    wire ev_recovery_response_ready=dut.recovery_response_ready;
+    wire [48-1:0] ev_recovery_r=dut.response_r;
+    wire ev_recovery_patch_valid=dut.recovery_patch_valid;
+    wire ev_patch_ready=dut.patch_ready;
+    wire ev_patch_rejected=dut.patch_rejected;
+    wire [32-1:0] ev_due_count=dut.due_count;
+    // A configurable observation index keeps the watched value meaningful at endpoints.
+    wire [3:0] wave_watch_index = (block_id==48||block_id==51) ? 4'd0 :
+                                  (block_id==49||block_id==50) ? 4'd15 : 4'd3;
+    wire [15:0] wave_input_x = dut.vector[wave_watch_index*16+:16];
+    wire [15:0] wave_load_element = load_data[wave_watch_index*16+:16];
+    wire [15:0] wave_buffer_y = dut.banks[0].engine_u.y_o[wave_watch_index*16+:16];
+    wire [15:0] wave_final_y = dut.final_bank_y[wave_watch_index*16+:16];
+    wire [15:0] wave_expected_y = expected_y[wave_watch_index*16+:16];
+    wire [15:0] wave_recovery_y = dut.response_y[wave_watch_index*16+:16];
+    wire [15:0] wave_zb_raw = ev_b0_zb_raw[15:0];
+    wire [15:0] wave_zb_clean = ev_b0_zb_clean[15:0];
+    wire wave_h_sample = ev_b0_h_sample_valid && ev_b0_h_sample_ready;
+    wire wave_bank_result = ev_b0_packet_valid && ev_b0_packet_ready;
+    wire wave_fault_enqueue = ev_fault_mask[0] && ev_fault_ready[0];
+    wire wave_bg_dequeue = ev_candidate_valid && ev_candidate_ready;
+    wire wave_fifo_push = ev_fifo_push_valid && ev_fifo_push_ready;
+    wire wave_fifo_pop = ev_fifo_valid && ev_fifo_ready;
+    wire wave_bank0_inject = ev_inject_mask[0];
+    wire [V-1:0] wave_fault_value = injectors[0].forced_value;
+    wire [1:0] wave_bg_bank = ev_candidate_src[1:0];
+    wire [1:0] wave_recovery_bank = ev_recovery_src[1:0];
+    wire [31:0] wave_case = block_id;
+    wire [15:0] wave_locator_source_y = dut.lookup_y;
     integer evidence_fd,ev_injections=0;
     reg ev_located_seen=0,ev_patch_seen=0;
     reg [1023:0] evidence_path;
@@ -177,6 +297,20 @@ module tb_sys_top;
     endtask
     genvar g;
     generate for(g=0;g<4;g=g+1) begin: injectors
+        // Save the accepted main fault's three residuals before buffer consumption.
+        // One outstanding transaction, at most one main fault record per bank.
+        always @(posedge clk or negedge rst_n) begin
+            if(!rst_n) begin
+                ev_fault_delta_snapshot[g*48+:48]<=0;
+                ev_fault_delta_trusted[g]<=0;
+            end else if(start_valid&&start_ready) begin
+                ev_fault_delta_snapshot[g*48+:48]<=0;
+                ev_fault_delta_trusted[g]<=0;
+            end else if(dut.fault_valid[g]&&dut.fault_ready[g]) begin
+                ev_fault_delta_snapshot[g*48+:48]<=dut.banks[g].engine_u.delta_o;
+                ev_fault_delta_trusted[g]<=dut.banks[g].engine_u.checker_u.result_delta_valid_o;
+            end
+        end
         // Constant per-bank part selects avoid forcing a collapsed wide port bus.
         always @(poison_skipped) begin
             if(poison_skipped && expected_due[g]) begin
@@ -201,13 +335,20 @@ module tb_sys_top;
                 (!dut.engine_service[g] || kind==6 || kind==13 || kind==14);
             forced_value=0;
             if(inject_now&&dut.banks[g].engine_u.checker_u.core_result_valid) begin
-                if(kind==15 && block_id==46 && dut.banks[g].engine_u.checker_u.capture_h3 &&
+                if(kind==12&&block_id==57&&dut.banks[g].engine_u.checker_u.capture_h3&&
+                   dut.banks[g].engine_u.checker_u.result_h_attempts_o==0) begin
+                    forced_value=16'h7e00;
+                    force dut.banks[g].engine_u.checker_u.core_result=forced_value;
+                    force_active=1;
+                end else if(kind==15 && block_id==46 && dut.banks[g].engine_u.checker_u.capture_h3 &&
                    dut.banks[g].engine_u.checker_u.result_h_attempts_o==1) begin
                     forced_value=16'h4200;
                     force dut.banks[g].engine_u.checker_u.core_result=forced_value;
                     force_active=1;
-                end else if((kind==11||kind==13||(kind==12&&dut.banks[g].engine_u.checker_u.result_h_attempts_o==0)||
-                    (kind==15&&block_id!=46&&dut.banks[g].engine_u.checker_u.result_h_attempts_o==1))&&
+                end else if((kind==11||kind==13||(kind==12&&block_id!=57&&dut.banks[g].engine_u.checker_u.result_h_attempts_o==0)||
+                    (kind==15&&block_id!=46&&
+                     (dut.banks[g].engine_u.checker_u.result_h_attempts_o==1||
+                      (block_id==58&&dut.banks[g].engine_u.checker_u.result_h_attempts_o==0))))&&
                    (dut.banks[g].engine_u.checker_u.phase==3||dut.banks[g].engine_u.checker_u.phase==4)) begin
                     // Finite, deliberately different H pairs per round. No
                     // force of commit/fail/match: the real controller decides.
@@ -234,8 +375,8 @@ module tb_sys_top;
                     forced_value=16'h7c00;
                     force dut.banks[g].engine_u.checker_u.core_result=forced_value;
                     force_active=1;
-                end else if((((kind==5&&block_id!=45)||kind==9)&&dut.banks[g].engine_u.checker_u.capture_r1) ||
-                            (kind==5&&block_id==45&&dut.banks[g].engine_u.checker_u.capture_r3)||
+                end else if((((kind==5&&block_id!=45&&block_id!=54&&block_id!=55&&block_id!=56)||kind==9)&&dut.banks[g].engine_u.checker_u.capture_r1) ||
+                            (kind==5&&(block_id==45||block_id==54||block_id==55||block_id==56)&&dut.banks[g].engine_u.checker_u.capture_r3)||
                             (kind==10&&dut.banks[g].engine_u.checker_u.capture_r2)) begin
                     forced_value=bad_r[g*16+:16];
                     force dut.banks[g].engine_u.checker_u.core_result=forced_value;
@@ -268,10 +409,11 @@ module tb_sys_top;
         end
         if(ev_candidate_valid&&dut.candidate_ready) begin
             check(ev_candidate_type==`BG_SINGLE_Y&&ev_candidate_pos==3&&ev_candidate_value==16'h3800&&
-                  ev_delta1==16'hc400&&ev_delta2==16'hcc00);
+                  ev_delta_valid&&ev_delta1==16'hc400&&ev_delta2==16'hcc00&&ev_delta3==16'hbc00);
             ev_located_seen=1;
             $fdisplay(evidence_fd,"%0t,Delta1,%h",$time,ev_delta1);
             $fdisplay(evidence_fd,"%0t,Delta2,%h",$time,ev_delta2);
+            $fdisplay(evidence_fd,"%0t,Delta3,%h",$time,ev_delta3);
             $fdisplay(evidence_fd,"%0t,candidate_pos,%h",$time,ev_candidate_pos);
             $fdisplay(evidence_fd,"%0t,candidate_value,%h",$time,ev_candidate_value);
         end
@@ -289,6 +431,8 @@ module tb_sys_top;
         if(dut.recovery_request&&dut.recovery_request_ready) recovery_count=recovery_count+1;
         if(dut.patch_applied) patch_count=patch_count+1;
         check(!dut.patch_rejected);
+        if(dut.bg_u.fault_count_o==FIFO_DEPTH && (|(dut.fault_valid & ~dut.fault_ready)))
+            fifo_full_cycles=fifo_full_cycles+1;
     end
     task load_tiles;
         integer bb,rr;
@@ -386,6 +530,8 @@ module tb_sys_top;
         check_packet;
         check(recovery_count>0&&patch_count>0&&due_count>0);
         check(skip_poison_checks>=5);
+        if(FIFO_DEPTH==1) check(fifo_full_cycles>0);
+        $display("PASS: system FIFO_DEPTH=%0d observed %0d full/backpressure cycles",FIFO_DEPTH,fifo_full_cycles);
         $display("PASS: Reduce/Concat skip masking, %0d integrated NaN/Inf injection cases",skip_poison_checks);
         $fclose(summary_fd);
         $fclose(evidence_fd);

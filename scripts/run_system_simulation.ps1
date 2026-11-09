@@ -5,6 +5,8 @@ $build=Join-Path $root 'build\system'
 New-Item -ItemType Directory -Force -Path $build | Out-Null
 & python (Join-Path $PSScriptRoot 'generate_system_vectors.py')
 if($LASTEXITCODE -ne 0){throw 'System oracle generation failed'}
+& python (Join-Path $PSScriptRoot 'wave_signals.py')
+if($LASTEXITCODE -ne 0){throw 'Waveform selection generation failed'}
 function Run-Tool {
     param([string]$Tool,[string[]]$ToolArgs,[string]$Pass='')
     $output=& (Join-Path $VivadoBin ($Tool+'.bat')) @ToolArgs 2>&1
@@ -18,10 +20,17 @@ Push-Location $build
 try {
     $sources=@('-i','../../rtl') + @(Get-ChildItem (Join-Path $root 'rtl') -Filter '*.v' | ForEach-Object {$_.FullName}) + @('../../tb/tb_sys_top.v')
     Run-Tool xvlog $sources
-    $depths=if($Evidence){@(8)}else{@(1,8)}
+    $depths=@(1,8)
     foreach($depth in $depths) {
         $snapshot='system_'+$depth
         Run-Tool xelab @('tb_sys_top','-generic_top',('"FIFO_DEPTH='+$depth+'"'),'-debug','typical','-s',$snapshot)
+        if($Evidence -and $depth -eq 1){
+            # A full-system depth-one run forces FIFO backpressure. The review
+            # waveform remains the depth-eight run under its established name.
+            Run-Tool xsim @($snapshot,'-testplusarg',('"SUMMARY_FILE=system_1_summary.csv"'),
+                '-testplusarg',('"EVIDENCE_LOG=system_1_events.csv"'),'-runall') 'PASS: sys_top end-to-end'
+            continue
+        }
         $outputName=if($Evidence){'system_'+$depth+'_evidence'}else{'system_'+$depth}
         $traceScript=if($Evidence){'source ../../scripts/waves_evidence.tcl'}else{'source ../../scripts/waves_system.tcl'}
         $waveScript=$outputName+'_wave.tcl'
@@ -36,6 +45,8 @@ try {
         if($LASTEXITCODE -ne 0){throw 'Whole-system VCD audit failed'}
         & python (Join-Path $PSScriptRoot 'export_block3_evidence.py')
         if($LASTEXITCODE -ne 0){throw 'Block 3 evidence export failed'}
+        & python (Join-Path $PSScriptRoot 'wave_signals.py') --publish
+        if($LASTEXITCODE -ne 0){throw 'Key-signal waveform export failed'}
     }
     if($Elaborate){Run-Tool vivado @('-mode','batch','-source','../../scripts/check_system_rtl.tcl','-log','system_rtl.log','-journal','system_rtl.jou') 'PASS: sys_top RTL elaboration'}
     Write-Host 'PASS: all whole-system simulations'
