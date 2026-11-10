@@ -39,7 +39,7 @@ else:
 # Read values from the simulator's VCD, rather than copying the expected packet.
 names, values, captures, syndromes = {}, {}, [], []
 time_ps = 0
-lines = (BUILD / 'system_8_evidence.vcd').read_text().splitlines()
+lines = (BUILD / 'system_8_evidence_raw.vcd').read_text().splitlines()
 
 
 def capture():
@@ -217,7 +217,6 @@ ev_q_bank0 是锁存后的完整输入向量，不是理论常量。
 
 ```powershell
 .\\scripts\\run_system_simulation.ps1 -Evidence
-python .\\scripts\\export_block3_evidence.py
 ```
 
 仿真使用 Vivado 2020.2 的 xvlog/xelab/xsim；本次完整执行 {cases} 个事务和复位重载，全部通过。

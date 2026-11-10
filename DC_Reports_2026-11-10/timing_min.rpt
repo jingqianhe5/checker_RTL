@@ -1,0 +1,1009 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay min
+        -max_paths 10
+Design : sys_top
+Version: T-2022.03-SP2
+Date   : Tue Nov 10 14:42:36 2026
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: PVT_0P7V_25C   Library: asap7sc7p5t_AO_RVT_TT_nldm_211120
+Wire Load Model Mode: top
+
+  Startpoint: reduce_u/reduce_lane_0__sum0123_reg_9_
+              (rising edge-triggered flip-flop clocked by checker_clk)
+  Endpoint: reduce_u/reduce_lane_0__sum0123_reg_9_
+            (rising edge-triggered flip-flop clocked by checker_clk)
+  Path Group: REG2REG
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  reduce_u/reduce_lane_0__sum0123_reg_9_/CLK (DFFHQNx1_ASAP7_75t_R)   0.0000 #   0.0000 r
+  reduce_u/reduce_lane_0__sum0123_reg_9_/QN (DFFHQNx1_ASAP7_75t_R)  51.5173  51.5173 r
+  reduce_u/U2090/Y (OAI22xp5_ASAP7_75t_R)              10.2993    61.8166 f
+  reduce_u/reduce_lane_0__sum0123_reg_9_/D (DFFHQNx1_ASAP7_75t_R)   0.0000  61.8166 f
+  data arrival time                                               61.8166
+
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  clock uncertainty                                    20.0000    20.0000
+  reduce_u/reduce_lane_0__sum0123_reg_9_/CLK (DFFHQNx1_ASAP7_75t_R)   0.0000  20.0000 r
+  library hold time                                    14.4513    34.4513
+  data required time                                              34.4513
+  --------------------------------------------------------------------------
+  data required time                                              34.4513
+  data arrival time                                              -61.8166
+  --------------------------------------------------------------------------
+  slack (MET)                                                     27.3653
+
+
+  Startpoint: reduce_u/reduce_lane_1__sum0123_reg_9_
+              (rising edge-triggered flip-flop clocked by checker_clk)
+  Endpoint: reduce_u/reduce_lane_1__sum0123_reg_9_
+            (rising edge-triggered flip-flop clocked by checker_clk)
+  Path Group: REG2REG
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  reduce_u/reduce_lane_1__sum0123_reg_9_/CLK (DFFHQNx1_ASAP7_75t_R)   0.0000 #   0.0000 r
+  reduce_u/reduce_lane_1__sum0123_reg_9_/QN (DFFHQNx1_ASAP7_75t_R)  51.5173  51.5173 r
+  reduce_u/U2042/Y (OAI22xp5_ASAP7_75t_R)              10.2993    61.8166 f
+  reduce_u/reduce_lane_1__sum0123_reg_9_/D (DFFHQNx1_ASAP7_75t_R)   0.0000  61.8166 f
+  data arrival time                                               61.8166
+
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  clock uncertainty                                    20.0000    20.0000
+  reduce_u/reduce_lane_1__sum0123_reg_9_/CLK (DFFHQNx1_ASAP7_75t_R)   0.0000  20.0000 r
+  library hold time                                    14.4513    34.4513
+  data required time                                              34.4513
+  --------------------------------------------------------------------------
+  data required time                                              34.4513
+  data arrival time                                              -61.8166
+  --------------------------------------------------------------------------
+  slack (MET)                                                     27.3653
+
+
+  Startpoint: reduce_u/reduce_lane_2__sum0123_reg_9_
+              (rising edge-triggered flip-flop clocked by checker_clk)
+  Endpoint: reduce_u/reduce_lane_2__sum0123_reg_9_
+            (rising edge-triggered flip-flop clocked by checker_clk)
+  Path Group: REG2REG
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  reduce_u/reduce_lane_2__sum0123_reg_9_/CLK (DFFHQNx1_ASAP7_75t_R)   0.0000 #   0.0000 r
+  reduce_u/reduce_lane_2__sum0123_reg_9_/QN (DFFHQNx1_ASAP7_75t_R)  51.5173  51.5173 r
+  reduce_u/U1994/Y (OAI22xp5_ASAP7_75t_R)              10.2993    61.8166 f
+  reduce_u/reduce_lane_2__sum0123_reg_9_/D (DFFHQNx1_ASAP7_75t_R)   0.0000  61.8166 f
+  data arrival time                                               61.8166
+
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  clock uncertainty                                    20.0000    20.0000
+  reduce_u/reduce_lane_2__sum0123_reg_9_/CLK (DFFHQNx1_ASAP7_75t_R)   0.0000  20.0000 r
+  library hold time                                    14.4513    34.4513
+  data required time                                              34.4513
+  --------------------------------------------------------------------------
+  data required time                                              34.4513
+  data arrival time                                              -61.8166
+  --------------------------------------------------------------------------
+  slack (MET)                                                     27.3653
+
+
+  Startpoint: reduce_u/reduce_lane_3__sum0123_reg_9_
+              (rising edge-triggered flip-flop clocked by checker_clk)
+  Endpoint: reduce_u/reduce_lane_3__sum0123_reg_9_
+            (rising edge-triggered flip-flop clocked by checker_clk)
+  Path Group: REG2REG
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  reduce_u/reduce_lane_3__sum0123_reg_9_/CLK (DFFHQNx1_ASAP7_75t_R)   0.0000 #   0.0000 r
+  reduce_u/reduce_lane_3__sum0123_reg_9_/QN (DFFHQNx1_ASAP7_75t_R)  51.5173  51.5173 r
+  reduce_u/U1946/Y (OAI22xp5_ASAP7_75t_R)              10.2993    61.8166 f
+  reduce_u/reduce_lane_3__sum0123_reg_9_/D (DFFHQNx1_ASAP7_75t_R)   0.0000  61.8166 f
+  data arrival time                                               61.8166
+
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  clock uncertainty                                    20.0000    20.0000
+  reduce_u/reduce_lane_3__sum0123_reg_9_/CLK (DFFHQNx1_ASAP7_75t_R)   0.0000  20.0000 r
+  library hold time                                    14.4513    34.4513
+  data required time                                              34.4513
+  --------------------------------------------------------------------------
+  data required time                                              34.4513
+  data arrival time                                              -61.8166
+  --------------------------------------------------------------------------
+  slack (MET)                                                     27.3653
+
+
+  Startpoint: reduce_u/reduce_lane_4__sum0123_reg_9_
+              (rising edge-triggered flip-flop clocked by checker_clk)
+  Endpoint: reduce_u/reduce_lane_4__sum0123_reg_9_
+            (rising edge-triggered flip-flop clocked by checker_clk)
+  Path Group: REG2REG
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  reduce_u/reduce_lane_4__sum0123_reg_9_/CLK (DFFHQNx1_ASAP7_75t_R)   0.0000 #   0.0000 r
+  reduce_u/reduce_lane_4__sum0123_reg_9_/QN (DFFHQNx1_ASAP7_75t_R)  51.5173  51.5173 r
+  reduce_u/U1898/Y (OAI22xp5_ASAP7_75t_R)              10.2993    61.8166 f
+  reduce_u/reduce_lane_4__sum0123_reg_9_/D (DFFHQNx1_ASAP7_75t_R)   0.0000  61.8166 f
+  data arrival time                                               61.8166
+
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  clock uncertainty                                    20.0000    20.0000
+  reduce_u/reduce_lane_4__sum0123_reg_9_/CLK (DFFHQNx1_ASAP7_75t_R)   0.0000  20.0000 r
+  library hold time                                    14.4513    34.4513
+  data required time                                              34.4513
+  --------------------------------------------------------------------------
+  data required time                                              34.4513
+  data arrival time                                              -61.8166
+  --------------------------------------------------------------------------
+  slack (MET)                                                     27.3653
+
+
+  Startpoint: reduce_u/reduce_lane_5__sum0123_reg_9_
+              (rising edge-triggered flip-flop clocked by checker_clk)
+  Endpoint: reduce_u/reduce_lane_5__sum0123_reg_9_
+            (rising edge-triggered flip-flop clocked by checker_clk)
+  Path Group: REG2REG
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  reduce_u/reduce_lane_5__sum0123_reg_9_/CLK (DFFHQNx1_ASAP7_75t_R)   0.0000 #   0.0000 r
+  reduce_u/reduce_lane_5__sum0123_reg_9_/QN (DFFHQNx1_ASAP7_75t_R)  51.5173  51.5173 r
+  reduce_u/U1850/Y (OAI22xp5_ASAP7_75t_R)              10.2993    61.8166 f
+  reduce_u/reduce_lane_5__sum0123_reg_9_/D (DFFHQNx1_ASAP7_75t_R)   0.0000  61.8166 f
+  data arrival time                                               61.8166
+
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  clock uncertainty                                    20.0000    20.0000
+  reduce_u/reduce_lane_5__sum0123_reg_9_/CLK (DFFHQNx1_ASAP7_75t_R)   0.0000  20.0000 r
+  library hold time                                    14.4513    34.4513
+  data required time                                              34.4513
+  --------------------------------------------------------------------------
+  data required time                                              34.4513
+  data arrival time                                              -61.8166
+  --------------------------------------------------------------------------
+  slack (MET)                                                     27.3653
+
+
+  Startpoint: reduce_u/reduce_lane_6__sum0123_reg_9_
+              (rising edge-triggered flip-flop clocked by checker_clk)
+  Endpoint: reduce_u/reduce_lane_6__sum0123_reg_9_
+            (rising edge-triggered flip-flop clocked by checker_clk)
+  Path Group: REG2REG
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  reduce_u/reduce_lane_6__sum0123_reg_9_/CLK (DFFHQNx1_ASAP7_75t_R)   0.0000 #   0.0000 r
+  reduce_u/reduce_lane_6__sum0123_reg_9_/QN (DFFHQNx1_ASAP7_75t_R)  51.5173  51.5173 r
+  reduce_u/U1802/Y (OAI22xp5_ASAP7_75t_R)              10.2993    61.8166 f
+  reduce_u/reduce_lane_6__sum0123_reg_9_/D (DFFHQNx1_ASAP7_75t_R)   0.0000  61.8166 f
+  data arrival time                                               61.8166
+
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  clock uncertainty                                    20.0000    20.0000
+  reduce_u/reduce_lane_6__sum0123_reg_9_/CLK (DFFHQNx1_ASAP7_75t_R)   0.0000  20.0000 r
+  library hold time                                    14.4513    34.4513
+  data required time                                              34.4513
+  --------------------------------------------------------------------------
+  data required time                                              34.4513
+  data arrival time                                              -61.8166
+  --------------------------------------------------------------------------
+  slack (MET)                                                     27.3653
+
+
+  Startpoint: reduce_u/reduce_lane_7__sum0123_reg_9_
+              (rising edge-triggered flip-flop clocked by checker_clk)
+  Endpoint: reduce_u/reduce_lane_7__sum0123_reg_9_
+            (rising edge-triggered flip-flop clocked by checker_clk)
+  Path Group: REG2REG
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  reduce_u/reduce_lane_7__sum0123_reg_9_/CLK (DFFHQNx1_ASAP7_75t_R)   0.0000 #   0.0000 r
+  reduce_u/reduce_lane_7__sum0123_reg_9_/QN (DFFHQNx1_ASAP7_75t_R)  51.5173  51.5173 r
+  reduce_u/U1754/Y (OAI22xp5_ASAP7_75t_R)              10.2993    61.8166 f
+  reduce_u/reduce_lane_7__sum0123_reg_9_/D (DFFHQNx1_ASAP7_75t_R)   0.0000  61.8166 f
+  data arrival time                                               61.8166
+
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  clock uncertainty                                    20.0000    20.0000
+  reduce_u/reduce_lane_7__sum0123_reg_9_/CLK (DFFHQNx1_ASAP7_75t_R)   0.0000  20.0000 r
+  library hold time                                    14.4513    34.4513
+  data required time                                              34.4513
+  --------------------------------------------------------------------------
+  data required time                                              34.4513
+  data arrival time                                              -61.8166
+  --------------------------------------------------------------------------
+  slack (MET)                                                     27.3653
+
+
+  Startpoint: reduce_u/reduce_lane_8__sum0123_reg_9_
+              (rising edge-triggered flip-flop clocked by checker_clk)
+  Endpoint: reduce_u/reduce_lane_8__sum0123_reg_9_
+            (rising edge-triggered flip-flop clocked by checker_clk)
+  Path Group: REG2REG
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  reduce_u/reduce_lane_8__sum0123_reg_9_/CLK (DFFHQNx1_ASAP7_75t_R)   0.0000 #   0.0000 r
+  reduce_u/reduce_lane_8__sum0123_reg_9_/QN (DFFHQNx1_ASAP7_75t_R)  51.5173  51.5173 r
+  reduce_u/U1706/Y (OAI22xp5_ASAP7_75t_R)              10.2993    61.8166 f
+  reduce_u/reduce_lane_8__sum0123_reg_9_/D (DFFHQNx1_ASAP7_75t_R)   0.0000  61.8166 f
+  data arrival time                                               61.8166
+
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  clock uncertainty                                    20.0000    20.0000
+  reduce_u/reduce_lane_8__sum0123_reg_9_/CLK (DFFHQNx1_ASAP7_75t_R)   0.0000  20.0000 r
+  library hold time                                    14.4513    34.4513
+  data required time                                              34.4513
+  --------------------------------------------------------------------------
+  data required time                                              34.4513
+  data arrival time                                              -61.8166
+  --------------------------------------------------------------------------
+  slack (MET)                                                     27.3653
+
+
+  Startpoint: reduce_u/reduce_lane_9__sum0123_reg_9_
+              (rising edge-triggered flip-flop clocked by checker_clk)
+  Endpoint: reduce_u/reduce_lane_9__sum0123_reg_9_
+            (rising edge-triggered flip-flop clocked by checker_clk)
+  Path Group: REG2REG
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  reduce_u/reduce_lane_9__sum0123_reg_9_/CLK (DFFHQNx1_ASAP7_75t_R)   0.0000 #   0.0000 r
+  reduce_u/reduce_lane_9__sum0123_reg_9_/QN (DFFHQNx1_ASAP7_75t_R)  51.5173  51.5173 r
+  reduce_u/U1658/Y (OAI22xp5_ASAP7_75t_R)              10.2993    61.8166 f
+  reduce_u/reduce_lane_9__sum0123_reg_9_/D (DFFHQNx1_ASAP7_75t_R)   0.0000  61.8166 f
+  data arrival time                                               61.8166
+
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  clock uncertainty                                    20.0000    20.0000
+  reduce_u/reduce_lane_9__sum0123_reg_9_/CLK (DFFHQNx1_ASAP7_75t_R)   0.0000  20.0000 r
+  library hold time                                    14.4513    34.4513
+  data required time                                              34.4513
+  --------------------------------------------------------------------------
+  data required time                                              34.4513
+  data arrival time                                              -61.8166
+  --------------------------------------------------------------------------
+  slack (MET)                                                     27.3653
+
+
+  Startpoint: start_valid_i
+              (input port clocked by checker_clk)
+  Endpoint: checksum_ready_o
+            (output port clocked by checker_clk)
+  Path Group: IN2OUT
+  Path Type: min
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock checker_clk (rise edge)          0.0000     0.0000
+  clock network delay (ideal)            0.0000     0.0000
+  input external delay                   0.0000     0.0000 r
+  start_valid_i (in)                     0.0000     0.0000 r
+  U4732/Y (INVx1_ASAP7_75t_R)            8.1707     8.1707 f
+  U2178/Y (NAND2xp5_ASAP7_75t_R)        12.2923    20.4631 r
+  U4726/Y (INVx1_ASAP7_75t_R)           15.3319    35.7950 f
+  checksum_ready_o (out)                 0.0000    35.7950 f
+  data arrival time                                35.7950
+
+  clock checker_clk (rise edge)          0.0000     0.0000
+  clock network delay (ideal)            0.0000     0.0000
+  clock uncertainty                     20.0000    20.0000
+  output external delay                  0.0000    20.0000
+  data required time                               20.0000
+  -----------------------------------------------------------
+  data required time                               20.0000
+  data arrival time                               -35.7950
+  -----------------------------------------------------------
+  slack (MET)                                      15.7950
+
+
+  Startpoint: checksum_valid_i
+              (input port clocked by checker_clk)
+  Endpoint: start_ready_o
+            (output port clocked by checker_clk)
+  Path Group: IN2OUT
+  Path Type: min
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock checker_clk (rise edge)          0.0000     0.0000
+  clock network delay (ideal)            0.0000     0.0000
+  input external delay                   0.0000     0.0000 r
+  checksum_valid_i (in)                  0.0000     0.0000 r
+  U4729/Y (INVx1_ASAP7_75t_R)            8.4094     8.4094 f
+  U2088/Y (NAND5xp2_ASAP7_75t_R)        10.4066    18.8160 r
+  U2077/Y (NOR5xp2_ASAP7_75t_R)         19.1987    38.0147 f
+  start_ready_o (out)                    0.0000    38.0147 f
+  data arrival time                                38.0147
+
+  clock checker_clk (rise edge)          0.0000     0.0000
+  clock network delay (ideal)            0.0000     0.0000
+  clock uncertainty                     20.0000    20.0000
+  output external delay                  0.0000    20.0000
+  data required time                               20.0000
+  -----------------------------------------------------------
+  data required time                               20.0000
+  data arrival time                               -38.0147
+  -----------------------------------------------------------
+  slack (MET)                                      18.0147
+
+
+  Startpoint: load_row_i[4]
+              (input port clocked by checker_clk)
+  Endpoint: load_ready_o
+            (output port clocked by checker_clk)
+  Path Group: IN2OUT
+  Path Type: min
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock checker_clk (rise edge)          0.0000     0.0000
+  clock network delay (ideal)            0.0000     0.0000
+  input external delay                   0.0000     0.0000 r
+  load_row_i[4] (in)                     0.0000     0.0000 r
+  U2177/Y (NOR2x1_ASAP7_75t_R)          12.9222    12.9222 f
+  U7585/Y (HB1xp67_ASAP7_75t_R)         27.3828    40.3050 f
+  load_ready_o (out)                     0.0000    40.3050 f
+  data arrival time                                40.3050
+
+  clock checker_clk (rise edge)          0.0000     0.0000
+  clock network delay (ideal)            0.0000     0.0000
+  clock uncertainty                     20.0000    20.0000
+  output external delay                  0.0000    20.0000
+  data required time                               20.0000
+  -----------------------------------------------------------
+  data required time                               20.0000
+  data arrival time                               -40.3050
+  -----------------------------------------------------------
+  slack (MET)                                      20.3050
+
+
+  Startpoint: checksum_e_i[129]
+              (input port clocked by checker_clk)
+  Endpoint: banks_1__engine_u/ce_reg_129_
+            (rising edge-triggered flip-flop clocked by checker_clk)
+  Path Group: IN2REG
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  input external delay                                  0.0000     0.0000 r
+  checksum_e_i[129] (in)                                0.0000     0.0000 r
+  U5136/Y (HB1xp67_ASAP7_75t_R)                        28.4749    28.4749 r
+  banks_1__engine_u/ce_i[129] (bank_engine_NUM_LANES16_REL_SHIFT8_SINGLE_SHIFT8_2)   0.0000  28.4749 r
+  banks_1__engine_u/U500/Y (OAI22xp5_ASAP7_75t_R)      12.5532    41.0281 f
+  banks_1__engine_u/ce_reg_129_/D (DFFASRHQNx1_ASAP7_75t_R)   0.0000  41.0281 f
+  data arrival time                                               41.0281
+
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  clock uncertainty                                    20.0000    20.0000
+  banks_1__engine_u/ce_reg_129_/CLK (DFFASRHQNx1_ASAP7_75t_R)   0.0000  20.0000 r
+  library hold time                                    15.4232    35.4232
+  data required time                                              35.4232
+  --------------------------------------------------------------------------
+  data required time                                              35.4232
+  data arrival time                                              -41.0281
+  --------------------------------------------------------------------------
+  slack (MET)                                                      5.6049
+
+
+  Startpoint: checksum_e_i[129]
+              (input port clocked by checker_clk)
+  Endpoint: banks_2__engine_u/ce_reg_129_
+            (rising edge-triggered flip-flop clocked by checker_clk)
+  Path Group: IN2REG
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  input external delay                                  0.0000     0.0000 r
+  checksum_e_i[129] (in)                                0.0000     0.0000 r
+  U5136/Y (HB1xp67_ASAP7_75t_R)                        28.4749    28.4749 r
+  banks_2__engine_u/ce_i[129] (bank_engine_NUM_LANES16_REL_SHIFT8_SINGLE_SHIFT8_1)   0.0000  28.4749 r
+  banks_2__engine_u/U500/Y (OAI22xp5_ASAP7_75t_R)      12.5532    41.0281 f
+  banks_2__engine_u/ce_reg_129_/D (DFFASRHQNx1_ASAP7_75t_R)   0.0000  41.0281 f
+  data arrival time                                               41.0281
+
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  clock uncertainty                                    20.0000    20.0000
+  banks_2__engine_u/ce_reg_129_/CLK (DFFASRHQNx1_ASAP7_75t_R)   0.0000  20.0000 r
+  library hold time                                    15.4232    35.4232
+  data required time                                              35.4232
+  --------------------------------------------------------------------------
+  data required time                                              35.4232
+  data arrival time                                              -41.0281
+  --------------------------------------------------------------------------
+  slack (MET)                                                      5.6049
+
+
+  Startpoint: checksum_w_i[230]
+              (input port clocked by checker_clk)
+  Endpoint: banks_3__engine_u/cw_reg_230_
+            (rising edge-triggered flip-flop clocked by checker_clk)
+  Path Group: IN2REG
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  input external delay                                  0.0000     0.0000 r
+  checksum_w_i[230] (in)                                0.0000     0.0000 r
+  U4981/Y (HB1xp67_ASAP7_75t_R)                        28.4749    28.4749 r
+  banks_3__engine_u/cw_i[230] (bank_engine_NUM_LANES16_REL_SHIFT8_SINGLE_SHIFT8_0)   0.0000  28.4749 r
+  banks_3__engine_u/U345/Y (OAI22xp5_ASAP7_75t_R)      12.5532    41.0281 f
+  banks_3__engine_u/cw_reg_230_/D (DFFASRHQNx1_ASAP7_75t_R)   0.0000  41.0281 f
+  data arrival time                                               41.0281
+
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  clock uncertainty                                    20.0000    20.0000
+  banks_3__engine_u/cw_reg_230_/CLK (DFFASRHQNx1_ASAP7_75t_R)   0.0000  20.0000 r
+  library hold time                                    15.3994    35.3994
+  data required time                                              35.3994
+  --------------------------------------------------------------------------
+  data required time                                              35.3994
+  data arrival time                                              -41.0281
+  --------------------------------------------------------------------------
+  slack (MET)                                                      5.6287
+
+
+  Startpoint: checksum_inv_w_i[6]
+              (input port clocked by checker_clk)
+  Endpoint: banks_0__engine_u/c_inv_w_reg_6_
+            (rising edge-triggered flip-flop clocked by checker_clk)
+  Path Group: IN2REG
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  input external delay                                  0.0000     0.0000 r
+  checksum_inv_w_i[6] (in)                              0.0000     0.0000 r
+  U5269/Y (HB1xp67_ASAP7_75t_R)                        28.4749    28.4749 r
+  banks_0__engine_u/c_inv_w_i[6] (bank_engine_NUM_LANES16_REL_SHIFT8_SINGLE_SHIFT8_3)   0.0000  28.4749 r
+  banks_0__engine_u/U650/Y (OAI22xp5_ASAP7_75t_R)      12.5532    41.0281 f
+  banks_0__engine_u/c_inv_w_reg_6_/D (DFFASRHQNx1_ASAP7_75t_R)   0.0000  41.0281 f
+  data arrival time                                               41.0281
+
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  clock uncertainty                                    20.0000    20.0000
+  banks_0__engine_u/c_inv_w_reg_6_/CLK (DFFASRHQNx1_ASAP7_75t_R)   0.0000  20.0000 r
+  library hold time                                    15.3039    35.3039
+  data required time                                              35.3039
+  --------------------------------------------------------------------------
+  data required time                                              35.3039
+  data arrival time                                              -41.0281
+  --------------------------------------------------------------------------
+  slack (MET)                                                      5.7242
+
+
+  Startpoint: checksum_inv_w_i[5]
+              (input port clocked by checker_clk)
+  Endpoint: banks_0__engine_u/c_inv_w_reg_5_
+            (rising edge-triggered flip-flop clocked by checker_clk)
+  Path Group: IN2REG
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  input external delay                                  0.0000     0.0000 r
+  checksum_inv_w_i[5] (in)                              0.0000     0.0000 r
+  U5268/Y (HB1xp67_ASAP7_75t_R)                        28.4749    28.4749 r
+  banks_0__engine_u/c_inv_w_i[5] (bank_engine_NUM_LANES16_REL_SHIFT8_SINGLE_SHIFT8_3)   0.0000  28.4749 r
+  banks_0__engine_u/U649/Y (OAI22xp5_ASAP7_75t_R)      12.5532    41.0281 f
+  banks_0__engine_u/c_inv_w_reg_5_/D (DFFASRHQNx1_ASAP7_75t_R)   0.0000  41.0281 f
+  data arrival time                                               41.0281
+
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  clock uncertainty                                    20.0000    20.0000
+  banks_0__engine_u/c_inv_w_reg_5_/CLK (DFFASRHQNx1_ASAP7_75t_R)   0.0000  20.0000 r
+  library hold time                                    15.3039    35.3039
+  data required time                                              35.3039
+  --------------------------------------------------------------------------
+  data required time                                              35.3039
+  data arrival time                                              -41.0281
+  --------------------------------------------------------------------------
+  slack (MET)                                                      5.7242
+
+
+  Startpoint: checksum_inv_w_i[4]
+              (input port clocked by checker_clk)
+  Endpoint: banks_0__engine_u/c_inv_w_reg_4_
+            (rising edge-triggered flip-flop clocked by checker_clk)
+  Path Group: IN2REG
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  input external delay                                  0.0000     0.0000 r
+  checksum_inv_w_i[4] (in)                              0.0000     0.0000 r
+  U5267/Y (HB1xp67_ASAP7_75t_R)                        28.4749    28.4749 r
+  banks_0__engine_u/c_inv_w_i[4] (bank_engine_NUM_LANES16_REL_SHIFT8_SINGLE_SHIFT8_3)   0.0000  28.4749 r
+  banks_0__engine_u/U648/Y (OAI22xp5_ASAP7_75t_R)      12.5532    41.0281 f
+  banks_0__engine_u/c_inv_w_reg_4_/D (DFFASRHQNx1_ASAP7_75t_R)   0.0000  41.0281 f
+  data arrival time                                               41.0281
+
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  clock uncertainty                                    20.0000    20.0000
+  banks_0__engine_u/c_inv_w_reg_4_/CLK (DFFASRHQNx1_ASAP7_75t_R)   0.0000  20.0000 r
+  library hold time                                    15.3039    35.3039
+  data required time                                              35.3039
+  --------------------------------------------------------------------------
+  data required time                                              35.3039
+  data arrival time                                              -41.0281
+  --------------------------------------------------------------------------
+  slack (MET)                                                      5.7242
+
+
+  Startpoint: checksum_inv_w_i[3]
+              (input port clocked by checker_clk)
+  Endpoint: banks_0__engine_u/c_inv_w_reg_3_
+            (rising edge-triggered flip-flop clocked by checker_clk)
+  Path Group: IN2REG
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  input external delay                                  0.0000     0.0000 r
+  checksum_inv_w_i[3] (in)                              0.0000     0.0000 r
+  U5266/Y (HB1xp67_ASAP7_75t_R)                        28.4749    28.4749 r
+  banks_0__engine_u/c_inv_w_i[3] (bank_engine_NUM_LANES16_REL_SHIFT8_SINGLE_SHIFT8_3)   0.0000  28.4749 r
+  banks_0__engine_u/U647/Y (OAI22xp5_ASAP7_75t_R)      12.5532    41.0281 f
+  banks_0__engine_u/c_inv_w_reg_3_/D (DFFASRHQNx1_ASAP7_75t_R)   0.0000  41.0281 f
+  data arrival time                                               41.0281
+
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  clock uncertainty                                    20.0000    20.0000
+  banks_0__engine_u/c_inv_w_reg_3_/CLK (DFFASRHQNx1_ASAP7_75t_R)   0.0000  20.0000 r
+  library hold time                                    15.3039    35.3039
+  data required time                                              35.3039
+  --------------------------------------------------------------------------
+  data required time                                              35.3039
+  data arrival time                                              -41.0281
+  --------------------------------------------------------------------------
+  slack (MET)                                                      5.7242
+
+
+  Startpoint: checksum_inv_w_i[2]
+              (input port clocked by checker_clk)
+  Endpoint: banks_0__engine_u/c_inv_w_reg_2_
+            (rising edge-triggered flip-flop clocked by checker_clk)
+  Path Group: IN2REG
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  input external delay                                  0.0000     0.0000 r
+  checksum_inv_w_i[2] (in)                              0.0000     0.0000 r
+  U5265/Y (HB1xp67_ASAP7_75t_R)                        28.4749    28.4749 r
+  banks_0__engine_u/c_inv_w_i[2] (bank_engine_NUM_LANES16_REL_SHIFT8_SINGLE_SHIFT8_3)   0.0000  28.4749 r
+  banks_0__engine_u/U646/Y (OAI22xp5_ASAP7_75t_R)      12.5532    41.0281 f
+  banks_0__engine_u/c_inv_w_reg_2_/D (DFFASRHQNx1_ASAP7_75t_R)   0.0000  41.0281 f
+  data arrival time                                               41.0281
+
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  clock uncertainty                                    20.0000    20.0000
+  banks_0__engine_u/c_inv_w_reg_2_/CLK (DFFASRHQNx1_ASAP7_75t_R)   0.0000  20.0000 r
+  library hold time                                    15.3039    35.3039
+  data required time                                              35.3039
+  --------------------------------------------------------------------------
+  data required time                                              35.3039
+  data arrival time                                              -41.0281
+  --------------------------------------------------------------------------
+  slack (MET)                                                      5.7242
+
+
+  Startpoint: checksum_inv_w_i[1]
+              (input port clocked by checker_clk)
+  Endpoint: banks_0__engine_u/c_inv_w_reg_1_
+            (rising edge-triggered flip-flop clocked by checker_clk)
+  Path Group: IN2REG
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  input external delay                                  0.0000     0.0000 r
+  checksum_inv_w_i[1] (in)                              0.0000     0.0000 r
+  U5264/Y (HB1xp67_ASAP7_75t_R)                        28.4749    28.4749 r
+  banks_0__engine_u/c_inv_w_i[1] (bank_engine_NUM_LANES16_REL_SHIFT8_SINGLE_SHIFT8_3)   0.0000  28.4749 r
+  banks_0__engine_u/U645/Y (OAI22xp5_ASAP7_75t_R)      12.5532    41.0281 f
+  banks_0__engine_u/c_inv_w_reg_1_/D (DFFASRHQNx1_ASAP7_75t_R)   0.0000  41.0281 f
+  data arrival time                                               41.0281
+
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  clock uncertainty                                    20.0000    20.0000
+  banks_0__engine_u/c_inv_w_reg_1_/CLK (DFFASRHQNx1_ASAP7_75t_R)   0.0000  20.0000 r
+  library hold time                                    15.3039    35.3039
+  data required time                                              35.3039
+  --------------------------------------------------------------------------
+  data required time                                              35.3039
+  data arrival time                                              -41.0281
+  --------------------------------------------------------------------------
+  slack (MET)                                                      5.7242
+
+
+  Startpoint: checksum_inv_w_i[0]
+              (input port clocked by checker_clk)
+  Endpoint: banks_0__engine_u/c_inv_w_reg_0_
+            (rising edge-triggered flip-flop clocked by checker_clk)
+  Path Group: IN2REG
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  input external delay                                  0.0000     0.0000 r
+  checksum_inv_w_i[0] (in)                              0.0000     0.0000 r
+  U5263/Y (HB1xp67_ASAP7_75t_R)                        28.4749    28.4749 r
+  banks_0__engine_u/c_inv_w_i[0] (bank_engine_NUM_LANES16_REL_SHIFT8_SINGLE_SHIFT8_3)   0.0000  28.4749 r
+  banks_0__engine_u/U644/Y (OAI22xp5_ASAP7_75t_R)      12.5532    41.0281 f
+  banks_0__engine_u/c_inv_w_reg_0_/D (DFFASRHQNx1_ASAP7_75t_R)   0.0000  41.0281 f
+  data arrival time                                               41.0281
+
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  clock uncertainty                                    20.0000    20.0000
+  banks_0__engine_u/c_inv_w_reg_0_/CLK (DFFASRHQNx1_ASAP7_75t_R)   0.0000  20.0000 r
+  library hold time                                    15.3039    35.3039
+  data required time                                              35.3039
+  --------------------------------------------------------------------------
+  data required time                                              35.3039
+  data arrival time                                              -41.0281
+  --------------------------------------------------------------------------
+  slack (MET)                                                      5.7242
+
+
+  Startpoint: corrected_mask_o_reg_3_
+              (rising edge-triggered flip-flop clocked by checker_clk)
+  Endpoint: corrected_mask_o[3]
+            (output port clocked by checker_clk)
+  Path Group: REG2OUT
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  corrected_mask_o_reg_3_/CLK (DFFASRHQNx1_ASAP7_75t_R)   0.0000 #   0.0000 r
+  corrected_mask_o_reg_3_/QN (DFFASRHQNx1_ASAP7_75t_R)  67.2936   67.2936 r
+  corrected_mask_o[3] (out)                             0.0000    67.2936 r
+  data arrival time                                               67.2936
+
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  clock uncertainty                                    20.0000    20.0000
+  output external delay                                 0.0000    20.0000
+  data required time                                              20.0000
+  --------------------------------------------------------------------------
+  data required time                                              20.0000
+  data arrival time                                              -67.2936
+  --------------------------------------------------------------------------
+  slack (MET)                                                     47.2936
+
+
+  Startpoint: corrected_mask_o_reg_2_
+              (rising edge-triggered flip-flop clocked by checker_clk)
+  Endpoint: corrected_mask_o[2]
+            (output port clocked by checker_clk)
+  Path Group: REG2OUT
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  corrected_mask_o_reg_2_/CLK (DFFASRHQNx1_ASAP7_75t_R)   0.0000 #   0.0000 r
+  corrected_mask_o_reg_2_/QN (DFFASRHQNx1_ASAP7_75t_R)  67.2936   67.2936 r
+  corrected_mask_o[2] (out)                             0.0000    67.2936 r
+  data arrival time                                               67.2936
+
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  clock uncertainty                                    20.0000    20.0000
+  output external delay                                 0.0000    20.0000
+  data required time                                              20.0000
+  --------------------------------------------------------------------------
+  data required time                                              20.0000
+  data arrival time                                              -67.2936
+  --------------------------------------------------------------------------
+  slack (MET)                                                     47.2936
+
+
+  Startpoint: corrected_mask_o_reg_1_
+              (rising edge-triggered flip-flop clocked by checker_clk)
+  Endpoint: corrected_mask_o[1]
+            (output port clocked by checker_clk)
+  Path Group: REG2OUT
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  corrected_mask_o_reg_1_/CLK (DFFASRHQNx1_ASAP7_75t_R)   0.0000 #   0.0000 r
+  corrected_mask_o_reg_1_/QN (DFFASRHQNx1_ASAP7_75t_R)  67.2936   67.2936 r
+  corrected_mask_o[1] (out)                             0.0000    67.2936 r
+  data arrival time                                               67.2936
+
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  clock uncertainty                                    20.0000    20.0000
+  output external delay                                 0.0000    20.0000
+  data required time                                              20.0000
+  --------------------------------------------------------------------------
+  data required time                                              20.0000
+  data arrival time                                              -67.2936
+  --------------------------------------------------------------------------
+  slack (MET)                                                     47.2936
+
+
+  Startpoint: corrected_mask_o_reg_0_
+              (rising edge-triggered flip-flop clocked by checker_clk)
+  Endpoint: corrected_mask_o[0]
+            (output port clocked by checker_clk)
+  Path Group: REG2OUT
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  corrected_mask_o_reg_0_/CLK (DFFASRHQNx1_ASAP7_75t_R)   0.0000 #   0.0000 r
+  corrected_mask_o_reg_0_/QN (DFFASRHQNx1_ASAP7_75t_R)  67.2936   67.2936 r
+  corrected_mask_o[0] (out)                             0.0000    67.2936 r
+  data arrival time                                               67.2936
+
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  clock uncertainty                                    20.0000    20.0000
+  output external delay                                 0.0000    20.0000
+  data required time                                              20.0000
+  --------------------------------------------------------------------------
+  data required time                                              20.0000
+  data arrival time                                              -67.2936
+  --------------------------------------------------------------------------
+  slack (MET)                                                     47.2936
+
+
+  Startpoint: recovered_mask_o_reg_3_
+              (rising edge-triggered flip-flop clocked by checker_clk)
+  Endpoint: recovered_mask_o[3]
+            (output port clocked by checker_clk)
+  Path Group: REG2OUT
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  recovered_mask_o_reg_3_/CLK (DFFASRHQNx1_ASAP7_75t_R)   0.0000 #   0.0000 r
+  recovered_mask_o_reg_3_/QN (DFFASRHQNx1_ASAP7_75t_R)  67.5163   67.5163 r
+  recovered_mask_o[3] (out)                             0.0000    67.5163 r
+  data arrival time                                               67.5163
+
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  clock uncertainty                                    20.0000    20.0000
+  output external delay                                 0.0000    20.0000
+  data required time                                              20.0000
+  --------------------------------------------------------------------------
+  data required time                                              20.0000
+  data arrival time                                              -67.5163
+  --------------------------------------------------------------------------
+  slack (MET)                                                     47.5163
+
+
+  Startpoint: recovered_mask_o_reg_2_
+              (rising edge-triggered flip-flop clocked by checker_clk)
+  Endpoint: recovered_mask_o[2]
+            (output port clocked by checker_clk)
+  Path Group: REG2OUT
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  recovered_mask_o_reg_2_/CLK (DFFASRHQNx1_ASAP7_75t_R)   0.0000 #   0.0000 r
+  recovered_mask_o_reg_2_/QN (DFFASRHQNx1_ASAP7_75t_R)  67.5163   67.5163 r
+  recovered_mask_o[2] (out)                             0.0000    67.5163 r
+  data arrival time                                               67.5163
+
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  clock uncertainty                                    20.0000    20.0000
+  output external delay                                 0.0000    20.0000
+  data required time                                              20.0000
+  --------------------------------------------------------------------------
+  data required time                                              20.0000
+  data arrival time                                              -67.5163
+  --------------------------------------------------------------------------
+  slack (MET)                                                     47.5163
+
+
+  Startpoint: recovered_mask_o_reg_1_
+              (rising edge-triggered flip-flop clocked by checker_clk)
+  Endpoint: recovered_mask_o[1]
+            (output port clocked by checker_clk)
+  Path Group: REG2OUT
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  recovered_mask_o_reg_1_/CLK (DFFASRHQNx1_ASAP7_75t_R)   0.0000 #   0.0000 r
+  recovered_mask_o_reg_1_/QN (DFFASRHQNx1_ASAP7_75t_R)  67.5163   67.5163 r
+  recovered_mask_o[1] (out)                             0.0000    67.5163 r
+  data arrival time                                               67.5163
+
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  clock uncertainty                                    20.0000    20.0000
+  output external delay                                 0.0000    20.0000
+  data required time                                              20.0000
+  --------------------------------------------------------------------------
+  data required time                                              20.0000
+  data arrival time                                              -67.5163
+  --------------------------------------------------------------------------
+  slack (MET)                                                     47.5163
+
+
+  Startpoint: recovered_mask_o_reg_0_
+              (rising edge-triggered flip-flop clocked by checker_clk)
+  Endpoint: recovered_mask_o[0]
+            (output port clocked by checker_clk)
+  Path Group: REG2OUT
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  recovered_mask_o_reg_0_/CLK (DFFASRHQNx1_ASAP7_75t_R)   0.0000 #   0.0000 r
+  recovered_mask_o_reg_0_/QN (DFFASRHQNx1_ASAP7_75t_R)  67.5163   67.5163 r
+  recovered_mask_o[0] (out)                             0.0000    67.5163 r
+  data arrival time                                               67.5163
+
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  clock uncertainty                                    20.0000    20.0000
+  output external delay                                 0.0000    20.0000
+  data required time                                              20.0000
+  --------------------------------------------------------------------------
+  data required time                                              20.0000
+  data arrival time                                              -67.5163
+  --------------------------------------------------------------------------
+  slack (MET)                                                     47.5163
+
+
+  Startpoint: due_mask_o_reg_1_
+              (rising edge-triggered flip-flop clocked by checker_clk)
+  Endpoint: due_mask_o[1]
+            (output port clocked by checker_clk)
+  Path Group: REG2OUT
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  due_mask_o_reg_1_/CLK (DFFASRHQNx1_ASAP7_75t_R)       0.0000 #   0.0000 r
+  due_mask_o_reg_1_/QN (DFFASRHQNx1_ASAP7_75t_R)       70.1794    70.1794 r
+  due_mask_o[1] (out)                                   0.0000    70.1794 r
+  data arrival time                                               70.1794
+
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  clock uncertainty                                    20.0000    20.0000
+  output external delay                                 0.0000    20.0000
+  data required time                                              20.0000
+  --------------------------------------------------------------------------
+  data required time                                              20.0000
+  data arrival time                                              -70.1794
+  --------------------------------------------------------------------------
+  slack (MET)                                                     50.1794
+
+
+  Startpoint: due_mask_o_reg_0_
+              (rising edge-triggered flip-flop clocked by checker_clk)
+  Endpoint: due_mask_o[0]
+            (output port clocked by checker_clk)
+  Path Group: REG2OUT
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  due_mask_o_reg_0_/CLK (DFFASRHQNx1_ASAP7_75t_R)       0.0000 #   0.0000 r
+  due_mask_o_reg_0_/QN (DFFASRHQNx1_ASAP7_75t_R)       70.1794    70.1794 r
+  due_mask_o[0] (out)                                   0.0000    70.1794 r
+  data arrival time                                               70.1794
+
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  clock uncertainty                                    20.0000    20.0000
+  output external delay                                 0.0000    20.0000
+  data required time                                              20.0000
+  --------------------------------------------------------------------------
+  data required time                                              20.0000
+  data arrival time                                              -70.1794
+  --------------------------------------------------------------------------
+  slack (MET)                                                     50.1794
+
+
+1

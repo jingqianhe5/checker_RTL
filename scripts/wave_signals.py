@@ -147,8 +147,9 @@ def write_tcl():
 
 def publish():
     """Stream the audited trace into the compact VCD, then replace it atomically."""
-    source = PREFIX.with_suffix(".vcd")
-    temporary = source.with_suffix(".vcd.tmp")
+    source = BUILD / "system_8_evidence_raw.vcd"
+    published = PREFIX.with_suffix(".vcd")
+    temporary = published.with_suffix(".vcd.tmp")
     identifiers = {}
     present = set()
     with source.open() as stream, temporary.open("w", newline="\n") as out:
@@ -184,7 +185,7 @@ def publish():
             source_name = obj.attrib["fp_name"].rsplit("/", 1)[-1]
             labels = [p.text for p in obj.findall("obj_property") if p.attrib["name"] == "label"]
             assert DISPLAY_NAMES[source_name] in labels, (source_name, labels)
-    temporary.replace(source)
+    temporary.replace(published)
     with (BUILD / "system_8_evidence_signals.csv").open("w", newline="", encoding="utf-8-sig") as stream:
         writer = csv.writer(stream)
         writer.writerow(["group", "wave_name", "testbench_probe"])
@@ -237,7 +238,7 @@ def write_guide():
         "GEMV phase 为 0=R1、1=R2、2=Y、3=H1、4=H2、5=R3、6=H3。",
         "H current 是当前候选，first 保存第一组，previous 保存最近一次实际采样的完整组。previous 会在采样沿后更新，因此要在 b0_h_slot_done 的沿前比较输入。",
         "b0_h_matches_first/previous 只在采样握手窗口有效。前两组匹配时 b0_h_idle_slot=1，第三轮不捕获 H，结束后才提交。",
-        "每轮 80 ns，H 启动被接受到 commit 或 fail 为 240 ns。H3 非有限时整组无效。",
+        "每轮 110 ns，H 启动被接受到 commit 或 fail 为 330 ns。H3 非有限时整组无效。",
         "",
         "| fault_type | 分流 |",
         "|---|---|",

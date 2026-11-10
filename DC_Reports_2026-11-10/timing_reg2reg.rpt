@@ -1,0 +1,918 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -group REG2REG
+        -max_paths 10
+Design : sys_top
+Version: T-2022.03-SP2
+Date   : Tue Nov 10 14:42:36 2026
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: PVT_0P7V_25C   Library: asap7sc7p5t_AO_RVT_TT_nldm_211120
+Wire Load Model Mode: top
+
+  Startpoint: bg_u/locator_u/lookup_y_reg_13_
+              (rising edge-triggered flip-flop clocked by checker_clk)
+  Endpoint: bg_u/locator_u/candidate_value_o_reg_0_
+            (rising edge-triggered flip-flop clocked by checker_clk)
+  Path Group: REG2REG
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  bg_u/locator_u/lookup_y_reg_13_/CLK (DFFASRHQNx1_ASAP7_75t_R)   0.0000 #   0.0000 r
+  bg_u/locator_u/lookup_y_reg_13_/QN (DFFASRHQNx1_ASAP7_75t_R) 131.5986 131.5986 r
+  bg_u/locator_u/correction_u/a_i[13] (fp16_add)        0.0000   131.5986 r
+  bg_u/locator_u/correction_u/U611/Y (OAI22x1_ASAP7_75t_R)  32.4974 164.0960 f
+  bg_u/locator_u/correction_u/U642/Y (INVx1_ASAP7_75t_R)  14.3119 178.4079 r
+  bg_u/locator_u/correction_u/U643/Y (OAI21xp5_ASAP7_75t_R)  23.7484 202.1563 f
+  bg_u/locator_u/correction_u/U683/Y (NAND2xp5_ASAP7_75t_R)  28.0932 230.2495 r
+  bg_u/locator_u/correction_u/U684/Y (INVx1_ASAP7_75t_R)  13.5564 243.8059 f
+  bg_u/locator_u/correction_u/U708/Y (NAND2xp5_ASAP7_75t_R)  18.7492 262.5551 r
+  bg_u/locator_u/correction_u/U715/Y (NAND2xp5_ASAP7_75t_R)  19.1565 281.7116 f
+  bg_u/locator_u/correction_u/U754/Y (INVx1_ASAP7_75t_R)  10.9106 292.6222 r
+  bg_u/locator_u/correction_u/U755/Y (AOI311xp33_ASAP7_75t_R)  10.9088 303.5310 f
+  bg_u/locator_u/correction_u/U756/Y (AOI331xp33_ASAP7_75t_R)  41.9535 345.4845 r
+  bg_u/locator_u/correction_u/U757/SN (FAx1_ASAP7_75t_R)  53.3223 398.8068 f
+  bg_u/locator_u/correction_u/U369/Y (INVxp67_ASAP7_75t_R)  18.5372 417.3440 r
+  bg_u/locator_u/correction_u/U572/Y (NAND2xp33_ASAP7_75t_R)  14.0674 431.4114 f
+  bg_u/locator_u/correction_u/U571/Y (BUFx3_ASAP7_75t_R)  25.2393 456.6507 f
+  bg_u/locator_u/correction_u/U547/Y (INVx3_ASAP7_75t_R)  10.5821 467.2328 r
+  bg_u/locator_u/correction_u/U789/Y (NAND2xp5_ASAP7_75t_R)  12.8255 480.0583 f
+  bg_u/locator_u/correction_u/U525/Y (AO21x1_ASAP7_75t_R)  27.2391 507.2974 f
+  bg_u/locator_u/correction_u/U803/Y (AOI33xp33_ASAP7_75t_R)  33.0955 540.3928 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/B[6] (fp16_add_DW01_sub_13)   0.0000 540.3928 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U3/Y (INVxp33_ASAP7_75t_R)  22.0424 562.4352 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U103/Y (NAND2xp5_ASAP7_75t_R)  19.1047 581.5399 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U34/Y (OA21x2_ASAP7_75t_R)  25.5436 607.0835 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U40/Y (OAI21x1_ASAP7_75t_R)   9.5853 616.6688 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U100/Y (NAND2xp5_ASAP7_75t_R)  15.5573 632.2261 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U7/Y (NAND2x1_ASAP7_75t_R)  13.7076 645.9337 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U6/Y (AOI21x1_ASAP7_75t_R)  19.0480 664.9817 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U96/Y (OAI21xp5_ASAP7_75t_R)  18.3749 683.3566 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U90/Y (XNOR2xp5_ASAP7_75t_R)  28.5370 711.8936 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/DIFF[11] (fp16_add_DW01_sub_13)   0.0000 711.8936 f
+  bg_u/locator_u/correction_u/U280/Y (NAND2xp33_ASAP7_75t_R)  24.8859 736.7795 r
+  bg_u/locator_u/correction_u/U282/Y (AND3x4_ASAP7_75t_R)  37.2271 774.0065 r
+  bg_u/locator_u/correction_u/U265/Y (NAND2x1_ASAP7_75t_R)   9.0380 783.0446 f
+  bg_u/locator_u/correction_u/U885/Y (NAND2xp5_ASAP7_75t_R)  13.1452 796.1898 r
+  bg_u/locator_u/correction_u/U353/Y (OA21x2_ASAP7_75t_R)  26.2039 822.3936 r
+  bg_u/locator_u/correction_u/U902/Y (OAI31xp67_ASAP7_75t_R)  11.3038 833.6974 f
+  bg_u/locator_u/correction_u/U903/Y (NOR2x1_ASAP7_75t_R)  14.3382 848.0356 r
+  bg_u/locator_u/correction_u/U916/Y (NAND2xp5_ASAP7_75t_R)  15.9561 863.9917 f
+  bg_u/locator_u/correction_u/U945/Y (NAND2xp5_ASAP7_75t_R)  14.6509 878.6426 r
+  bg_u/locator_u/correction_u/U594/Y (BUFx3_ASAP7_75t_R)  24.5697 903.2123 r
+  bg_u/locator_u/correction_u/U585/Y (NAND2xp5_ASAP7_75t_R)  20.5050 923.7173 f
+  bg_u/locator_u/correction_u/U386/Y (OA22x2_ASAP7_75t_R)  32.3822 956.0995 f
+  bg_u/locator_u/correction_u/U273/Y (NAND2x1_ASAP7_75t_R)  12.3215 968.4210 r
+  bg_u/locator_u/correction_u/U988/Y (INVx1_ASAP7_75t_R)   8.6886 977.1096 f
+  bg_u/locator_u/correction_u/U991/Y (OAI221xp5_ASAP7_75t_R)  24.2100 1001.3196 r
+  bg_u/locator_u/correction_u/U1002/Y (NAND3xp33_ASAP7_75t_R)  23.1159 1024.4355 f
+  bg_u/locator_u/correction_u/U507/Y (OR2x2_ASAP7_75t_R)  30.9994 1055.4349 f
+  bg_u/locator_u/correction_u/U1029/Y (OR3x1_ASAP7_75t_R)  29.1639 1084.5989 f
+  bg_u/locator_u/correction_u/U1031/Y (AOI31xp67_ASAP7_75t_R)  14.1150 1098.7139 r
+  bg_u/locator_u/correction_u/result_o[9] (fp16_add)    0.0000   1098.7139 r
+  bg_u/locator_u/U150/Y (AND5x1_ASAP7_75t_R)           41.8828   1140.5967 r
+  bg_u/locator_u/U152/Y (AO21x1_ASAP7_75t_R)           17.9491   1158.5458 r
+  bg_u/locator_u/U153/Y (AND5x1_ASAP7_75t_R)           36.9769   1195.5227 r
+  bg_u/locator_u/U590/Y (OR3x1_ASAP7_75t_R)            17.8137   1213.3364 r
+  bg_u/locator_u/U24/Y (OAI21xp5_ASAP7_75t_R)          33.7523   1247.0887 f
+  bg_u/locator_u/U32/Y (HB1xp67_ASAP7_75t_R)           42.3829   1289.4717 f
+  bg_u/locator_u/U8/Y (NAND2x1_ASAP7_75t_R)            43.0038   1332.4755 r
+  bg_u/locator_u/U586/Y (INVx1_ASAP7_75t_R)            22.6890   1355.1644 f
+  bg_u/locator_u/U49/Y (NAND2x1p5_ASAP7_75t_R)         37.3492   1392.5137 r
+  bg_u/locator_u/U552/Y (OA21x2_ASAP7_75t_R)           29.9014   1422.4150 r
+  bg_u/locator_u/U551/Y (OAI221xp5_ASAP7_75t_R)        15.7113   1438.1263 f
+  bg_u/locator_u/candidate_value_o_reg_0_/D (DFFASRHQNx1_ASAP7_75t_R)   0.0000 1438.1263 f
+  data arrival time                                              1438.1263
+
+  clock checker_clk (rise edge)                       1500.0000  1500.0000
+  clock network delay (ideal)                           0.0000   1500.0000
+  clock uncertainty                                   -50.0000   1450.0000
+  bg_u/locator_u/candidate_value_o_reg_0_/CLK (DFFASRHQNx1_ASAP7_75t_R)   0.0000 1450.0000 r
+  library setup time                                   -6.9560   1443.0441
+  data required time                                             1443.0441
+  --------------------------------------------------------------------------
+  data required time                                             1443.0441
+  data arrival time                                              -1438.1263
+  --------------------------------------------------------------------------
+  slack (MET)                                                      4.9177
+
+
+  Startpoint: bg_u/locator_u/lookup_y_reg_13_
+              (rising edge-triggered flip-flop clocked by checker_clk)
+  Endpoint: bg_u/locator_u/candidate_value_o_reg_1_
+            (rising edge-triggered flip-flop clocked by checker_clk)
+  Path Group: REG2REG
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  bg_u/locator_u/lookup_y_reg_13_/CLK (DFFASRHQNx1_ASAP7_75t_R)   0.0000 #   0.0000 r
+  bg_u/locator_u/lookup_y_reg_13_/QN (DFFASRHQNx1_ASAP7_75t_R) 131.5986 131.5986 r
+  bg_u/locator_u/correction_u/a_i[13] (fp16_add)        0.0000   131.5986 r
+  bg_u/locator_u/correction_u/U611/Y (OAI22x1_ASAP7_75t_R)  32.4974 164.0960 f
+  bg_u/locator_u/correction_u/U642/Y (INVx1_ASAP7_75t_R)  14.3119 178.4079 r
+  bg_u/locator_u/correction_u/U643/Y (OAI21xp5_ASAP7_75t_R)  23.7484 202.1563 f
+  bg_u/locator_u/correction_u/U683/Y (NAND2xp5_ASAP7_75t_R)  28.0932 230.2495 r
+  bg_u/locator_u/correction_u/U684/Y (INVx1_ASAP7_75t_R)  13.5564 243.8059 f
+  bg_u/locator_u/correction_u/U708/Y (NAND2xp5_ASAP7_75t_R)  18.7492 262.5551 r
+  bg_u/locator_u/correction_u/U715/Y (NAND2xp5_ASAP7_75t_R)  19.1565 281.7116 f
+  bg_u/locator_u/correction_u/U754/Y (INVx1_ASAP7_75t_R)  10.9106 292.6222 r
+  bg_u/locator_u/correction_u/U755/Y (AOI311xp33_ASAP7_75t_R)  10.9088 303.5310 f
+  bg_u/locator_u/correction_u/U756/Y (AOI331xp33_ASAP7_75t_R)  41.9535 345.4845 r
+  bg_u/locator_u/correction_u/U757/SN (FAx1_ASAP7_75t_R)  53.3223 398.8068 f
+  bg_u/locator_u/correction_u/U369/Y (INVxp67_ASAP7_75t_R)  18.5372 417.3440 r
+  bg_u/locator_u/correction_u/U572/Y (NAND2xp33_ASAP7_75t_R)  14.0674 431.4114 f
+  bg_u/locator_u/correction_u/U571/Y (BUFx3_ASAP7_75t_R)  25.2393 456.6507 f
+  bg_u/locator_u/correction_u/U547/Y (INVx3_ASAP7_75t_R)  10.5821 467.2328 r
+  bg_u/locator_u/correction_u/U789/Y (NAND2xp5_ASAP7_75t_R)  12.8255 480.0583 f
+  bg_u/locator_u/correction_u/U525/Y (AO21x1_ASAP7_75t_R)  27.2391 507.2974 f
+  bg_u/locator_u/correction_u/U803/Y (AOI33xp33_ASAP7_75t_R)  33.0955 540.3928 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/B[6] (fp16_add_DW01_sub_13)   0.0000 540.3928 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U3/Y (INVxp33_ASAP7_75t_R)  22.0424 562.4352 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U103/Y (NAND2xp5_ASAP7_75t_R)  19.1047 581.5399 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U34/Y (OA21x2_ASAP7_75t_R)  25.5436 607.0835 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U40/Y (OAI21x1_ASAP7_75t_R)   9.5853 616.6688 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U100/Y (NAND2xp5_ASAP7_75t_R)  15.5573 632.2261 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U7/Y (NAND2x1_ASAP7_75t_R)  13.7076 645.9337 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U6/Y (AOI21x1_ASAP7_75t_R)  19.0480 664.9817 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U96/Y (OAI21xp5_ASAP7_75t_R)  18.3749 683.3566 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U90/Y (XNOR2xp5_ASAP7_75t_R)  28.5370 711.8936 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/DIFF[11] (fp16_add_DW01_sub_13)   0.0000 711.8936 f
+  bg_u/locator_u/correction_u/U280/Y (NAND2xp33_ASAP7_75t_R)  24.8859 736.7795 r
+  bg_u/locator_u/correction_u/U282/Y (AND3x4_ASAP7_75t_R)  37.2271 774.0065 r
+  bg_u/locator_u/correction_u/U265/Y (NAND2x1_ASAP7_75t_R)   9.0380 783.0446 f
+  bg_u/locator_u/correction_u/U885/Y (NAND2xp5_ASAP7_75t_R)  13.1452 796.1898 r
+  bg_u/locator_u/correction_u/U353/Y (OA21x2_ASAP7_75t_R)  26.2039 822.3936 r
+  bg_u/locator_u/correction_u/U902/Y (OAI31xp67_ASAP7_75t_R)  11.3038 833.6974 f
+  bg_u/locator_u/correction_u/U903/Y (NOR2x1_ASAP7_75t_R)  14.3382 848.0356 r
+  bg_u/locator_u/correction_u/U916/Y (NAND2xp5_ASAP7_75t_R)  15.9561 863.9917 f
+  bg_u/locator_u/correction_u/U945/Y (NAND2xp5_ASAP7_75t_R)  14.6509 878.6426 r
+  bg_u/locator_u/correction_u/U594/Y (BUFx3_ASAP7_75t_R)  24.5697 903.2123 r
+  bg_u/locator_u/correction_u/U585/Y (NAND2xp5_ASAP7_75t_R)  20.5050 923.7173 f
+  bg_u/locator_u/correction_u/U386/Y (OA22x2_ASAP7_75t_R)  32.3822 956.0995 f
+  bg_u/locator_u/correction_u/U273/Y (NAND2x1_ASAP7_75t_R)  12.3215 968.4210 r
+  bg_u/locator_u/correction_u/U988/Y (INVx1_ASAP7_75t_R)   8.6886 977.1096 f
+  bg_u/locator_u/correction_u/U991/Y (OAI221xp5_ASAP7_75t_R)  24.2100 1001.3196 r
+  bg_u/locator_u/correction_u/U1002/Y (NAND3xp33_ASAP7_75t_R)  23.1159 1024.4355 f
+  bg_u/locator_u/correction_u/U507/Y (OR2x2_ASAP7_75t_R)  30.9994 1055.4349 f
+  bg_u/locator_u/correction_u/U1029/Y (OR3x1_ASAP7_75t_R)  29.1639 1084.5989 f
+  bg_u/locator_u/correction_u/U1031/Y (AOI31xp67_ASAP7_75t_R)  14.1150 1098.7139 r
+  bg_u/locator_u/correction_u/result_o[9] (fp16_add)    0.0000   1098.7139 r
+  bg_u/locator_u/U150/Y (AND5x1_ASAP7_75t_R)           41.8828   1140.5967 r
+  bg_u/locator_u/U152/Y (AO21x1_ASAP7_75t_R)           17.9491   1158.5458 r
+  bg_u/locator_u/U153/Y (AND5x1_ASAP7_75t_R)           36.9769   1195.5227 r
+  bg_u/locator_u/U590/Y (OR3x1_ASAP7_75t_R)            17.8137   1213.3364 r
+  bg_u/locator_u/U24/Y (OAI21xp5_ASAP7_75t_R)          33.7523   1247.0887 f
+  bg_u/locator_u/U32/Y (HB1xp67_ASAP7_75t_R)           42.3829   1289.4717 f
+  bg_u/locator_u/U8/Y (NAND2x1_ASAP7_75t_R)            43.0038   1332.4755 r
+  bg_u/locator_u/U586/Y (INVx1_ASAP7_75t_R)            22.6890   1355.1644 f
+  bg_u/locator_u/U49/Y (NAND2x1p5_ASAP7_75t_R)         37.3492   1392.5137 r
+  bg_u/locator_u/U554/Y (OA21x2_ASAP7_75t_R)           29.9014   1422.4150 r
+  bg_u/locator_u/U553/Y (OAI221xp5_ASAP7_75t_R)        15.7113   1438.1263 f
+  bg_u/locator_u/candidate_value_o_reg_1_/D (DFFASRHQNx1_ASAP7_75t_R)   0.0000 1438.1263 f
+  data arrival time                                              1438.1263
+
+  clock checker_clk (rise edge)                       1500.0000  1500.0000
+  clock network delay (ideal)                           0.0000   1500.0000
+  clock uncertainty                                   -50.0000   1450.0000
+  bg_u/locator_u/candidate_value_o_reg_1_/CLK (DFFASRHQNx1_ASAP7_75t_R)   0.0000 1450.0000 r
+  library setup time                                   -6.9560   1443.0441
+  data required time                                             1443.0441
+  --------------------------------------------------------------------------
+  data required time                                             1443.0441
+  data arrival time                                              -1438.1263
+  --------------------------------------------------------------------------
+  slack (MET)                                                      4.9177
+
+
+  Startpoint: bg_u/locator_u/lookup_y_reg_13_
+              (rising edge-triggered flip-flop clocked by checker_clk)
+  Endpoint: bg_u/locator_u/candidate_value_o_reg_2_
+            (rising edge-triggered flip-flop clocked by checker_clk)
+  Path Group: REG2REG
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  bg_u/locator_u/lookup_y_reg_13_/CLK (DFFASRHQNx1_ASAP7_75t_R)   0.0000 #   0.0000 r
+  bg_u/locator_u/lookup_y_reg_13_/QN (DFFASRHQNx1_ASAP7_75t_R) 131.5986 131.5986 r
+  bg_u/locator_u/correction_u/a_i[13] (fp16_add)        0.0000   131.5986 r
+  bg_u/locator_u/correction_u/U611/Y (OAI22x1_ASAP7_75t_R)  32.4974 164.0960 f
+  bg_u/locator_u/correction_u/U642/Y (INVx1_ASAP7_75t_R)  14.3119 178.4079 r
+  bg_u/locator_u/correction_u/U643/Y (OAI21xp5_ASAP7_75t_R)  23.7484 202.1563 f
+  bg_u/locator_u/correction_u/U683/Y (NAND2xp5_ASAP7_75t_R)  28.0932 230.2495 r
+  bg_u/locator_u/correction_u/U684/Y (INVx1_ASAP7_75t_R)  13.5564 243.8059 f
+  bg_u/locator_u/correction_u/U708/Y (NAND2xp5_ASAP7_75t_R)  18.7492 262.5551 r
+  bg_u/locator_u/correction_u/U715/Y (NAND2xp5_ASAP7_75t_R)  19.1565 281.7116 f
+  bg_u/locator_u/correction_u/U754/Y (INVx1_ASAP7_75t_R)  10.9106 292.6222 r
+  bg_u/locator_u/correction_u/U755/Y (AOI311xp33_ASAP7_75t_R)  10.9088 303.5310 f
+  bg_u/locator_u/correction_u/U756/Y (AOI331xp33_ASAP7_75t_R)  41.9535 345.4845 r
+  bg_u/locator_u/correction_u/U757/SN (FAx1_ASAP7_75t_R)  53.3223 398.8068 f
+  bg_u/locator_u/correction_u/U369/Y (INVxp67_ASAP7_75t_R)  18.5372 417.3440 r
+  bg_u/locator_u/correction_u/U572/Y (NAND2xp33_ASAP7_75t_R)  14.0674 431.4114 f
+  bg_u/locator_u/correction_u/U571/Y (BUFx3_ASAP7_75t_R)  25.2393 456.6507 f
+  bg_u/locator_u/correction_u/U547/Y (INVx3_ASAP7_75t_R)  10.5821 467.2328 r
+  bg_u/locator_u/correction_u/U789/Y (NAND2xp5_ASAP7_75t_R)  12.8255 480.0583 f
+  bg_u/locator_u/correction_u/U525/Y (AO21x1_ASAP7_75t_R)  27.2391 507.2974 f
+  bg_u/locator_u/correction_u/U803/Y (AOI33xp33_ASAP7_75t_R)  33.0955 540.3928 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/B[6] (fp16_add_DW01_sub_13)   0.0000 540.3928 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U3/Y (INVxp33_ASAP7_75t_R)  22.0424 562.4352 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U103/Y (NAND2xp5_ASAP7_75t_R)  19.1047 581.5399 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U34/Y (OA21x2_ASAP7_75t_R)  25.5436 607.0835 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U40/Y (OAI21x1_ASAP7_75t_R)   9.5853 616.6688 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U100/Y (NAND2xp5_ASAP7_75t_R)  15.5573 632.2261 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U7/Y (NAND2x1_ASAP7_75t_R)  13.7076 645.9337 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U6/Y (AOI21x1_ASAP7_75t_R)  19.0480 664.9817 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U96/Y (OAI21xp5_ASAP7_75t_R)  18.3749 683.3566 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U90/Y (XNOR2xp5_ASAP7_75t_R)  28.5370 711.8936 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/DIFF[11] (fp16_add_DW01_sub_13)   0.0000 711.8936 f
+  bg_u/locator_u/correction_u/U280/Y (NAND2xp33_ASAP7_75t_R)  24.8859 736.7795 r
+  bg_u/locator_u/correction_u/U282/Y (AND3x4_ASAP7_75t_R)  37.2271 774.0065 r
+  bg_u/locator_u/correction_u/U265/Y (NAND2x1_ASAP7_75t_R)   9.0380 783.0446 f
+  bg_u/locator_u/correction_u/U885/Y (NAND2xp5_ASAP7_75t_R)  13.1452 796.1898 r
+  bg_u/locator_u/correction_u/U353/Y (OA21x2_ASAP7_75t_R)  26.2039 822.3936 r
+  bg_u/locator_u/correction_u/U902/Y (OAI31xp67_ASAP7_75t_R)  11.3038 833.6974 f
+  bg_u/locator_u/correction_u/U903/Y (NOR2x1_ASAP7_75t_R)  14.3382 848.0356 r
+  bg_u/locator_u/correction_u/U916/Y (NAND2xp5_ASAP7_75t_R)  15.9561 863.9917 f
+  bg_u/locator_u/correction_u/U945/Y (NAND2xp5_ASAP7_75t_R)  14.6509 878.6426 r
+  bg_u/locator_u/correction_u/U594/Y (BUFx3_ASAP7_75t_R)  24.5697 903.2123 r
+  bg_u/locator_u/correction_u/U585/Y (NAND2xp5_ASAP7_75t_R)  20.5050 923.7173 f
+  bg_u/locator_u/correction_u/U386/Y (OA22x2_ASAP7_75t_R)  32.3822 956.0995 f
+  bg_u/locator_u/correction_u/U273/Y (NAND2x1_ASAP7_75t_R)  12.3215 968.4210 r
+  bg_u/locator_u/correction_u/U988/Y (INVx1_ASAP7_75t_R)   8.6886 977.1096 f
+  bg_u/locator_u/correction_u/U991/Y (OAI221xp5_ASAP7_75t_R)  24.2100 1001.3196 r
+  bg_u/locator_u/correction_u/U1002/Y (NAND3xp33_ASAP7_75t_R)  23.1159 1024.4355 f
+  bg_u/locator_u/correction_u/U507/Y (OR2x2_ASAP7_75t_R)  30.9994 1055.4349 f
+  bg_u/locator_u/correction_u/U1029/Y (OR3x1_ASAP7_75t_R)  29.1639 1084.5989 f
+  bg_u/locator_u/correction_u/U1031/Y (AOI31xp67_ASAP7_75t_R)  14.1150 1098.7139 r
+  bg_u/locator_u/correction_u/result_o[9] (fp16_add)    0.0000   1098.7139 r
+  bg_u/locator_u/U150/Y (AND5x1_ASAP7_75t_R)           41.8828   1140.5967 r
+  bg_u/locator_u/U152/Y (AO21x1_ASAP7_75t_R)           17.9491   1158.5458 r
+  bg_u/locator_u/U153/Y (AND5x1_ASAP7_75t_R)           36.9769   1195.5227 r
+  bg_u/locator_u/U590/Y (OR3x1_ASAP7_75t_R)            17.8137   1213.3364 r
+  bg_u/locator_u/U24/Y (OAI21xp5_ASAP7_75t_R)          33.7523   1247.0887 f
+  bg_u/locator_u/U32/Y (HB1xp67_ASAP7_75t_R)           42.3829   1289.4717 f
+  bg_u/locator_u/U8/Y (NAND2x1_ASAP7_75t_R)            43.0038   1332.4755 r
+  bg_u/locator_u/U586/Y (INVx1_ASAP7_75t_R)            22.6890   1355.1644 f
+  bg_u/locator_u/U49/Y (NAND2x1p5_ASAP7_75t_R)         37.3492   1392.5137 r
+  bg_u/locator_u/U556/Y (OA21x2_ASAP7_75t_R)           29.9014   1422.4150 r
+  bg_u/locator_u/U555/Y (OAI221xp5_ASAP7_75t_R)        15.7113   1438.1263 f
+  bg_u/locator_u/candidate_value_o_reg_2_/D (DFFASRHQNx1_ASAP7_75t_R)   0.0000 1438.1263 f
+  data arrival time                                              1438.1263
+
+  clock checker_clk (rise edge)                       1500.0000  1500.0000
+  clock network delay (ideal)                           0.0000   1500.0000
+  clock uncertainty                                   -50.0000   1450.0000
+  bg_u/locator_u/candidate_value_o_reg_2_/CLK (DFFASRHQNx1_ASAP7_75t_R)   0.0000 1450.0000 r
+  library setup time                                   -6.9560   1443.0441
+  data required time                                             1443.0441
+  --------------------------------------------------------------------------
+  data required time                                             1443.0441
+  data arrival time                                              -1438.1263
+  --------------------------------------------------------------------------
+  slack (MET)                                                      4.9177
+
+
+  Startpoint: bg_u/locator_u/lookup_y_reg_13_
+              (rising edge-triggered flip-flop clocked by checker_clk)
+  Endpoint: bg_u/locator_u/candidate_value_o_reg_3_
+            (rising edge-triggered flip-flop clocked by checker_clk)
+  Path Group: REG2REG
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  bg_u/locator_u/lookup_y_reg_13_/CLK (DFFASRHQNx1_ASAP7_75t_R)   0.0000 #   0.0000 r
+  bg_u/locator_u/lookup_y_reg_13_/QN (DFFASRHQNx1_ASAP7_75t_R) 131.5986 131.5986 r
+  bg_u/locator_u/correction_u/a_i[13] (fp16_add)        0.0000   131.5986 r
+  bg_u/locator_u/correction_u/U611/Y (OAI22x1_ASAP7_75t_R)  32.4974 164.0960 f
+  bg_u/locator_u/correction_u/U642/Y (INVx1_ASAP7_75t_R)  14.3119 178.4079 r
+  bg_u/locator_u/correction_u/U643/Y (OAI21xp5_ASAP7_75t_R)  23.7484 202.1563 f
+  bg_u/locator_u/correction_u/U683/Y (NAND2xp5_ASAP7_75t_R)  28.0932 230.2495 r
+  bg_u/locator_u/correction_u/U684/Y (INVx1_ASAP7_75t_R)  13.5564 243.8059 f
+  bg_u/locator_u/correction_u/U708/Y (NAND2xp5_ASAP7_75t_R)  18.7492 262.5551 r
+  bg_u/locator_u/correction_u/U715/Y (NAND2xp5_ASAP7_75t_R)  19.1565 281.7116 f
+  bg_u/locator_u/correction_u/U754/Y (INVx1_ASAP7_75t_R)  10.9106 292.6222 r
+  bg_u/locator_u/correction_u/U755/Y (AOI311xp33_ASAP7_75t_R)  10.9088 303.5310 f
+  bg_u/locator_u/correction_u/U756/Y (AOI331xp33_ASAP7_75t_R)  41.9535 345.4845 r
+  bg_u/locator_u/correction_u/U757/SN (FAx1_ASAP7_75t_R)  53.3223 398.8068 f
+  bg_u/locator_u/correction_u/U369/Y (INVxp67_ASAP7_75t_R)  18.5372 417.3440 r
+  bg_u/locator_u/correction_u/U572/Y (NAND2xp33_ASAP7_75t_R)  14.0674 431.4114 f
+  bg_u/locator_u/correction_u/U571/Y (BUFx3_ASAP7_75t_R)  25.2393 456.6507 f
+  bg_u/locator_u/correction_u/U547/Y (INVx3_ASAP7_75t_R)  10.5821 467.2328 r
+  bg_u/locator_u/correction_u/U789/Y (NAND2xp5_ASAP7_75t_R)  12.8255 480.0583 f
+  bg_u/locator_u/correction_u/U525/Y (AO21x1_ASAP7_75t_R)  27.2391 507.2974 f
+  bg_u/locator_u/correction_u/U803/Y (AOI33xp33_ASAP7_75t_R)  33.0955 540.3928 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/B[6] (fp16_add_DW01_sub_13)   0.0000 540.3928 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U3/Y (INVxp33_ASAP7_75t_R)  22.0424 562.4352 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U103/Y (NAND2xp5_ASAP7_75t_R)  19.1047 581.5399 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U34/Y (OA21x2_ASAP7_75t_R)  25.5436 607.0835 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U40/Y (OAI21x1_ASAP7_75t_R)   9.5853 616.6688 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U100/Y (NAND2xp5_ASAP7_75t_R)  15.5573 632.2261 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U7/Y (NAND2x1_ASAP7_75t_R)  13.7076 645.9337 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U6/Y (AOI21x1_ASAP7_75t_R)  19.0480 664.9817 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U96/Y (OAI21xp5_ASAP7_75t_R)  18.3749 683.3566 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U90/Y (XNOR2xp5_ASAP7_75t_R)  28.5370 711.8936 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/DIFF[11] (fp16_add_DW01_sub_13)   0.0000 711.8936 f
+  bg_u/locator_u/correction_u/U280/Y (NAND2xp33_ASAP7_75t_R)  24.8859 736.7795 r
+  bg_u/locator_u/correction_u/U282/Y (AND3x4_ASAP7_75t_R)  37.2271 774.0065 r
+  bg_u/locator_u/correction_u/U265/Y (NAND2x1_ASAP7_75t_R)   9.0380 783.0446 f
+  bg_u/locator_u/correction_u/U885/Y (NAND2xp5_ASAP7_75t_R)  13.1452 796.1898 r
+  bg_u/locator_u/correction_u/U353/Y (OA21x2_ASAP7_75t_R)  26.2039 822.3936 r
+  bg_u/locator_u/correction_u/U902/Y (OAI31xp67_ASAP7_75t_R)  11.3038 833.6974 f
+  bg_u/locator_u/correction_u/U903/Y (NOR2x1_ASAP7_75t_R)  14.3382 848.0356 r
+  bg_u/locator_u/correction_u/U916/Y (NAND2xp5_ASAP7_75t_R)  15.9561 863.9917 f
+  bg_u/locator_u/correction_u/U945/Y (NAND2xp5_ASAP7_75t_R)  14.6509 878.6426 r
+  bg_u/locator_u/correction_u/U594/Y (BUFx3_ASAP7_75t_R)  24.5697 903.2123 r
+  bg_u/locator_u/correction_u/U585/Y (NAND2xp5_ASAP7_75t_R)  20.5050 923.7173 f
+  bg_u/locator_u/correction_u/U386/Y (OA22x2_ASAP7_75t_R)  32.3822 956.0995 f
+  bg_u/locator_u/correction_u/U273/Y (NAND2x1_ASAP7_75t_R)  12.3215 968.4210 r
+  bg_u/locator_u/correction_u/U988/Y (INVx1_ASAP7_75t_R)   8.6886 977.1096 f
+  bg_u/locator_u/correction_u/U991/Y (OAI221xp5_ASAP7_75t_R)  24.2100 1001.3196 r
+  bg_u/locator_u/correction_u/U1002/Y (NAND3xp33_ASAP7_75t_R)  23.1159 1024.4355 f
+  bg_u/locator_u/correction_u/U507/Y (OR2x2_ASAP7_75t_R)  30.9994 1055.4349 f
+  bg_u/locator_u/correction_u/U1029/Y (OR3x1_ASAP7_75t_R)  29.1639 1084.5989 f
+  bg_u/locator_u/correction_u/U1031/Y (AOI31xp67_ASAP7_75t_R)  14.1150 1098.7139 r
+  bg_u/locator_u/correction_u/result_o[9] (fp16_add)    0.0000   1098.7139 r
+  bg_u/locator_u/U150/Y (AND5x1_ASAP7_75t_R)           41.8828   1140.5967 r
+  bg_u/locator_u/U152/Y (AO21x1_ASAP7_75t_R)           17.9491   1158.5458 r
+  bg_u/locator_u/U153/Y (AND5x1_ASAP7_75t_R)           36.9769   1195.5227 r
+  bg_u/locator_u/U590/Y (OR3x1_ASAP7_75t_R)            17.8137   1213.3364 r
+  bg_u/locator_u/U24/Y (OAI21xp5_ASAP7_75t_R)          33.7523   1247.0887 f
+  bg_u/locator_u/U32/Y (HB1xp67_ASAP7_75t_R)           42.3829   1289.4717 f
+  bg_u/locator_u/U8/Y (NAND2x1_ASAP7_75t_R)            43.0038   1332.4755 r
+  bg_u/locator_u/U586/Y (INVx1_ASAP7_75t_R)            22.6890   1355.1644 f
+  bg_u/locator_u/U49/Y (NAND2x1p5_ASAP7_75t_R)         37.3492   1392.5137 r
+  bg_u/locator_u/U558/Y (OA21x2_ASAP7_75t_R)           29.9014   1422.4150 r
+  bg_u/locator_u/U557/Y (OAI221xp5_ASAP7_75t_R)        15.7113   1438.1263 f
+  bg_u/locator_u/candidate_value_o_reg_3_/D (DFFASRHQNx1_ASAP7_75t_R)   0.0000 1438.1263 f
+  data arrival time                                              1438.1263
+
+  clock checker_clk (rise edge)                       1500.0000  1500.0000
+  clock network delay (ideal)                           0.0000   1500.0000
+  clock uncertainty                                   -50.0000   1450.0000
+  bg_u/locator_u/candidate_value_o_reg_3_/CLK (DFFASRHQNx1_ASAP7_75t_R)   0.0000 1450.0000 r
+  library setup time                                   -6.9560   1443.0441
+  data required time                                             1443.0441
+  --------------------------------------------------------------------------
+  data required time                                             1443.0441
+  data arrival time                                              -1438.1263
+  --------------------------------------------------------------------------
+  slack (MET)                                                      4.9177
+
+
+  Startpoint: bg_u/locator_u/lookup_y_reg_13_
+              (rising edge-triggered flip-flop clocked by checker_clk)
+  Endpoint: bg_u/locator_u/candidate_value_o_reg_4_
+            (rising edge-triggered flip-flop clocked by checker_clk)
+  Path Group: REG2REG
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  bg_u/locator_u/lookup_y_reg_13_/CLK (DFFASRHQNx1_ASAP7_75t_R)   0.0000 #   0.0000 r
+  bg_u/locator_u/lookup_y_reg_13_/QN (DFFASRHQNx1_ASAP7_75t_R) 131.5986 131.5986 r
+  bg_u/locator_u/correction_u/a_i[13] (fp16_add)        0.0000   131.5986 r
+  bg_u/locator_u/correction_u/U611/Y (OAI22x1_ASAP7_75t_R)  32.4974 164.0960 f
+  bg_u/locator_u/correction_u/U642/Y (INVx1_ASAP7_75t_R)  14.3119 178.4079 r
+  bg_u/locator_u/correction_u/U643/Y (OAI21xp5_ASAP7_75t_R)  23.7484 202.1563 f
+  bg_u/locator_u/correction_u/U683/Y (NAND2xp5_ASAP7_75t_R)  28.0932 230.2495 r
+  bg_u/locator_u/correction_u/U684/Y (INVx1_ASAP7_75t_R)  13.5564 243.8059 f
+  bg_u/locator_u/correction_u/U708/Y (NAND2xp5_ASAP7_75t_R)  18.7492 262.5551 r
+  bg_u/locator_u/correction_u/U715/Y (NAND2xp5_ASAP7_75t_R)  19.1565 281.7116 f
+  bg_u/locator_u/correction_u/U754/Y (INVx1_ASAP7_75t_R)  10.9106 292.6222 r
+  bg_u/locator_u/correction_u/U755/Y (AOI311xp33_ASAP7_75t_R)  10.9088 303.5310 f
+  bg_u/locator_u/correction_u/U756/Y (AOI331xp33_ASAP7_75t_R)  41.9535 345.4845 r
+  bg_u/locator_u/correction_u/U757/SN (FAx1_ASAP7_75t_R)  53.3223 398.8068 f
+  bg_u/locator_u/correction_u/U369/Y (INVxp67_ASAP7_75t_R)  18.5372 417.3440 r
+  bg_u/locator_u/correction_u/U572/Y (NAND2xp33_ASAP7_75t_R)  14.0674 431.4114 f
+  bg_u/locator_u/correction_u/U571/Y (BUFx3_ASAP7_75t_R)  25.2393 456.6507 f
+  bg_u/locator_u/correction_u/U547/Y (INVx3_ASAP7_75t_R)  10.5821 467.2328 r
+  bg_u/locator_u/correction_u/U789/Y (NAND2xp5_ASAP7_75t_R)  12.8255 480.0583 f
+  bg_u/locator_u/correction_u/U525/Y (AO21x1_ASAP7_75t_R)  27.2391 507.2974 f
+  bg_u/locator_u/correction_u/U803/Y (AOI33xp33_ASAP7_75t_R)  33.0955 540.3928 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/B[6] (fp16_add_DW01_sub_13)   0.0000 540.3928 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U3/Y (INVxp33_ASAP7_75t_R)  22.0424 562.4352 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U103/Y (NAND2xp5_ASAP7_75t_R)  19.1047 581.5399 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U34/Y (OA21x2_ASAP7_75t_R)  25.5436 607.0835 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U40/Y (OAI21x1_ASAP7_75t_R)   9.5853 616.6688 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U100/Y (NAND2xp5_ASAP7_75t_R)  15.5573 632.2261 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U7/Y (NAND2x1_ASAP7_75t_R)  13.7076 645.9337 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U6/Y (AOI21x1_ASAP7_75t_R)  19.0480 664.9817 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U96/Y (OAI21xp5_ASAP7_75t_R)  18.3749 683.3566 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U90/Y (XNOR2xp5_ASAP7_75t_R)  28.5370 711.8936 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/DIFF[11] (fp16_add_DW01_sub_13)   0.0000 711.8936 f
+  bg_u/locator_u/correction_u/U280/Y (NAND2xp33_ASAP7_75t_R)  24.8859 736.7795 r
+  bg_u/locator_u/correction_u/U282/Y (AND3x4_ASAP7_75t_R)  37.2271 774.0065 r
+  bg_u/locator_u/correction_u/U265/Y (NAND2x1_ASAP7_75t_R)   9.0380 783.0446 f
+  bg_u/locator_u/correction_u/U885/Y (NAND2xp5_ASAP7_75t_R)  13.1452 796.1898 r
+  bg_u/locator_u/correction_u/U353/Y (OA21x2_ASAP7_75t_R)  26.2039 822.3936 r
+  bg_u/locator_u/correction_u/U902/Y (OAI31xp67_ASAP7_75t_R)  11.3038 833.6974 f
+  bg_u/locator_u/correction_u/U903/Y (NOR2x1_ASAP7_75t_R)  14.3382 848.0356 r
+  bg_u/locator_u/correction_u/U916/Y (NAND2xp5_ASAP7_75t_R)  15.9561 863.9917 f
+  bg_u/locator_u/correction_u/U945/Y (NAND2xp5_ASAP7_75t_R)  14.6509 878.6426 r
+  bg_u/locator_u/correction_u/U594/Y (BUFx3_ASAP7_75t_R)  24.5697 903.2123 r
+  bg_u/locator_u/correction_u/U585/Y (NAND2xp5_ASAP7_75t_R)  20.5050 923.7173 f
+  bg_u/locator_u/correction_u/U386/Y (OA22x2_ASAP7_75t_R)  32.3822 956.0995 f
+  bg_u/locator_u/correction_u/U273/Y (NAND2x1_ASAP7_75t_R)  12.3215 968.4210 r
+  bg_u/locator_u/correction_u/U988/Y (INVx1_ASAP7_75t_R)   8.6886 977.1096 f
+  bg_u/locator_u/correction_u/U991/Y (OAI221xp5_ASAP7_75t_R)  24.2100 1001.3196 r
+  bg_u/locator_u/correction_u/U1002/Y (NAND3xp33_ASAP7_75t_R)  23.1159 1024.4355 f
+  bg_u/locator_u/correction_u/U507/Y (OR2x2_ASAP7_75t_R)  30.9994 1055.4349 f
+  bg_u/locator_u/correction_u/U1029/Y (OR3x1_ASAP7_75t_R)  29.1639 1084.5989 f
+  bg_u/locator_u/correction_u/U1031/Y (AOI31xp67_ASAP7_75t_R)  14.1150 1098.7139 r
+  bg_u/locator_u/correction_u/result_o[9] (fp16_add)    0.0000   1098.7139 r
+  bg_u/locator_u/U150/Y (AND5x1_ASAP7_75t_R)           41.8828   1140.5967 r
+  bg_u/locator_u/U152/Y (AO21x1_ASAP7_75t_R)           17.9491   1158.5458 r
+  bg_u/locator_u/U153/Y (AND5x1_ASAP7_75t_R)           36.9769   1195.5227 r
+  bg_u/locator_u/U590/Y (OR3x1_ASAP7_75t_R)            17.8137   1213.3364 r
+  bg_u/locator_u/U24/Y (OAI21xp5_ASAP7_75t_R)          33.7523   1247.0887 f
+  bg_u/locator_u/U32/Y (HB1xp67_ASAP7_75t_R)           42.3829   1289.4717 f
+  bg_u/locator_u/U8/Y (NAND2x1_ASAP7_75t_R)            43.0038   1332.4755 r
+  bg_u/locator_u/U586/Y (INVx1_ASAP7_75t_R)            22.6890   1355.1644 f
+  bg_u/locator_u/U49/Y (NAND2x1p5_ASAP7_75t_R)         37.3492   1392.5137 r
+  bg_u/locator_u/U560/Y (OA21x2_ASAP7_75t_R)           29.9014   1422.4150 r
+  bg_u/locator_u/U559/Y (OAI221xp5_ASAP7_75t_R)        15.7113   1438.1263 f
+  bg_u/locator_u/candidate_value_o_reg_4_/D (DFFASRHQNx1_ASAP7_75t_R)   0.0000 1438.1263 f
+  data arrival time                                              1438.1263
+
+  clock checker_clk (rise edge)                       1500.0000  1500.0000
+  clock network delay (ideal)                           0.0000   1500.0000
+  clock uncertainty                                   -50.0000   1450.0000
+  bg_u/locator_u/candidate_value_o_reg_4_/CLK (DFFASRHQNx1_ASAP7_75t_R)   0.0000 1450.0000 r
+  library setup time                                   -6.9560   1443.0441
+  data required time                                             1443.0441
+  --------------------------------------------------------------------------
+  data required time                                             1443.0441
+  data arrival time                                              -1438.1263
+  --------------------------------------------------------------------------
+  slack (MET)                                                      4.9177
+
+
+  Startpoint: bg_u/locator_u/lookup_y_reg_13_
+              (rising edge-triggered flip-flop clocked by checker_clk)
+  Endpoint: bg_u/locator_u/candidate_value_o_reg_5_
+            (rising edge-triggered flip-flop clocked by checker_clk)
+  Path Group: REG2REG
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  bg_u/locator_u/lookup_y_reg_13_/CLK (DFFASRHQNx1_ASAP7_75t_R)   0.0000 #   0.0000 r
+  bg_u/locator_u/lookup_y_reg_13_/QN (DFFASRHQNx1_ASAP7_75t_R) 131.5986 131.5986 r
+  bg_u/locator_u/correction_u/a_i[13] (fp16_add)        0.0000   131.5986 r
+  bg_u/locator_u/correction_u/U611/Y (OAI22x1_ASAP7_75t_R)  32.4974 164.0960 f
+  bg_u/locator_u/correction_u/U642/Y (INVx1_ASAP7_75t_R)  14.3119 178.4079 r
+  bg_u/locator_u/correction_u/U643/Y (OAI21xp5_ASAP7_75t_R)  23.7484 202.1563 f
+  bg_u/locator_u/correction_u/U683/Y (NAND2xp5_ASAP7_75t_R)  28.0932 230.2495 r
+  bg_u/locator_u/correction_u/U684/Y (INVx1_ASAP7_75t_R)  13.5564 243.8059 f
+  bg_u/locator_u/correction_u/U708/Y (NAND2xp5_ASAP7_75t_R)  18.7492 262.5551 r
+  bg_u/locator_u/correction_u/U715/Y (NAND2xp5_ASAP7_75t_R)  19.1565 281.7116 f
+  bg_u/locator_u/correction_u/U754/Y (INVx1_ASAP7_75t_R)  10.9106 292.6222 r
+  bg_u/locator_u/correction_u/U755/Y (AOI311xp33_ASAP7_75t_R)  10.9088 303.5310 f
+  bg_u/locator_u/correction_u/U756/Y (AOI331xp33_ASAP7_75t_R)  41.9535 345.4845 r
+  bg_u/locator_u/correction_u/U757/SN (FAx1_ASAP7_75t_R)  53.3223 398.8068 f
+  bg_u/locator_u/correction_u/U369/Y (INVxp67_ASAP7_75t_R)  18.5372 417.3440 r
+  bg_u/locator_u/correction_u/U572/Y (NAND2xp33_ASAP7_75t_R)  14.0674 431.4114 f
+  bg_u/locator_u/correction_u/U571/Y (BUFx3_ASAP7_75t_R)  25.2393 456.6507 f
+  bg_u/locator_u/correction_u/U547/Y (INVx3_ASAP7_75t_R)  10.5821 467.2328 r
+  bg_u/locator_u/correction_u/U789/Y (NAND2xp5_ASAP7_75t_R)  12.8255 480.0583 f
+  bg_u/locator_u/correction_u/U525/Y (AO21x1_ASAP7_75t_R)  27.2391 507.2974 f
+  bg_u/locator_u/correction_u/U803/Y (AOI33xp33_ASAP7_75t_R)  33.0955 540.3928 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/B[6] (fp16_add_DW01_sub_13)   0.0000 540.3928 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U3/Y (INVxp33_ASAP7_75t_R)  22.0424 562.4352 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U103/Y (NAND2xp5_ASAP7_75t_R)  19.1047 581.5399 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U34/Y (OA21x2_ASAP7_75t_R)  25.5436 607.0835 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U40/Y (OAI21x1_ASAP7_75t_R)   9.5853 616.6688 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U100/Y (NAND2xp5_ASAP7_75t_R)  15.5573 632.2261 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U7/Y (NAND2x1_ASAP7_75t_R)  13.7076 645.9337 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U6/Y (AOI21x1_ASAP7_75t_R)  19.0480 664.9817 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U96/Y (OAI21xp5_ASAP7_75t_R)  18.3749 683.3566 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U90/Y (XNOR2xp5_ASAP7_75t_R)  28.5370 711.8936 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/DIFF[11] (fp16_add_DW01_sub_13)   0.0000 711.8936 f
+  bg_u/locator_u/correction_u/U280/Y (NAND2xp33_ASAP7_75t_R)  24.8859 736.7795 r
+  bg_u/locator_u/correction_u/U282/Y (AND3x4_ASAP7_75t_R)  37.2271 774.0065 r
+  bg_u/locator_u/correction_u/U265/Y (NAND2x1_ASAP7_75t_R)   9.0380 783.0446 f
+  bg_u/locator_u/correction_u/U885/Y (NAND2xp5_ASAP7_75t_R)  13.1452 796.1898 r
+  bg_u/locator_u/correction_u/U353/Y (OA21x2_ASAP7_75t_R)  26.2039 822.3936 r
+  bg_u/locator_u/correction_u/U902/Y (OAI31xp67_ASAP7_75t_R)  11.3038 833.6974 f
+  bg_u/locator_u/correction_u/U903/Y (NOR2x1_ASAP7_75t_R)  14.3382 848.0356 r
+  bg_u/locator_u/correction_u/U916/Y (NAND2xp5_ASAP7_75t_R)  15.9561 863.9917 f
+  bg_u/locator_u/correction_u/U945/Y (NAND2xp5_ASAP7_75t_R)  14.6509 878.6426 r
+  bg_u/locator_u/correction_u/U594/Y (BUFx3_ASAP7_75t_R)  24.5697 903.2123 r
+  bg_u/locator_u/correction_u/U585/Y (NAND2xp5_ASAP7_75t_R)  20.5050 923.7173 f
+  bg_u/locator_u/correction_u/U386/Y (OA22x2_ASAP7_75t_R)  32.3822 956.0995 f
+  bg_u/locator_u/correction_u/U273/Y (NAND2x1_ASAP7_75t_R)  12.3215 968.4210 r
+  bg_u/locator_u/correction_u/U988/Y (INVx1_ASAP7_75t_R)   8.6886 977.1096 f
+  bg_u/locator_u/correction_u/U991/Y (OAI221xp5_ASAP7_75t_R)  24.2100 1001.3196 r
+  bg_u/locator_u/correction_u/U1002/Y (NAND3xp33_ASAP7_75t_R)  23.1159 1024.4355 f
+  bg_u/locator_u/correction_u/U507/Y (OR2x2_ASAP7_75t_R)  30.9994 1055.4349 f
+  bg_u/locator_u/correction_u/U1029/Y (OR3x1_ASAP7_75t_R)  29.1639 1084.5989 f
+  bg_u/locator_u/correction_u/U1031/Y (AOI31xp67_ASAP7_75t_R)  14.1150 1098.7139 r
+  bg_u/locator_u/correction_u/result_o[9] (fp16_add)    0.0000   1098.7139 r
+  bg_u/locator_u/U150/Y (AND5x1_ASAP7_75t_R)           41.8828   1140.5967 r
+  bg_u/locator_u/U152/Y (AO21x1_ASAP7_75t_R)           17.9491   1158.5458 r
+  bg_u/locator_u/U153/Y (AND5x1_ASAP7_75t_R)           36.9769   1195.5227 r
+  bg_u/locator_u/U590/Y (OR3x1_ASAP7_75t_R)            17.8137   1213.3364 r
+  bg_u/locator_u/U24/Y (OAI21xp5_ASAP7_75t_R)          33.7523   1247.0887 f
+  bg_u/locator_u/U32/Y (HB1xp67_ASAP7_75t_R)           42.3829   1289.4717 f
+  bg_u/locator_u/U8/Y (NAND2x1_ASAP7_75t_R)            43.0038   1332.4755 r
+  bg_u/locator_u/U586/Y (INVx1_ASAP7_75t_R)            22.6890   1355.1644 f
+  bg_u/locator_u/U49/Y (NAND2x1p5_ASAP7_75t_R)         37.3492   1392.5137 r
+  bg_u/locator_u/U562/Y (OA21x2_ASAP7_75t_R)           29.9014   1422.4150 r
+  bg_u/locator_u/U561/Y (OAI221xp5_ASAP7_75t_R)        15.7113   1438.1263 f
+  bg_u/locator_u/candidate_value_o_reg_5_/D (DFFASRHQNx1_ASAP7_75t_R)   0.0000 1438.1263 f
+  data arrival time                                              1438.1263
+
+  clock checker_clk (rise edge)                       1500.0000  1500.0000
+  clock network delay (ideal)                           0.0000   1500.0000
+  clock uncertainty                                   -50.0000   1450.0000
+  bg_u/locator_u/candidate_value_o_reg_5_/CLK (DFFASRHQNx1_ASAP7_75t_R)   0.0000 1450.0000 r
+  library setup time                                   -6.9560   1443.0441
+  data required time                                             1443.0441
+  --------------------------------------------------------------------------
+  data required time                                             1443.0441
+  data arrival time                                              -1438.1263
+  --------------------------------------------------------------------------
+  slack (MET)                                                      4.9177
+
+
+  Startpoint: bg_u/locator_u/lookup_y_reg_13_
+              (rising edge-triggered flip-flop clocked by checker_clk)
+  Endpoint: bg_u/locator_u/candidate_value_o_reg_6_
+            (rising edge-triggered flip-flop clocked by checker_clk)
+  Path Group: REG2REG
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  bg_u/locator_u/lookup_y_reg_13_/CLK (DFFASRHQNx1_ASAP7_75t_R)   0.0000 #   0.0000 r
+  bg_u/locator_u/lookup_y_reg_13_/QN (DFFASRHQNx1_ASAP7_75t_R) 131.5986 131.5986 r
+  bg_u/locator_u/correction_u/a_i[13] (fp16_add)        0.0000   131.5986 r
+  bg_u/locator_u/correction_u/U611/Y (OAI22x1_ASAP7_75t_R)  32.4974 164.0960 f
+  bg_u/locator_u/correction_u/U642/Y (INVx1_ASAP7_75t_R)  14.3119 178.4079 r
+  bg_u/locator_u/correction_u/U643/Y (OAI21xp5_ASAP7_75t_R)  23.7484 202.1563 f
+  bg_u/locator_u/correction_u/U683/Y (NAND2xp5_ASAP7_75t_R)  28.0932 230.2495 r
+  bg_u/locator_u/correction_u/U684/Y (INVx1_ASAP7_75t_R)  13.5564 243.8059 f
+  bg_u/locator_u/correction_u/U708/Y (NAND2xp5_ASAP7_75t_R)  18.7492 262.5551 r
+  bg_u/locator_u/correction_u/U715/Y (NAND2xp5_ASAP7_75t_R)  19.1565 281.7116 f
+  bg_u/locator_u/correction_u/U754/Y (INVx1_ASAP7_75t_R)  10.9106 292.6222 r
+  bg_u/locator_u/correction_u/U755/Y (AOI311xp33_ASAP7_75t_R)  10.9088 303.5310 f
+  bg_u/locator_u/correction_u/U756/Y (AOI331xp33_ASAP7_75t_R)  41.9535 345.4845 r
+  bg_u/locator_u/correction_u/U757/SN (FAx1_ASAP7_75t_R)  53.3223 398.8068 f
+  bg_u/locator_u/correction_u/U369/Y (INVxp67_ASAP7_75t_R)  18.5372 417.3440 r
+  bg_u/locator_u/correction_u/U572/Y (NAND2xp33_ASAP7_75t_R)  14.0674 431.4114 f
+  bg_u/locator_u/correction_u/U571/Y (BUFx3_ASAP7_75t_R)  25.2393 456.6507 f
+  bg_u/locator_u/correction_u/U547/Y (INVx3_ASAP7_75t_R)  10.5821 467.2328 r
+  bg_u/locator_u/correction_u/U789/Y (NAND2xp5_ASAP7_75t_R)  12.8255 480.0583 f
+  bg_u/locator_u/correction_u/U525/Y (AO21x1_ASAP7_75t_R)  27.2391 507.2974 f
+  bg_u/locator_u/correction_u/U803/Y (AOI33xp33_ASAP7_75t_R)  33.0955 540.3928 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/B[6] (fp16_add_DW01_sub_13)   0.0000 540.3928 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U3/Y (INVxp33_ASAP7_75t_R)  22.0424 562.4352 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U103/Y (NAND2xp5_ASAP7_75t_R)  19.1047 581.5399 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U34/Y (OA21x2_ASAP7_75t_R)  25.5436 607.0835 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U40/Y (OAI21x1_ASAP7_75t_R)   9.5853 616.6688 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U100/Y (NAND2xp5_ASAP7_75t_R)  15.5573 632.2261 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U7/Y (NAND2x1_ASAP7_75t_R)  13.7076 645.9337 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U6/Y (AOI21x1_ASAP7_75t_R)  19.0480 664.9817 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U96/Y (OAI21xp5_ASAP7_75t_R)  18.3749 683.3566 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U90/Y (XNOR2xp5_ASAP7_75t_R)  28.5370 711.8936 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/DIFF[11] (fp16_add_DW01_sub_13)   0.0000 711.8936 f
+  bg_u/locator_u/correction_u/U280/Y (NAND2xp33_ASAP7_75t_R)  24.8859 736.7795 r
+  bg_u/locator_u/correction_u/U282/Y (AND3x4_ASAP7_75t_R)  37.2271 774.0065 r
+  bg_u/locator_u/correction_u/U265/Y (NAND2x1_ASAP7_75t_R)   9.0380 783.0446 f
+  bg_u/locator_u/correction_u/U885/Y (NAND2xp5_ASAP7_75t_R)  13.1452 796.1898 r
+  bg_u/locator_u/correction_u/U353/Y (OA21x2_ASAP7_75t_R)  26.2039 822.3936 r
+  bg_u/locator_u/correction_u/U902/Y (OAI31xp67_ASAP7_75t_R)  11.3038 833.6974 f
+  bg_u/locator_u/correction_u/U903/Y (NOR2x1_ASAP7_75t_R)  14.3382 848.0356 r
+  bg_u/locator_u/correction_u/U916/Y (NAND2xp5_ASAP7_75t_R)  15.9561 863.9917 f
+  bg_u/locator_u/correction_u/U945/Y (NAND2xp5_ASAP7_75t_R)  14.6509 878.6426 r
+  bg_u/locator_u/correction_u/U594/Y (BUFx3_ASAP7_75t_R)  24.5697 903.2123 r
+  bg_u/locator_u/correction_u/U585/Y (NAND2xp5_ASAP7_75t_R)  20.5050 923.7173 f
+  bg_u/locator_u/correction_u/U386/Y (OA22x2_ASAP7_75t_R)  32.3822 956.0995 f
+  bg_u/locator_u/correction_u/U273/Y (NAND2x1_ASAP7_75t_R)  12.3215 968.4210 r
+  bg_u/locator_u/correction_u/U988/Y (INVx1_ASAP7_75t_R)   8.6886 977.1096 f
+  bg_u/locator_u/correction_u/U991/Y (OAI221xp5_ASAP7_75t_R)  24.2100 1001.3196 r
+  bg_u/locator_u/correction_u/U1002/Y (NAND3xp33_ASAP7_75t_R)  23.1159 1024.4355 f
+  bg_u/locator_u/correction_u/U507/Y (OR2x2_ASAP7_75t_R)  30.9994 1055.4349 f
+  bg_u/locator_u/correction_u/U1029/Y (OR3x1_ASAP7_75t_R)  29.1639 1084.5989 f
+  bg_u/locator_u/correction_u/U1031/Y (AOI31xp67_ASAP7_75t_R)  14.1150 1098.7139 r
+  bg_u/locator_u/correction_u/result_o[9] (fp16_add)    0.0000   1098.7139 r
+  bg_u/locator_u/U150/Y (AND5x1_ASAP7_75t_R)           41.8828   1140.5967 r
+  bg_u/locator_u/U152/Y (AO21x1_ASAP7_75t_R)           17.9491   1158.5458 r
+  bg_u/locator_u/U153/Y (AND5x1_ASAP7_75t_R)           36.9769   1195.5227 r
+  bg_u/locator_u/U590/Y (OR3x1_ASAP7_75t_R)            17.8137   1213.3364 r
+  bg_u/locator_u/U24/Y (OAI21xp5_ASAP7_75t_R)          33.7523   1247.0887 f
+  bg_u/locator_u/U32/Y (HB1xp67_ASAP7_75t_R)           42.3829   1289.4717 f
+  bg_u/locator_u/U8/Y (NAND2x1_ASAP7_75t_R)            43.0038   1332.4755 r
+  bg_u/locator_u/U586/Y (INVx1_ASAP7_75t_R)            22.6890   1355.1644 f
+  bg_u/locator_u/U49/Y (NAND2x1p5_ASAP7_75t_R)         37.3492   1392.5137 r
+  bg_u/locator_u/U564/Y (OA21x2_ASAP7_75t_R)           29.9014   1422.4150 r
+  bg_u/locator_u/U563/Y (OAI221xp5_ASAP7_75t_R)        15.7113   1438.1263 f
+  bg_u/locator_u/candidate_value_o_reg_6_/D (DFFASRHQNx1_ASAP7_75t_R)   0.0000 1438.1263 f
+  data arrival time                                              1438.1263
+
+  clock checker_clk (rise edge)                       1500.0000  1500.0000
+  clock network delay (ideal)                           0.0000   1500.0000
+  clock uncertainty                                   -50.0000   1450.0000
+  bg_u/locator_u/candidate_value_o_reg_6_/CLK (DFFASRHQNx1_ASAP7_75t_R)   0.0000 1450.0000 r
+  library setup time                                   -6.9560   1443.0441
+  data required time                                             1443.0441
+  --------------------------------------------------------------------------
+  data required time                                             1443.0441
+  data arrival time                                              -1438.1263
+  --------------------------------------------------------------------------
+  slack (MET)                                                      4.9177
+
+
+  Startpoint: bg_u/locator_u/lookup_y_reg_13_
+              (rising edge-triggered flip-flop clocked by checker_clk)
+  Endpoint: bg_u/locator_u/candidate_value_o_reg_7_
+            (rising edge-triggered flip-flop clocked by checker_clk)
+  Path Group: REG2REG
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  bg_u/locator_u/lookup_y_reg_13_/CLK (DFFASRHQNx1_ASAP7_75t_R)   0.0000 #   0.0000 r
+  bg_u/locator_u/lookup_y_reg_13_/QN (DFFASRHQNx1_ASAP7_75t_R) 131.5986 131.5986 r
+  bg_u/locator_u/correction_u/a_i[13] (fp16_add)        0.0000   131.5986 r
+  bg_u/locator_u/correction_u/U611/Y (OAI22x1_ASAP7_75t_R)  32.4974 164.0960 f
+  bg_u/locator_u/correction_u/U642/Y (INVx1_ASAP7_75t_R)  14.3119 178.4079 r
+  bg_u/locator_u/correction_u/U643/Y (OAI21xp5_ASAP7_75t_R)  23.7484 202.1563 f
+  bg_u/locator_u/correction_u/U683/Y (NAND2xp5_ASAP7_75t_R)  28.0932 230.2495 r
+  bg_u/locator_u/correction_u/U684/Y (INVx1_ASAP7_75t_R)  13.5564 243.8059 f
+  bg_u/locator_u/correction_u/U708/Y (NAND2xp5_ASAP7_75t_R)  18.7492 262.5551 r
+  bg_u/locator_u/correction_u/U715/Y (NAND2xp5_ASAP7_75t_R)  19.1565 281.7116 f
+  bg_u/locator_u/correction_u/U754/Y (INVx1_ASAP7_75t_R)  10.9106 292.6222 r
+  bg_u/locator_u/correction_u/U755/Y (AOI311xp33_ASAP7_75t_R)  10.9088 303.5310 f
+  bg_u/locator_u/correction_u/U756/Y (AOI331xp33_ASAP7_75t_R)  41.9535 345.4845 r
+  bg_u/locator_u/correction_u/U757/SN (FAx1_ASAP7_75t_R)  53.3223 398.8068 f
+  bg_u/locator_u/correction_u/U369/Y (INVxp67_ASAP7_75t_R)  18.5372 417.3440 r
+  bg_u/locator_u/correction_u/U572/Y (NAND2xp33_ASAP7_75t_R)  14.0674 431.4114 f
+  bg_u/locator_u/correction_u/U571/Y (BUFx3_ASAP7_75t_R)  25.2393 456.6507 f
+  bg_u/locator_u/correction_u/U547/Y (INVx3_ASAP7_75t_R)  10.5821 467.2328 r
+  bg_u/locator_u/correction_u/U789/Y (NAND2xp5_ASAP7_75t_R)  12.8255 480.0583 f
+  bg_u/locator_u/correction_u/U525/Y (AO21x1_ASAP7_75t_R)  27.2391 507.2974 f
+  bg_u/locator_u/correction_u/U803/Y (AOI33xp33_ASAP7_75t_R)  33.0955 540.3928 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/B[6] (fp16_add_DW01_sub_13)   0.0000 540.3928 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U3/Y (INVxp33_ASAP7_75t_R)  22.0424 562.4352 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U103/Y (NAND2xp5_ASAP7_75t_R)  19.1047 581.5399 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U34/Y (OA21x2_ASAP7_75t_R)  25.5436 607.0835 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U40/Y (OAI21x1_ASAP7_75t_R)   9.5853 616.6688 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U100/Y (NAND2xp5_ASAP7_75t_R)  15.5573 632.2261 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U7/Y (NAND2x1_ASAP7_75t_R)  13.7076 645.9337 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U6/Y (AOI21x1_ASAP7_75t_R)  19.0480 664.9817 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U96/Y (OAI21xp5_ASAP7_75t_R)  18.3749 683.3566 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U90/Y (XNOR2xp5_ASAP7_75t_R)  28.5370 711.8936 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/DIFF[11] (fp16_add_DW01_sub_13)   0.0000 711.8936 f
+  bg_u/locator_u/correction_u/U280/Y (NAND2xp33_ASAP7_75t_R)  24.8859 736.7795 r
+  bg_u/locator_u/correction_u/U282/Y (AND3x4_ASAP7_75t_R)  37.2271 774.0065 r
+  bg_u/locator_u/correction_u/U265/Y (NAND2x1_ASAP7_75t_R)   9.0380 783.0446 f
+  bg_u/locator_u/correction_u/U885/Y (NAND2xp5_ASAP7_75t_R)  13.1452 796.1898 r
+  bg_u/locator_u/correction_u/U353/Y (OA21x2_ASAP7_75t_R)  26.2039 822.3936 r
+  bg_u/locator_u/correction_u/U902/Y (OAI31xp67_ASAP7_75t_R)  11.3038 833.6974 f
+  bg_u/locator_u/correction_u/U903/Y (NOR2x1_ASAP7_75t_R)  14.3382 848.0356 r
+  bg_u/locator_u/correction_u/U916/Y (NAND2xp5_ASAP7_75t_R)  15.9561 863.9917 f
+  bg_u/locator_u/correction_u/U945/Y (NAND2xp5_ASAP7_75t_R)  14.6509 878.6426 r
+  bg_u/locator_u/correction_u/U594/Y (BUFx3_ASAP7_75t_R)  24.5697 903.2123 r
+  bg_u/locator_u/correction_u/U585/Y (NAND2xp5_ASAP7_75t_R)  20.5050 923.7173 f
+  bg_u/locator_u/correction_u/U386/Y (OA22x2_ASAP7_75t_R)  32.3822 956.0995 f
+  bg_u/locator_u/correction_u/U273/Y (NAND2x1_ASAP7_75t_R)  12.3215 968.4210 r
+  bg_u/locator_u/correction_u/U988/Y (INVx1_ASAP7_75t_R)   8.6886 977.1096 f
+  bg_u/locator_u/correction_u/U991/Y (OAI221xp5_ASAP7_75t_R)  24.2100 1001.3196 r
+  bg_u/locator_u/correction_u/U1002/Y (NAND3xp33_ASAP7_75t_R)  23.1159 1024.4355 f
+  bg_u/locator_u/correction_u/U507/Y (OR2x2_ASAP7_75t_R)  30.9994 1055.4349 f
+  bg_u/locator_u/correction_u/U1029/Y (OR3x1_ASAP7_75t_R)  29.1639 1084.5989 f
+  bg_u/locator_u/correction_u/U1031/Y (AOI31xp67_ASAP7_75t_R)  14.1150 1098.7139 r
+  bg_u/locator_u/correction_u/result_o[9] (fp16_add)    0.0000   1098.7139 r
+  bg_u/locator_u/U150/Y (AND5x1_ASAP7_75t_R)           41.8828   1140.5967 r
+  bg_u/locator_u/U152/Y (AO21x1_ASAP7_75t_R)           17.9491   1158.5458 r
+  bg_u/locator_u/U153/Y (AND5x1_ASAP7_75t_R)           36.9769   1195.5227 r
+  bg_u/locator_u/U590/Y (OR3x1_ASAP7_75t_R)            17.8137   1213.3364 r
+  bg_u/locator_u/U24/Y (OAI21xp5_ASAP7_75t_R)          33.7523   1247.0887 f
+  bg_u/locator_u/U32/Y (HB1xp67_ASAP7_75t_R)           42.3829   1289.4717 f
+  bg_u/locator_u/U8/Y (NAND2x1_ASAP7_75t_R)            43.0038   1332.4755 r
+  bg_u/locator_u/U586/Y (INVx1_ASAP7_75t_R)            22.6890   1355.1644 f
+  bg_u/locator_u/U49/Y (NAND2x1p5_ASAP7_75t_R)         37.3492   1392.5137 r
+  bg_u/locator_u/U566/Y (OA21x2_ASAP7_75t_R)           29.9014   1422.4150 r
+  bg_u/locator_u/U565/Y (OAI221xp5_ASAP7_75t_R)        15.7113   1438.1263 f
+  bg_u/locator_u/candidate_value_o_reg_7_/D (DFFASRHQNx1_ASAP7_75t_R)   0.0000 1438.1263 f
+  data arrival time                                              1438.1263
+
+  clock checker_clk (rise edge)                       1500.0000  1500.0000
+  clock network delay (ideal)                           0.0000   1500.0000
+  clock uncertainty                                   -50.0000   1450.0000
+  bg_u/locator_u/candidate_value_o_reg_7_/CLK (DFFASRHQNx1_ASAP7_75t_R)   0.0000 1450.0000 r
+  library setup time                                   -6.9560   1443.0441
+  data required time                                             1443.0441
+  --------------------------------------------------------------------------
+  data required time                                             1443.0441
+  data arrival time                                              -1438.1263
+  --------------------------------------------------------------------------
+  slack (MET)                                                      4.9177
+
+
+  Startpoint: bg_u/locator_u/lookup_y_reg_13_
+              (rising edge-triggered flip-flop clocked by checker_clk)
+  Endpoint: bg_u/locator_u/candidate_value_o_reg_8_
+            (rising edge-triggered flip-flop clocked by checker_clk)
+  Path Group: REG2REG
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  bg_u/locator_u/lookup_y_reg_13_/CLK (DFFASRHQNx1_ASAP7_75t_R)   0.0000 #   0.0000 r
+  bg_u/locator_u/lookup_y_reg_13_/QN (DFFASRHQNx1_ASAP7_75t_R) 131.5986 131.5986 r
+  bg_u/locator_u/correction_u/a_i[13] (fp16_add)        0.0000   131.5986 r
+  bg_u/locator_u/correction_u/U611/Y (OAI22x1_ASAP7_75t_R)  32.4974 164.0960 f
+  bg_u/locator_u/correction_u/U642/Y (INVx1_ASAP7_75t_R)  14.3119 178.4079 r
+  bg_u/locator_u/correction_u/U643/Y (OAI21xp5_ASAP7_75t_R)  23.7484 202.1563 f
+  bg_u/locator_u/correction_u/U683/Y (NAND2xp5_ASAP7_75t_R)  28.0932 230.2495 r
+  bg_u/locator_u/correction_u/U684/Y (INVx1_ASAP7_75t_R)  13.5564 243.8059 f
+  bg_u/locator_u/correction_u/U708/Y (NAND2xp5_ASAP7_75t_R)  18.7492 262.5551 r
+  bg_u/locator_u/correction_u/U715/Y (NAND2xp5_ASAP7_75t_R)  19.1565 281.7116 f
+  bg_u/locator_u/correction_u/U754/Y (INVx1_ASAP7_75t_R)  10.9106 292.6222 r
+  bg_u/locator_u/correction_u/U755/Y (AOI311xp33_ASAP7_75t_R)  10.9088 303.5310 f
+  bg_u/locator_u/correction_u/U756/Y (AOI331xp33_ASAP7_75t_R)  41.9535 345.4845 r
+  bg_u/locator_u/correction_u/U757/SN (FAx1_ASAP7_75t_R)  53.3223 398.8068 f
+  bg_u/locator_u/correction_u/U369/Y (INVxp67_ASAP7_75t_R)  18.5372 417.3440 r
+  bg_u/locator_u/correction_u/U572/Y (NAND2xp33_ASAP7_75t_R)  14.0674 431.4114 f
+  bg_u/locator_u/correction_u/U571/Y (BUFx3_ASAP7_75t_R)  25.2393 456.6507 f
+  bg_u/locator_u/correction_u/U547/Y (INVx3_ASAP7_75t_R)  10.5821 467.2328 r
+  bg_u/locator_u/correction_u/U789/Y (NAND2xp5_ASAP7_75t_R)  12.8255 480.0583 f
+  bg_u/locator_u/correction_u/U525/Y (AO21x1_ASAP7_75t_R)  27.2391 507.2974 f
+  bg_u/locator_u/correction_u/U803/Y (AOI33xp33_ASAP7_75t_R)  33.0955 540.3928 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/B[6] (fp16_add_DW01_sub_13)   0.0000 540.3928 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U3/Y (INVxp33_ASAP7_75t_R)  22.0424 562.4352 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U103/Y (NAND2xp5_ASAP7_75t_R)  19.1047 581.5399 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U34/Y (OA21x2_ASAP7_75t_R)  25.5436 607.0835 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U40/Y (OAI21x1_ASAP7_75t_R)   9.5853 616.6688 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U100/Y (NAND2xp5_ASAP7_75t_R)  15.5573 632.2261 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U7/Y (NAND2x1_ASAP7_75t_R)  13.7076 645.9337 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U6/Y (AOI21x1_ASAP7_75t_R)  19.0480 664.9817 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U96/Y (OAI21xp5_ASAP7_75t_R)  18.3749 683.3566 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U90/Y (XNOR2xp5_ASAP7_75t_R)  28.5370 711.8936 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/DIFF[11] (fp16_add_DW01_sub_13)   0.0000 711.8936 f
+  bg_u/locator_u/correction_u/U280/Y (NAND2xp33_ASAP7_75t_R)  24.8859 736.7795 r
+  bg_u/locator_u/correction_u/U282/Y (AND3x4_ASAP7_75t_R)  37.2271 774.0065 r
+  bg_u/locator_u/correction_u/U265/Y (NAND2x1_ASAP7_75t_R)   9.0380 783.0446 f
+  bg_u/locator_u/correction_u/U885/Y (NAND2xp5_ASAP7_75t_R)  13.1452 796.1898 r
+  bg_u/locator_u/correction_u/U353/Y (OA21x2_ASAP7_75t_R)  26.2039 822.3936 r
+  bg_u/locator_u/correction_u/U902/Y (OAI31xp67_ASAP7_75t_R)  11.3038 833.6974 f
+  bg_u/locator_u/correction_u/U903/Y (NOR2x1_ASAP7_75t_R)  14.3382 848.0356 r
+  bg_u/locator_u/correction_u/U916/Y (NAND2xp5_ASAP7_75t_R)  15.9561 863.9917 f
+  bg_u/locator_u/correction_u/U945/Y (NAND2xp5_ASAP7_75t_R)  14.6509 878.6426 r
+  bg_u/locator_u/correction_u/U594/Y (BUFx3_ASAP7_75t_R)  24.5697 903.2123 r
+  bg_u/locator_u/correction_u/U585/Y (NAND2xp5_ASAP7_75t_R)  20.5050 923.7173 f
+  bg_u/locator_u/correction_u/U386/Y (OA22x2_ASAP7_75t_R)  32.3822 956.0995 f
+  bg_u/locator_u/correction_u/U273/Y (NAND2x1_ASAP7_75t_R)  12.3215 968.4210 r
+  bg_u/locator_u/correction_u/U988/Y (INVx1_ASAP7_75t_R)   8.6886 977.1096 f
+  bg_u/locator_u/correction_u/U991/Y (OAI221xp5_ASAP7_75t_R)  24.2100 1001.3196 r
+  bg_u/locator_u/correction_u/U1002/Y (NAND3xp33_ASAP7_75t_R)  23.1159 1024.4355 f
+  bg_u/locator_u/correction_u/U507/Y (OR2x2_ASAP7_75t_R)  30.9994 1055.4349 f
+  bg_u/locator_u/correction_u/U1029/Y (OR3x1_ASAP7_75t_R)  29.1639 1084.5989 f
+  bg_u/locator_u/correction_u/U1031/Y (AOI31xp67_ASAP7_75t_R)  14.1150 1098.7139 r
+  bg_u/locator_u/correction_u/result_o[9] (fp16_add)    0.0000   1098.7139 r
+  bg_u/locator_u/U150/Y (AND5x1_ASAP7_75t_R)           41.8828   1140.5967 r
+  bg_u/locator_u/U152/Y (AO21x1_ASAP7_75t_R)           17.9491   1158.5458 r
+  bg_u/locator_u/U153/Y (AND5x1_ASAP7_75t_R)           36.9769   1195.5227 r
+  bg_u/locator_u/U590/Y (OR3x1_ASAP7_75t_R)            17.8137   1213.3364 r
+  bg_u/locator_u/U24/Y (OAI21xp5_ASAP7_75t_R)          33.7523   1247.0887 f
+  bg_u/locator_u/U32/Y (HB1xp67_ASAP7_75t_R)           42.3829   1289.4717 f
+  bg_u/locator_u/U8/Y (NAND2x1_ASAP7_75t_R)            43.0038   1332.4755 r
+  bg_u/locator_u/U586/Y (INVx1_ASAP7_75t_R)            22.6890   1355.1644 f
+  bg_u/locator_u/U49/Y (NAND2x1p5_ASAP7_75t_R)         37.3492   1392.5137 r
+  bg_u/locator_u/U568/Y (OA21x2_ASAP7_75t_R)           29.9014   1422.4150 r
+  bg_u/locator_u/U567/Y (OAI221xp5_ASAP7_75t_R)        15.7113   1438.1263 f
+  bg_u/locator_u/candidate_value_o_reg_8_/D (DFFASRHQNx1_ASAP7_75t_R)   0.0000 1438.1263 f
+  data arrival time                                              1438.1263
+
+  clock checker_clk (rise edge)                       1500.0000  1500.0000
+  clock network delay (ideal)                           0.0000   1500.0000
+  clock uncertainty                                   -50.0000   1450.0000
+  bg_u/locator_u/candidate_value_o_reg_8_/CLK (DFFASRHQNx1_ASAP7_75t_R)   0.0000 1450.0000 r
+  library setup time                                   -6.9560   1443.0441
+  data required time                                             1443.0441
+  --------------------------------------------------------------------------
+  data required time                                             1443.0441
+  data arrival time                                              -1438.1263
+  --------------------------------------------------------------------------
+  slack (MET)                                                      4.9177
+
+
+  Startpoint: bg_u/locator_u/lookup_y_reg_13_
+              (rising edge-triggered flip-flop clocked by checker_clk)
+  Endpoint: bg_u/locator_u/candidate_value_o_reg_9_
+            (rising edge-triggered flip-flop clocked by checker_clk)
+  Path Group: REG2REG
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock checker_clk (rise edge)                         0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  bg_u/locator_u/lookup_y_reg_13_/CLK (DFFASRHQNx1_ASAP7_75t_R)   0.0000 #   0.0000 r
+  bg_u/locator_u/lookup_y_reg_13_/QN (DFFASRHQNx1_ASAP7_75t_R) 131.5986 131.5986 r
+  bg_u/locator_u/correction_u/a_i[13] (fp16_add)        0.0000   131.5986 r
+  bg_u/locator_u/correction_u/U611/Y (OAI22x1_ASAP7_75t_R)  32.4974 164.0960 f
+  bg_u/locator_u/correction_u/U642/Y (INVx1_ASAP7_75t_R)  14.3119 178.4079 r
+  bg_u/locator_u/correction_u/U643/Y (OAI21xp5_ASAP7_75t_R)  23.7484 202.1563 f
+  bg_u/locator_u/correction_u/U683/Y (NAND2xp5_ASAP7_75t_R)  28.0932 230.2495 r
+  bg_u/locator_u/correction_u/U684/Y (INVx1_ASAP7_75t_R)  13.5564 243.8059 f
+  bg_u/locator_u/correction_u/U708/Y (NAND2xp5_ASAP7_75t_R)  18.7492 262.5551 r
+  bg_u/locator_u/correction_u/U715/Y (NAND2xp5_ASAP7_75t_R)  19.1565 281.7116 f
+  bg_u/locator_u/correction_u/U754/Y (INVx1_ASAP7_75t_R)  10.9106 292.6222 r
+  bg_u/locator_u/correction_u/U755/Y (AOI311xp33_ASAP7_75t_R)  10.9088 303.5310 f
+  bg_u/locator_u/correction_u/U756/Y (AOI331xp33_ASAP7_75t_R)  41.9535 345.4845 r
+  bg_u/locator_u/correction_u/U757/SN (FAx1_ASAP7_75t_R)  53.3223 398.8068 f
+  bg_u/locator_u/correction_u/U369/Y (INVxp67_ASAP7_75t_R)  18.5372 417.3440 r
+  bg_u/locator_u/correction_u/U572/Y (NAND2xp33_ASAP7_75t_R)  14.0674 431.4114 f
+  bg_u/locator_u/correction_u/U571/Y (BUFx3_ASAP7_75t_R)  25.2393 456.6507 f
+  bg_u/locator_u/correction_u/U547/Y (INVx3_ASAP7_75t_R)  10.5821 467.2328 r
+  bg_u/locator_u/correction_u/U789/Y (NAND2xp5_ASAP7_75t_R)  12.8255 480.0583 f
+  bg_u/locator_u/correction_u/U525/Y (AO21x1_ASAP7_75t_R)  27.2391 507.2974 f
+  bg_u/locator_u/correction_u/U803/Y (AOI33xp33_ASAP7_75t_R)  33.0955 540.3928 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/B[6] (fp16_add_DW01_sub_13)   0.0000 540.3928 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U3/Y (INVxp33_ASAP7_75t_R)  22.0424 562.4352 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U103/Y (NAND2xp5_ASAP7_75t_R)  19.1047 581.5399 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U34/Y (OA21x2_ASAP7_75t_R)  25.5436 607.0835 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U40/Y (OAI21x1_ASAP7_75t_R)   9.5853 616.6688 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U100/Y (NAND2xp5_ASAP7_75t_R)  15.5573 632.2261 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U7/Y (NAND2x1_ASAP7_75t_R)  13.7076 645.9337 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U6/Y (AOI21x1_ASAP7_75t_R)  19.0480 664.9817 r
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U96/Y (OAI21xp5_ASAP7_75t_R)  18.3749 683.3566 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/U90/Y (XNOR2xp5_ASAP7_75t_R)  28.5370 711.8936 f
+  bg_u/locator_u/correction_u/sub_66_C9_rn/DIFF[11] (fp16_add_DW01_sub_13)   0.0000 711.8936 f
+  bg_u/locator_u/correction_u/U280/Y (NAND2xp33_ASAP7_75t_R)  24.8859 736.7795 r
+  bg_u/locator_u/correction_u/U282/Y (AND3x4_ASAP7_75t_R)  37.2271 774.0065 r
+  bg_u/locator_u/correction_u/U265/Y (NAND2x1_ASAP7_75t_R)   9.0380 783.0446 f
+  bg_u/locator_u/correction_u/U885/Y (NAND2xp5_ASAP7_75t_R)  13.1452 796.1898 r
+  bg_u/locator_u/correction_u/U353/Y (OA21x2_ASAP7_75t_R)  26.2039 822.3936 r
+  bg_u/locator_u/correction_u/U902/Y (OAI31xp67_ASAP7_75t_R)  11.3038 833.6974 f
+  bg_u/locator_u/correction_u/U903/Y (NOR2x1_ASAP7_75t_R)  14.3382 848.0356 r
+  bg_u/locator_u/correction_u/U916/Y (NAND2xp5_ASAP7_75t_R)  15.9561 863.9917 f
+  bg_u/locator_u/correction_u/U945/Y (NAND2xp5_ASAP7_75t_R)  14.6509 878.6426 r
+  bg_u/locator_u/correction_u/U594/Y (BUFx3_ASAP7_75t_R)  24.5697 903.2123 r
+  bg_u/locator_u/correction_u/U585/Y (NAND2xp5_ASAP7_75t_R)  20.5050 923.7173 f
+  bg_u/locator_u/correction_u/U386/Y (OA22x2_ASAP7_75t_R)  32.3822 956.0995 f
+  bg_u/locator_u/correction_u/U273/Y (NAND2x1_ASAP7_75t_R)  12.3215 968.4210 r
+  bg_u/locator_u/correction_u/U988/Y (INVx1_ASAP7_75t_R)   8.6886 977.1096 f
+  bg_u/locator_u/correction_u/U991/Y (OAI221xp5_ASAP7_75t_R)  24.2100 1001.3196 r
+  bg_u/locator_u/correction_u/U1002/Y (NAND3xp33_ASAP7_75t_R)  23.1159 1024.4355 f
+  bg_u/locator_u/correction_u/U507/Y (OR2x2_ASAP7_75t_R)  30.9994 1055.4349 f
+  bg_u/locator_u/correction_u/U1029/Y (OR3x1_ASAP7_75t_R)  29.1639 1084.5989 f
+  bg_u/locator_u/correction_u/U1031/Y (AOI31xp67_ASAP7_75t_R)  14.1150 1098.7139 r
+  bg_u/locator_u/correction_u/result_o[9] (fp16_add)    0.0000   1098.7139 r
+  bg_u/locator_u/U150/Y (AND5x1_ASAP7_75t_R)           41.8828   1140.5967 r
+  bg_u/locator_u/U152/Y (AO21x1_ASAP7_75t_R)           17.9491   1158.5458 r
+  bg_u/locator_u/U153/Y (AND5x1_ASAP7_75t_R)           36.9769   1195.5227 r
+  bg_u/locator_u/U590/Y (OR3x1_ASAP7_75t_R)            17.8137   1213.3364 r
+  bg_u/locator_u/U24/Y (OAI21xp5_ASAP7_75t_R)          33.7523   1247.0887 f
+  bg_u/locator_u/U32/Y (HB1xp67_ASAP7_75t_R)           42.3829   1289.4717 f
+  bg_u/locator_u/U8/Y (NAND2x1_ASAP7_75t_R)            43.0038   1332.4755 r
+  bg_u/locator_u/U586/Y (INVx1_ASAP7_75t_R)            22.6890   1355.1644 f
+  bg_u/locator_u/U49/Y (NAND2x1p5_ASAP7_75t_R)         37.3492   1392.5137 r
+  bg_u/locator_u/U570/Y (OA21x2_ASAP7_75t_R)           29.9014   1422.4150 r
+  bg_u/locator_u/U569/Y (OAI221xp5_ASAP7_75t_R)        15.7113   1438.1263 f
+  bg_u/locator_u/candidate_value_o_reg_9_/D (DFFASRHQNx1_ASAP7_75t_R)   0.0000 1438.1263 f
+  data arrival time                                              1438.1263
+
+  clock checker_clk (rise edge)                       1500.0000  1500.0000
+  clock network delay (ideal)                           0.0000   1500.0000
+  clock uncertainty                                   -50.0000   1450.0000
+  bg_u/locator_u/candidate_value_o_reg_9_/CLK (DFFASRHQNx1_ASAP7_75t_R)   0.0000 1450.0000 r
+  library setup time                                   -6.9560   1443.0441
+  data required time                                             1443.0441
+  --------------------------------------------------------------------------
+  data required time                                             1443.0441
+  data arrival time                                              -1438.1263
+  --------------------------------------------------------------------------
+  slack (MET)                                                      4.9177
+
+
+1

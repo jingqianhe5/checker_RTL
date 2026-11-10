@@ -1,0 +1,16 @@
+top=sys_top
+asap7_time_unit=ps
+target_period_ps=1500.0
+target_frequency_mhz=666.666666667
+pvt=RVT_TT_0.7V_25C
+cell_area_um2=44857.527611
+leaf_cells=447493
+sequential_cells=38893
+reg2reg_slack_ps=4.91772
+reg2reg_min_period_estimate_ps=1495.08228
+reg2reg_fixed_mapping_fmax_mhz=668.85950919
+reg2reg_startpoint=bg_u/locator_u/lookup_y_reg_13_/CLK
+reg2reg_endpoint=bg_u/locator_u/candidate_value_o_reg_0_/D
+overall_worst_slack_ps=4.91772
+overall_fixed_mapping_min_period_estimate_ps=1495.08228
+overall_fixed_mapping_fmax_mhz=668.85950919

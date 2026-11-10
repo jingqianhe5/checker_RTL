@@ -13,7 +13,7 @@ function Run-Tool {
     $code=$LASTEXITCODE
     $output|Out-Host
     $all=$output -join "`n"
-    if($code -ne 0 -or $all -match '(?m)^FAIL:'){throw "$Tool failed"}
+    if($code -ne 0 -or $all -match '(?m)^(FAIL:|ERROR:)'){throw "$Tool failed"}
     if($Pass -and $all -notmatch [regex]::Escape($Pass)){throw 'Missing expected PASS marker'}
 }
 Push-Location $build
@@ -33,8 +33,9 @@ try {
         }
         $outputName=if($Evidence){'system_'+$depth+'_evidence'}else{'system_'+$depth}
         $traceScript=if($Evidence){'source ../../scripts/waves_evidence.tcl'}else{'source ../../scripts/waves_system.tcl'}
+        $vcdName=if($Evidence){$outputName+'_raw.vcd'}else{$outputName+'.vcd'}
         $waveScript=$outputName+'_wave.tcl'
-        @("set wave_file $outputName.vcd", "set wave_config_file $outputName.wcfg", $traceScript) |
+        @("set wave_file $vcdName", "set wave_config_file $outputName.wcfg", $traceScript) |
             Set-Content -LiteralPath $waveScript -Encoding ascii
         Run-Tool xsim @($snapshot,'-testplusarg',('"SUMMARY_FILE='+$outputName+'_summary.csv"'),
             '-testplusarg',('"EVIDENCE_LOG='+$outputName+'_events.csv"'),
@@ -47,6 +48,7 @@ try {
         if($LASTEXITCODE -ne 0){throw 'Block 3 evidence export failed'}
         & python (Join-Path $PSScriptRoot 'wave_signals.py') --publish
         if($LASTEXITCODE -ne 0){throw 'Key-signal waveform export failed'}
+        Remove-Item -LiteralPath 'system_8_evidence_raw.vcd'
     }
     if($Elaborate){Run-Tool vivado @('-mode','batch','-source','../../scripts/check_system_rtl.tcl','-log','system_rtl.log','-journal','system_rtl.jou') 'PASS: sys_top RTL elaboration'}
     Write-Host 'PASS: all whole-system simulations'

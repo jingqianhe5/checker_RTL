@@ -4,13 +4,15 @@
 // Exact binary16 magnitude comparison: |Delta|*2^K > max(|R|,|H|).
 // K must be 0..24. Missing trusted H or masked/nonfinite values always fail.
 module abft_packet_check #(parameter integer NUM_LANES=16, REL_SHIFT=8, SINGLE_SHIFT=8)(
+    input wire clk_i, sample_i,
     input wire [47:0] r_i,h_i,delta_i,
     input wire h_valid_i,
     input wire [NUM_LANES-1:0] y_mask_i,input wire [2:0] r_mask_i,delta_nonfinite_i,
-    output wire good_o, output wire [2:0] mismatch_o,
+    output wire good_o, output reg [2:0] mismatch_o,
     output reg [2:0] type_o, output reg [31:0] payload_o
 );
     wire [15:0] d1=delta_i[15:0], d2=delta_i[31:16], d3=delta_i[47:32];
+    wire [2:0] mismatch;
 
     // Work on exact significand products of the FP16 residuals. Keeping the
     // exponent separate avoids FP16 product overflow/underflow and dividers.
@@ -54,14 +56,23 @@ module abft_packet_check #(parameter integer NUM_LANES=16, REL_SHIFT=8, SINGLE_S
     generate for(g=0;g<3;g=g+1) begin: checks
         wire [15:0] r=r_i[g*16+:16], h=h_i[g*16+:16], d=delta_i[g*16+:16];
         wire [15:0] scale = (r[14:0] >= h[14:0]) ? r : h;
-        assign mismatch_o[g] = (scale[14:10]==31) || (d[14:10]==31) ||
-                               above_threshold(d,scale);
+        assign mismatch[g] = (scale[14:10]==31) || (d[14:10]==31) ||
+                             above_threshold(d,scale);
     end endgenerate
 
-    wire [21:0] square = significand(d1) * significand(d1);
-    wire [21:0] product = significand(d2) * significand(d3);
-    wire [5:0] square_exp = exponent(d1) + exponent(d1);
-    wire [5:0] product_exp = exponent(d2) + exponent(d3);
+    reg [21:0] square, product;
+    reg [5:0] square_exp, product_exp;
+    // Capture both products and threshold decisions in parallel. The Bank
+    // holds the corresponding R, H and delta through the result handshake.
+    always @(posedge clk_i) begin
+        if (sample_i) begin
+            mismatch_o <= mismatch;
+            square <= significand(d1) * significand(d1);
+            product <= significand(d2) * significand(d3);
+            square_exp <= exponent(d1) + exponent(d1);
+            product_exp <= exponent(d2) + exponent(d3);
+        end
+    end
     wire square_exp_high = square_exp >= product_exp;
     wire [5:0] gap = square_exp_high ? square_exp-product_exp : product_exp-square_exp;
     wire [21:0] high_product = square_exp_high ? square : product;

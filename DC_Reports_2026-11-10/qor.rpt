@@ -1,0 +1,122 @@
+ 
+****************************************
+Report : qor
+Design : sys_top
+Version: T-2022.03-SP2
+Date   : Tue Nov 10 14:42:35 2026
+****************************************
+
+
+  Timing Path Group 'REG2REG'
+  -----------------------------------
+  Levels of Logic:              57.00
+  Critical Path Length:       1438.13
+  Critical Path Slack:           4.92
+  Critical Path Clk Period:   1500.00
+  Total Negative Slack:          0.00
+  No. of Violating Paths:        0.00
+  Worst Hold Violation:          0.00
+  Total Hold Violation:          0.00
+  No. of Hold Violations:        0.00
+  -----------------------------------
+
+  Timing Path Group 'IN2OUT'
+  -----------------------------------
+  Levels of Logic:               3.00
+  Critical Path Length:        102.55
+  Critical Path Slack:        1047.45
+  Critical Path Clk Period:   1500.00
+  Total Negative Slack:          0.00
+  No. of Violating Paths:        0.00
+  Worst Hold Violation:          0.00
+  Total Hold Violation:          0.00
+  No. of Hold Violations:        0.00
+  -----------------------------------
+
+  Timing Path Group 'IN2REG'
+  -----------------------------------
+  Levels of Logic:              21.00
+  Critical Path Length:       1034.81
+  Critical Path Slack:         245.92
+  Critical Path Clk Period:   1500.00
+  Total Negative Slack:          0.00
+  No. of Violating Paths:        0.00
+  Worst Hold Violation:          0.00
+  Total Hold Violation:          0.00
+  No. of Hold Violations:        0.00
+  -----------------------------------
+
+  Timing Path Group 'REG2OUT'
+  -----------------------------------
+  Levels of Logic:               6.00
+  Critical Path Length:        430.42
+  Critical Path Slack:         869.58
+  Critical Path Clk Period:   1500.00
+  Total Negative Slack:          0.00
+  No. of Violating Paths:        0.00
+  Worst Hold Violation:          0.00
+  Total Hold Violation:          0.00
+  No. of Hold Violations:        0.00
+  -----------------------------------
+
+
+  Cell Count
+  -----------------------------------
+  Hierarchical Cell Count:        983
+  Hierarchical Port Count:      83920
+  Leaf Cell Count:             447493
+  Buf/Inv Cell Count:          121182
+  Buf Cell Count:               13942
+  Inv Cell Count:              107240
+  CT Buf/Inv Cell Count:            0
+  Combinational Cell Count:    408600
+  Sequential Cell Count:        38893
+  Macro Count:                      0
+  -----------------------------------
+
+
+  Area
+  -----------------------------------
+  Combinational Area:    32070.022259
+  Noncombinational Area: 12787.505352
+  Buf/Inv Area:           6282.769935
+  Total Buffer Area:           964.96
+  Total Inverter Area:        5317.81
+  Macro/Black Box Area:      0.000000
+  Net Area:                  0.000000
+  -----------------------------------
+  Cell Area:             44857.527611
+  Design Area:           44857.527611
+
+
+  Design Rules
+  -----------------------------------
+  Total Number of Nets:        455697
+  Nets With Violations:             0
+  Max Trans Violations:             0
+  Max Cap Violations:               0
+  -----------------------------------
+
+
+  Hostname: icpc
+
+  Compile CPU Statistics
+  -----------------------------------------
+  Resource Sharing:                   18.63
+  Logic Optimization:                 11.72
+  Mapping Optimization:               31.52
+  -----------------------------------------
+  Overall Compile Time:               90.97
+  Overall Compile Wall Clock Time:    82.95
+
+  --------------------------------------------------------------------
+
+  Design  WNS: 0.00  TNS: 0.00  Number of Violating Paths: 0
+
+
+  Design (Hold)  WNS: 0.00  TNS: 0.00  Number of Violating Paths: 0
+
+  --------------------------------------------------------------------
+
+
+1

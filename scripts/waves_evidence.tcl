@@ -1,5 +1,5 @@
 # Detailed three-checksum trace for all four banks, including third-channel voting.
-if {![info exists wave_file]} {set wave_file system_8_evidence.vcd}
+if {![info exists wave_file]} {set wave_file system_8_evidence_raw.vcd}
 if {![info exists wave_config_file]} {set wave_config_file system_8_evidence.wcfg}
 set wanted {clk rst_n block_id mode_tree start_valid start_ready result_valid result_ready corrected recovered
     due_mask ev_k_row3 ev_q_bank0 ev_q3 ev_inject_pulse ev_clean_y3 ev_forced_y3 ev_captured_y3 ev_buffer_y3

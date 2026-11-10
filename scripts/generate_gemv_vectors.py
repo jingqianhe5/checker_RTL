@@ -60,6 +60,17 @@ def generate_arithmetic():
     pairs = [(a, SPECIAL[a % len(SPECIAL)]) for a in range(65536)]
     pairs += [(a, b) for a in SPECIAL for b in SPECIAL]
     pairs += [(RNG.randrange(65536), RNG.randrange(65536)) for _ in range(20000)]
+    # Exercise cancellation across the normal/subnormal boundary and alignment
+    # around the half-ULP spacing immediately below a power of two.
+    for exponent in range(1, 31):
+        boundary = exponent << 10
+        for offset in (0, 1, 2, 511, 512, 1022, 1023):
+            a = boundary + offset
+            for gap in (0, 1, 2, 10, 11, 12, 13, 14):
+                smaller = max(0, exponent - gap) << 10
+                for fraction in (0, 1, 511, 512, 1022, 1023):
+                    b = smaller + fraction
+                    pairs.extend(((a, b | 0x8000), (b | 0x8000, a)))
     with (OUT / "fp16_vectors.txt").open("w", encoding="ascii") as stream:
         for a, b in pairs:
             stream.write(f"{a:04x} {b:04x} {add(a,b):04x} {mul(a,b):04x}\n")

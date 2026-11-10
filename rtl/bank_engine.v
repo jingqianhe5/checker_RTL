@@ -51,8 +51,48 @@ module bank_engine #(
     wire [NUM_LANES-1:0] y_mask;
     wire [2:0] r_mask,nonfinite;
     wire h_valid;
+    wire checker_valid;
+    wire [2:0] classified_type;
+    wire [31:0] classified_payload;
+    localparam [1:0] WAIT_PACKET=0, CHECK_PRODUCTS=1, CLASSIFY=2, SEND_PACKET=3;
+    reg [1:0] packet_state;
+    reg [47:0] checked_delta;
+    reg [2:0] checked_nonfinite;
+    reg [2:0] packet_type;
+    reg [31:0] packet_payload;
+
     assign configured_o = (&loaded) && checksum_loaded;
     assign service_o = service;
+    assign valid_o = packet_state == SEND_PACKET;
+    assign fault_type_o = packet_type;
+    assign fault_payload_o = packet_payload;
+    assign good_o = packet_type == 0;
+
+    always @(posedge clk_i or negedge rst_ni) begin
+        if (!rst_ni) begin
+            packet_state <= WAIT_PACKET;
+            packet_type <= 0;
+            packet_payload <= 0;
+        end else begin
+            case (packet_state)
+                WAIT_PACKET: if (checker_valid) packet_state <= CHECK_PRODUCTS;
+                CHECK_PRODUCTS: packet_state <= CLASSIFY;
+                CLASSIFY: begin
+                    packet_type <= classified_type;
+                    packet_payload <= classified_payload;
+                    packet_state <= SEND_PACKET;
+                end
+                SEND_PACKET: if (result_ready_i) packet_state <= WAIT_PACKET;
+            endcase
+        end
+    end
+
+    always @(posedge clk_i) begin
+        if (checker_valid && packet_state == WAIT_PACKET) begin
+            checked_delta <= delta_o;
+            checked_nonfinite <= nonfinite;
+        end
+    end
 
     always @(posedge clk_i)
         if (load_i && row_i < NUM_LANES)
@@ -143,8 +183,8 @@ module bank_engine #(
         .result_delta_nonfinite_o (nonfinite),
 
         // Result handshake
-        .result_valid_o           (valid_o),
-        .result_ready_i           (result_ready_i),
+        .result_valid_o           (checker_valid),
+        .result_ready_i           (valid_o && result_ready_i),
         .busy_o                   ()
     );
 
@@ -153,19 +193,21 @@ module bank_engine #(
         .REL_SHIFT    (REL_SHIFT),
         .SINGLE_SHIFT (SINGLE_SHIFT)
     ) check_u (
+        .clk_i             (clk_i),
+        .sample_i          (packet_state == CHECK_PRODUCTS),
         .r_i               (r_o),
         .h_i               (h_o),
-        .delta_i           (delta_o),
+        .delta_i           (checked_delta),
         .h_valid_i         (h_valid),
 
         .y_mask_i          (y_mask),
         .r_mask_i          (r_mask),
-        .delta_nonfinite_i (nonfinite),
+        .delta_nonfinite_i (checked_nonfinite),
 
-        .good_o            (good_o),
+        .good_o            (),
         .mismatch_o        (),
-        .type_o            (fault_type_o),
-        .payload_o         (fault_payload_o)
+        .type_o            (classified_type),
+        .payload_o         (classified_payload)
     );
 endmodule
 `default_nettype wire

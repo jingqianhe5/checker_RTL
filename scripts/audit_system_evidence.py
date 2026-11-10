@@ -258,7 +258,7 @@ def inspect():
     previous = dict(values)
 
 
-for line in PREFIX.with_suffix('.vcd').read_text().splitlines():
+for line in (BUILD / 'system_8_evidence_raw.vcd').read_text().splitlines():
     if line.startswith('$var '):
         parts = line.split()
         names[parts[3]] = parts[4]

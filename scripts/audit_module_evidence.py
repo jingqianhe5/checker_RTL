@@ -92,7 +92,7 @@ class ModuleAudit:
                 samples = self.sessions[bank]
                 round_number = new('h_attempts')
                 assert old('h_attempts') == len(samples) and round_number == len(samples) + 1
-                assert time_ps - self.h_start_times[bank] == 80_000 * round_number
+                assert time_ps - self.h_start_times[bank] == 110_000 * round_number
                 agreed = len(samples) == 2 and samples[0] == samples[1] and samples[0][1]
                 assert bool(old('h_skip_round')) == agreed
                 if agreed:
@@ -116,10 +116,10 @@ class ModuleAudit:
             if new('h_attempts') < 3:
                 assert not new('h_commit') and not new('h_fail') and not new('h_done_valid')
             if new('packet_valid') and not old('packet_valid'):
-                assert new('h_attempts') == 3 and time_ps - self.h_start_times[bank] == 250_000
+                assert new('h_attempts') == 3 and time_ps - self.h_start_times[bank] == 340_000
             if new('h_commit') and not old('h_commit'):
                 samples = self.sessions[bank]
-                assert new('h_attempts') == 3 and time_ps - self.h_start_times[bank] == 240_000
+                assert new('h_attempts') == 3 and time_ps - self.h_start_times[bank] == 330_000
                 assert 2 <= len(samples) <= 3
                 assert samples[-1][1] and any(valid and pair == samples[-1][0] for pair, valid in samples[:-1])
                 assert (new('h1'), new('h2'), new('h3')) == samples[-1][0]
@@ -127,7 +127,7 @@ class ModuleAudit:
                 log('H_commit', f'rounds=3,computed={len(samples)},H1={new("h1"):04x},H2={new("h2"):04x},H3={new("h3"):04x}')
             if new('h_fail') and not old('h_fail'):
                 samples = self.sessions[bank]
-                assert len(samples) == 3 and new('h_attempts') == 3 and time_ps - self.h_start_times[bank] == 240_000
+                assert len(samples) == 3 and new('h_attempts') == 3 and time_ps - self.h_start_times[bank] == 330_000
                 assert not any(a[1] and b[1] and a[0] == b[0]
                                for i, a in enumerate(samples) for b in samples[i+1:])
                 assert not new('h_valid') and not new('delta_valid')
@@ -204,7 +204,7 @@ case31/32 的 buf_r_mask=1，case33/34 为 2；case35 的 R1=65472 保留且 mas
 
 ## H 三取二校验
 
-控制器固定走满三个 80 ns 时隙。前两组完整 (H1,H2,H3) 有限且一致时，第三轮保留同样的时序但不发起 GEMV，结束后才提交第一组。
+控制器固定走满三个 110 ns 时隙。前两组完整 (H1,H2,H3) 有限且一致时，第三轮保留同样的时序但不发起 GEMV，结束后才提交第一组。
 前两组不一致则实际计算第三组，同时比较第一组和第二组，任意两组有限且逐位相同就采用该组。
 三个校验量整组表决。任一分量为 NaN 或 Inf 时该组无效。
 case36（三组 18/188、19/189、20/190）两次比较均不一致，h_attempts=3、h_fail=1；之后 Recovery 恢复为 17/187。

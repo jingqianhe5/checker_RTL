@@ -57,7 +57,7 @@ module Bank_checker #(
     reg [15:0] candidate_h2, candidate_h3;
     wire command_accept;
     wire issue;
-    wire [2:0] phase;
+    wire [2:0] phase, input_phase;
     wire core_mode_tree;
     wire first_beat, last_beat;
     wire [31:0] beat_index;
@@ -70,8 +70,8 @@ module Bank_checker #(
     wire h_sample_valid, h_sample_ready;
     wire h_done_valid, h_done_ready;
     wire h_commit, h_fail;
-    wire feedback_phase = (phase == PH_H1 || phase == PH_H2 || phase == PH_H3);
-    wire main_phase = (phase == PH_Y);
+    wire feedback_phase = (input_phase == PH_H1 || input_phase == PH_H2 || input_phase == PH_H3);
+    wire main_phase = (input_phase == PH_Y);
     reg [NUM_LANES*16-1:0] selected_bank_data;
     reg selected_bank_valid;
     wire selected_bank_ready;
@@ -82,9 +82,9 @@ module Bank_checker #(
     wire core_result_valid, core_result_ready;
     wire [NUM_LANES*16-1:0] clean_result;
     wire [NUM_LANES-1:0] clean_mask;
-    wire [NUM_LANES*16-1:0] core_vector = (phase == PH_H1) ? {NUM_LANES{16'h3c00}} :
-                                                       (phase == PH_H2) ? weight :
-                                                       (phase == PH_H3) ? inv_weight : input_vector;
+    wire [NUM_LANES*16-1:0] core_vector = (input_phase == PH_H1) ? {NUM_LANES{16'h3c00}} :
+                                                       (input_phase == PH_H2) ? weight :
+                                                       (input_phase == PH_H3) ? inv_weight : input_vector;
 
     // 外部配置仅在任务握手时锁存。
     always @(posedge clk_i or negedge rst_ni) begin
@@ -121,7 +121,7 @@ module Bank_checker #(
     always @* begin
         selected_bank_data = source_y ? y_data_i : bank_data_i;
         selected_bank_valid = source_y ? y_valid_i : bank_valid_i;
-        case (phase)
+        case (input_phase)
             PH_R1: begin selected_bank_data = checksum_e; selected_bank_valid = 1'b1; end
             PH_R2: begin selected_bank_data = checksum_w; selected_bank_valid = 1'b1; end
             PH_R3: begin selected_bank_data = checksum_inv_w; selected_bank_valid = 1'b1; end
@@ -184,6 +184,7 @@ module Bank_checker #(
         .command_accept_o    (command_accept),
         .issue_o             (issue),
         .phase_o             (phase),
+        .input_phase_o       (input_phase),
         .mode_tree_o         (core_mode_tree),
         .first_o             (first_beat),
         .last_o              (last_beat),

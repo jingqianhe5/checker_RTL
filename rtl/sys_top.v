@@ -51,7 +51,7 @@ module sys_top #(
     output wire [7:0]                due_reason_o
 );
     localparam integer V = NUM_LANES * 16, W = `BG_RECORD_WIDTH;
-    localparam [2:0] IDLE = 0, LAUNCH = 1, ACTIVE = 2, DONE = 3, DRAIN = 4;
+    localparam [2:0] IDLE = 0, LAUNCH = 1, ACTIVE = 2, DONE = 3, DRAIN = 4, REDUCE = 5;
     localparam [1:0] SERVICE_IDLE = 0, SERVICE_LAUNCH = 1, SERVICE_WAIT = 2, SERVICE_BAD = 3;
     reg [2:0] state;
     reg [7:0] block_id;
@@ -330,9 +330,16 @@ module sys_top #(
     );
     // 尚未解决的 Bank 暂不贡献结果；成功修复后解除屏蔽，DUE 保持屏蔽。
     wire [3:0] reduce_block_skip = (~resolved) | due_mask_o;
+    wire all_banks_resolved = (&seen) && (&resolved);
+    wire reduce_start = state == ACTIVE && all_banks_resolved && !mode_tree;
+    wire reduce_done;
     reduce_concat #(
         .NUM_LANES (NUM_LANES)
     ) reduce_u (
+        .clk_i        (clk_i),
+        .rst_ni       (rst_ni),
+        .start_i      (reduce_start),
+        .done_o       (reduce_done),
         .mode_tree_i  (mode_tree),
         .block_skip_i (reduce_block_skip),
         .bank_y_i     (final_bank_y),
@@ -397,9 +404,11 @@ module sys_top #(
                         due_mask_o[recovery_src[1:0]] <= 1;
                     end
 
-                    if ((&seen) && (&resolved))
-                        state <= DONE;
+                    if (all_banks_resolved)
+                        state <= mode_tree ? DONE : REDUCE;
                 end
+
+                REDUCE: if (reduce_done) state <= DONE;
 
                 DONE: if (result_valid_o && result_ready_i)
                     state <= DRAIN;

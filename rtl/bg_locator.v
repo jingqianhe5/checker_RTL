@@ -26,37 +26,36 @@ module bg_locator #(
     input wire ready_i,
     output reg [3:0] search_steps_o
 );
-    localparam [1:0] IDLE=0, SEARCH=1, PATCH=2, DONE=3;
-    reg [1:0] state;
+    localparam [2:0] IDLE=0, SEARCH=1, VERIFY_WEIGHT=2, PATCH=3, DONE=4;
+    reg [2:0] state;
     reg [4:0] low_weight, high_weight;
     wire [4:0] middle = (low_weight+high_weight) >> 1;
-    reg [39:0] magnitude1, magnitude2;
-    wire [45:0] doubled_target = {5'b0,magnitude2,1'b0};
-    wire [5:0] boundary_weight = (state == PATCH) ? {low_weight,1'b0} : {middle,1'b1};
-    wire [45:0] boundary = magnitude1 * boundary_weight;
-    // Reuse the search multiplier to confirm a legal integer weight.
-    wire [45:0] weight_error = doubled_target >= boundary ? doubled_target-boundary : boundary-doubled_target;
+    reg [10:0] delta1_mantissa;
+    reg [16:0] doubled_target, verified_boundary;
+    wire [5:0] boundary_weight = (state == VERIFY_WEIGHT) ? {low_weight,1'b0} : {middle,1'b1};
+    wire [16:0] boundary = delta1_mantissa * boundary_weight;
+    wire [16:0] weight_error = doubled_target >= verified_boundary ?
+                               doubled_target - verified_boundary : verified_boundary - doubled_target;
+    reg [15:0] lookup_y;
     wire [15:0] d1 = record_i[`BG_DELTA1_LSB +: 16];
     wire [15:0] d2 = record_i[`BG_DELTA2_LSB +: 16];
-    function [39:0] fp16_magnitude_units;
-        input [15:0] value;
-        reg [39:0] mantissa;
-        begin
-            mantissa={29'b0,(value[14:10]!=0),value[9:0]};
-            if (value[14:10]!=0) mantissa=mantissa << (value[14:10]-1'b1);
-            fp16_magnitude_units=mantissa;
-        end
-    endfunction
-    wire [39:0] input_mag1 = fp16_magnitude_units(d1);
-    wire [39:0] input_mag2 = fp16_magnitude_units(d2);
-    wire [45:0] input_twice2 = {5'b0,input_mag2,1'b0};
-    wire [45:0] upper_bound = input_mag1 * (2*NUM_LANES+1);
+    wire [10:0] input_mantissa1 = {d1[14:10] != 0, d1[9:0]};
+    wire [10:0] input_mantissa2 = {d2[14:10] != 0, d2[9:0]};
+    wire signed [5:0] exponent1 = d1[14:10] == 0 ? 6'sd1 : {1'b0, d1[14:10]};
+    wire signed [5:0] exponent2 = d2[14:10] == 0 ? 6'sd1 : {1'b0, d2[14:10]};
+    wire signed [5:0] exponent_gap = exponent2 - exponent1;
+    // Compare in Delta1's exponent units. A gap outside [-1,5] already
+    // puts the nonzero ratio outside (0.5,16.5], including subnormals.
+    wire [2:0] align_shift = exponent_gap[2:0] + 1'b1;
+    wire [16:0] input_twice2 = {6'b0, input_mantissa2} << align_shift;
+    localparam [5:0] UPPER_WEIGHT = 2*NUM_LANES+1;
+    wire [16:0] upper_bound = input_mantissa1 * UPPER_WEIGHT;
     wire [2:0] fault_type = record_i[`BG_TYPE_LSB+:3];
     assign lookup_bank_o = record_o[`BG_SRC_LSB+:2];
     assign lookup_pos_o = low_weight[3:0] - 1'b1;
     wire [15:0] corrected;
     fp16_add correction_u (
-        .a_i      (lookup_y_i),
+        .a_i      (lookup_y),
         .b_i      (record_o[`BG_DELTA1_LSB +: 16]),
         .result_o (corrected)
     );
@@ -66,13 +65,14 @@ module bg_locator #(
         if (!rst_ni) begin
             state<=IDLE; record_o<=0; pos_o<=-16'sd1; candidate_value_o<=0;
             located_o<=0; reason_o<=0; search_steps_o<=0;
-            magnitude1<=0; magnitude2<=0; low_weight<=1; high_weight<=NUM_LANES;
+            delta1_mantissa<=0; doubled_target<=0; verified_boundary<=0;
+            lookup_y<=0; low_weight<=1; high_weight<=NUM_LANES;
         end else begin
             case (state)
                 IDLE: if (valid_i && ready_o) begin
                     record_o<=record_i; pos_o<=-16'sd1; candidate_value_o<=0;
                     located_o<=0; reason_o<=0; search_steps_o<=0;
-                    magnitude1<=input_mag1; magnitude2<=input_mag2;
+                    delta1_mantissa<=input_mantissa1; doubled_target<=input_twice2;
                     low_weight<=1; high_weight<=NUM_LANES;
                     if (fault_type != `BG_SINGLE_Y) begin
                         state<=DONE;
@@ -83,24 +83,30 @@ module bg_locator #(
                     end else if (d1[14:10]==31 || d2[14:10]==31) begin reason_o<=1; state<=DONE; end
                     else if (d1[14:0]==0) begin reason_o<=2; state<=DONE; end
                     else if (d1[15]!=d2[15] && d2[14:0]!=0) begin reason_o<=3; state<=DONE; end
-                    else if (input_twice2 <= {6'b0,input_mag1} || input_twice2 > upper_bound) begin
+                    else if (exponent_gap < -6'sd1 || exponent_gap > 6'sd5 ||
+                             input_twice2 <= {6'b0,input_mantissa1} || input_twice2 > upper_bound) begin
                         reason_o<=4; state<=DONE;
-                    end else if (NUM_LANES==1) state<=PATCH;
+                    end else if (NUM_LANES==1) state<=VERIFY_WEIGHT;
                     else state<=SEARCH;
                 end
                 SEARCH: begin
                     search_steps_o<=search_steps_o+1'b1;
                     if (doubled_target <= boundary) begin
                         high_weight<=middle;
-                        if (middle==low_weight) state<=PATCH;
+                        if (middle==low_weight) state<=VERIFY_WEIGHT;
                     end else begin
                         low_weight<=middle+1'b1;
-                        if (middle+1'b1==high_weight) state<=PATCH;
+                        if (middle+1'b1==high_weight) state<=VERIFY_WEIGHT;
                     end
                 end
+                VERIFY_WEIGHT: begin
+                    verified_boundary <= boundary;
+                    lookup_y <= lookup_y_i;
+                    state <= PATCH;
+                end
                 PATCH: begin
-                    if (weight_error > (boundary >> WEIGHT_SHIFT)) reason_o<=4;
-                    else if (lookup_y_i[14:10]==31 || corrected[14:0]>=15'h7bff) reason_o<=5;
+                    if (weight_error > (verified_boundary >> WEIGHT_SHIFT)) reason_o<=4;
+                    else if (lookup_y[14:10]==31 || corrected[14:0]>=15'h7bff) reason_o<=5;
                     else begin
                         pos_o<=low_weight-1'b1; candidate_value_o<=corrected; located_o<=1;
                     end

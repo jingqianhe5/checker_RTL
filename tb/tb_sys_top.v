@@ -218,7 +218,7 @@ module tb_sys_top;
     wire ev_fifo_ready=dut.bg_u.ready;
     wire [2-1:0] ev_arbiter_bank=dut.bg_u.fault_fifo_u.selected_bank;
     wire [2-1:0] ev_arbiter_next=dut.bg_u.fault_fifo_u.next_bank;
-    wire [2-1:0] ev_locator_state=dut.bg_u.locator_u.state;
+    wire [2:0] ev_locator_state=dut.bg_u.locator_u.state;
     wire [5-1:0] ev_locator_low=dut.bg_u.locator_u.low_weight;
     wire [5-1:0] ev_locator_high=dut.bg_u.locator_u.high_weight;
     wire [5-1:0] ev_locator_middle=dut.bg_u.locator_u.middle;
@@ -480,7 +480,12 @@ module tb_sys_top;
             @(negedge clk);check(start_ready);start_valid=1;monitor=1;
             @(posedge clk);check(start_ready);start_cycle=cycle_count;
             @(negedge clk);start_valid=0;
-            while(!result_valid) begin @(negedge clk);check(!load_ready&&!checksum_ready&&!start_ready);end
+            while (!result_valid) begin
+                if (expected_due != 0 && dut.all_banks_resolved)
+                    poison_skipped = 1;
+                @(negedge clk);
+                check(!load_ready && !checksum_ready && !start_ready);
+            end
             check(dut.reduce_block_skip===expected_due);
             if(expected_due!=0) begin
                 // Poison skipped banks at the actual Reduce/Concat input, bypassing

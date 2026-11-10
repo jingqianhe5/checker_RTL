@@ -64,7 +64,7 @@ module tb_Bank_checker_faults;
         if (rst_n && dut.h_start_valid && dut.h_start_ready) h_started_at = $time;
         if (rst_n && !result_valid) check(!commit && !fail && !delta_valid && delta1 == 0 && delta2 == 0 && delta_nonfinite == 0);
         if (rst_n && dut.core_valid && dut.core_ready) begin
-            case (dut.phase)
+            case (dut.input_phase)
                 0, 1: begin
                     r_inputs = r_inputs + 1;
                     check(dut.mux_mode_tree && !dut.feedback_phase);
@@ -77,7 +77,7 @@ module tb_Bank_checker_faults;
                     h_inputs = h_inputs + 1;
                     check(dut.mux_mode_tree && dut.feedback_phase && dut.buffer_valid &&
                           dut.core_data == 32'h4000_3c00 && !input_ready);
-                    if (dut.phase == 3) check(dut.core_vector == 32'h3c00_3c00);
+                    if (dut.input_phase == 3) check(dut.core_vector == 32'h3c00_3c00);
                     else check(dut.core_vector == 32'h4000_3c00);
                 end
                 default: check(1'b0);
@@ -119,7 +119,7 @@ module tb_Bank_checker_faults;
             send_row(32'h3c00_0000);
             while (!result_valid) @(negedge clk);
             check(y == 32'h4000_3c00 && r1 == 16'h4200 && r2 == 16'h4500 && y_mask == 0 && r_mask == 0);
-            check(attempts == 3 && $time - h_started_at == 195);
+            check(attempts == 3 && $time - h_started_at == 225);
             if (scenario == 4)
                 check(!commit && fail && attempts == 3 && h1 == 0 && h2 == 0);
             else begin

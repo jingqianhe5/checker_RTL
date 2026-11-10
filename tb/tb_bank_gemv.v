@@ -52,8 +52,11 @@ module tb_bank_gemv;
         scalar = 16'h3800;
         data_in = {16'h4000,16'h3c00,16'hbc00};
         @(posedge clk); #1;
-        check(result_valid && result == {16'h4700,16'h4480,16'h3e00});
         @(negedge clk);
+        valid = 0;
+        while (!result_valid) @(negedge clk);
+        check(result == {16'h4700,16'h4480,16'h3e00});
+
         // A blocked output prevents acceptance, even if input controls change.
         mode_tree = 1;
         data_in = {3{16'h4000}};
@@ -63,16 +66,25 @@ module tb_bank_gemv;
         end
         @(negedge clk);
         result_ready = 1;
+        valid = 1;
         // Simultaneously retire the old vector and accept a tree dot product.
-        @(posedge clk); #1;
-        check(result_valid && result == {32'b0,16'h4600});
+        @(posedge clk); check(ready);
         @(negedge clk);
         data_in = {3{16'h3c00}};
-        @(posedge clk); #1;
-        check(result_valid && result == {32'b0,16'h4200});
+        @(posedge clk); check(ready);
         @(negedge clk);
         valid = 0;
-        @(posedge clk); #1;
+        result_ready = 0;
+        while (!result_valid) @(negedge clk);
+        // Stall with both tree requests already accepted.
+        repeat (3) begin
+            check(!ready && result_valid && result == {32'b0,16'h4600});
+            @(negedge clk);
+        end
+        result_ready = 1;
+        @(negedge clk);
+        check(result_valid && result == {32'b0,16'h4200});
+        @(negedge clk);
         check(!result_valid);
         @(negedge clk);
         // first must clear all lanes of an earlier accumulation.
@@ -82,10 +94,11 @@ module tb_bank_gemv;
         valid = 1;
         scalar = 16'h3c00;
         data_in = {3{16'h3c00}};
-        @(posedge clk); #1;
-        check(result_valid && result == {3{16'h3c00}});
+        @(posedge clk); check(ready);
         @(negedge clk);
         valid = 0;
+        while (!result_valid) @(negedge clk);
+        check(result == {3{16'h3c00}});
         result_ready = 0;
         rst_n = 0;
         #1;
